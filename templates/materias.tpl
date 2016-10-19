@@ -14,7 +14,9 @@
                 </ul>
               {/foreach}
               <div id="listaMaterias">
-                {include file="adminMaterias.tpl"}
+                <div id="mostrarForm">
+                  {include file="adminMaterias.tpl"}
+                </div>
               </div>
           </div>
         </div>

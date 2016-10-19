@@ -73,5 +73,16 @@
         //     return 'No se pudo actualizar el profesor';
         //   }
         // }
+
+        function buscarProfesoresMat($id_materia){
+          $sentencia = $this->db->prepare("SELECT * from profesor where id_materia=?");
+          $sentencia->execute(array($id_materia));
+          $profesoresPorMateria = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+          foreach ($profesoresPorMateria as $key => $profesor) {
+              $profesoresPorMateria[$key]['imagenes']=$this->getImagenes($profesor['id_profesor']);
+          }
+
+          return($profesoresPorMateria);
+      }
     }
 ?>

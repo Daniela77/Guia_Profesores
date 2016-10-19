@@ -27,5 +27,19 @@ class AbmController extends Controller {
   //   $this->view->mostrarProfesor($this->modelp->getProfesor($id_profesor));
   // }
 
+  function buscarProfesoresMat(){
+    $id_materia = $_POST["id_materia"];
+    //llega
+    $profesores = $this->modelp->buscarProfesoresMat($id_materia);
+    $materias = $this->modelm->getMaterias();
+    if (count($profesores)>0) {
+      $mensaje = "Su busqueda fue exitosa!";
+    }else {
+      $mensaje = "No hay profesores para esa materia";
+    }
+
+    $this->view->mostrarProfesoresMat($profesores,$mensaje,$materias);
+  }
+
 }
 ?>

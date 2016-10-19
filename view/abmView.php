@@ -14,5 +14,13 @@ class AbmView extends View{
     $this->smarty->assign('profesor', $profesor);
     $this->smarty->display('profesor.tpl');
   }
+
+  function mostrarProfesoresMat($profesores,$mensaje,$materias){
+    $this->smarty->assign('lista', true);
+    $this->smarty->assign('mensaje', $mensaje);
+    $this->smarty->assign('materias', $materias);
+    $this->smarty->assign('profesores', $profesores);
+    $this->smarty->display("profesoresPorMateria.tpl");
+  }
 }
 ?>

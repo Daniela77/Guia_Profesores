@@ -3,6 +3,18 @@ body{
    font-family:"Florence-Regular", Helvetica, Arial, sans-serif;
 }
 
+div #mostrarForm{
+  display:none;
+}
+
+h1,h2,h3 {
+  font-family: "HappyTime";
+}
+
+td,th {
+    display: table-cell;
+}
+
 .contenedor{
  margin-top: 20px;
 }

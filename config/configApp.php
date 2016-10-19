@@ -16,6 +16,7 @@
 		public static $PAGE_ADMIN_ELIMINAR_PROFESOR = 'adminEliminarProfesor';
 		public static $PAGE_ADMIN_MODIFICAR_PROFESOR = 'adminModificarProfesor';
 		public static $PAGE_ADMIN_LISTA_PROFESORES = 'adminListaP';
+		public static $PAGE_ADMIN_BUSCAR_PROFESORES = 'buscarProfesoresMat';
 
  		public static $PAGE_ADMIN_MATERIAS = 'adminMaterias';
  		public static $PAGE_ADMIN_AGREGAR_MATERIA = 'adminAgregarMateria';

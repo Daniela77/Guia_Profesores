@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-19 18:51:43
+/* Smarty version 3.1.30, created on 2016-10-20 00:29:23
   from "C:\xampp\htdocs\Guia_Profesores\templates\adminProfesores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5807a49fbc5bb4_89772235',
+  'unifunc' => 'content_5807f3c3eff0c7_44468881',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5807a49fbc5bb4_89772235 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5807f3c3eff0c7_44468881 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section>
     <div class="container">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-19 19:39:08
+/* Smarty version 3.1.30, created on 2016-10-20 00:50:22
   from "C:\xampp\htdocs\Guia_Profesores\templates\materias.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5807afbc4bfe54_67141549',
+  'unifunc' => 'content_5807f8ae7ffd26_25382626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '64a52a2f4e96d1d2f224848cea8237030213e4e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\materias.tpl',
-      1 => 1476898727,
+      1 => 1476912545,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:adminMaterias.tpl' => 1,
   ),
 ),false)) {
-function content_5807afbc4bfe54_67141549 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5807f8ae7ffd26_25382626 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section>
   <div class="container">
@@ -54,9 +54,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
               <div id="listaMaterias">
-                <?php $_smarty_tpl->_subTemplateRender("file:adminMaterias.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+                <div id="mostrarForm">
+                  <?php $_smarty_tpl->_subTemplateRender("file:adminMaterias.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+                </div>
               </div>
           </div>
         </div>

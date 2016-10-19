@@ -6,9 +6,9 @@
             <div class="row">
               <div class="col-md-8">
                <h2>Contacto</h2>
-               <h4>Si desea contactase con nosotros,complete el siguiente formulario.
+               <p>Si desea contactase con nosotros,complete el siguiente formulario.
                   En breve estaremos respondiendo a su consulta.
-                  Muchas gracias</h4>
+                  Muchas gracias</p>
                 <form>
                   <div class="form-group">
                     <label>Nombre</label>

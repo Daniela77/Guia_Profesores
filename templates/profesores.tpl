@@ -52,7 +52,9 @@
              </div>
            </div>
            <div id="listaProfesores">
-             {include file="adminprofesores.tpl"}
+             <div id="mostrarForm">
+               {include file="adminprofesores.tpl"}
+             </div>
            </div>
           </div>
         </div>

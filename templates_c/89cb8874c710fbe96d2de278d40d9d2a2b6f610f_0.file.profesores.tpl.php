@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-19 18:52:02
+/* Smarty version 3.1.30, created on 2016-10-20 00:29:40
   from "C:\xampp\htdocs\Guia_Profesores\templates\profesores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5807a4b2af76e1_81392776',
+  'unifunc' => 'content_5807f3d42e6573_57840884',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89cb8874c710fbe96d2de278d40d9d2a2b6f610f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\profesores.tpl',
-      1 => 1476895049,
+      1 => 1476913945,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:adminprofesores.tpl' => 1,
   ),
 ),false)) {
-function content_5807a4b2af76e1_81392776 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5807f3d42e6573_57840884 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
   <section>
     <div class="container">
@@ -110,9 +110,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
              </div>
            </div>
            <div id="listaProfesores">
-             <?php $_smarty_tpl->_subTemplateRender("file:adminprofesores.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+             <div id="mostrarForm">
+               <?php $_smarty_tpl->_subTemplateRender("file:adminprofesores.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+             </div>
            </div>
           </div>
         </div>

@@ -42,14 +42,15 @@ $(document).ready(function(){
 		    error: MostrarError,
 		  });
 		  e.preventDefault();
-		  return false;
-				// InicializarEvt();
-				// InicializarABMEvt();
+
+				InicializarEvt();
+				InicializarABMEvt();
+				  return false;
 	}
 
-	InicializarEvt();
-	InicializarABMEvt();
-// $("#btnEnviarMensaje").off().on("click",EnviarMensaje);
+	 InicializarEvt();
+	 InicializarABMEvt();
+
 	function cargarEventos(){
 		$('#agregarMateria').off().click(function(){
 			event.preventDefault();
@@ -67,24 +68,34 @@ $(document).ready(function(){
 		});
 
 		$('.modificarMateria').click(function(){
+			$("#mostrarForm").toggle('slow');
 			event.preventDefault();
 			$('#id_materia').val($(this).attr("data-idmateria"));
 			$('#nombre').val($(this).attr("data-nombre"));
 		});
 
+		// $("#formTasks").on("submit", function(){
+		// 	event.preventDefault();
+		// 	formData = new FormData(this);
 
-		$('#agregarProfesor').click(function(){
+
+		$('#formProfesor').on("submit", function(){
 			event.preventDefault();
+			var formData = new FormData(this);
 			alert(56);
-			$.post("index.php?page=adminAgregarProfesor",$("#formProfesor").serialize(), function(data) {
-				 $('#listaProfesores').html(data);
-				 $('#nombreCompleto').val('');
-				 $('#email').val('');
-				 $('#telefono').val('');
-				 $('#materia').val('');
-				 $('#precio').val('');
-				 $('#tipoDeClase').val('');
-			});
+			$.ajax({
+			   method: "POST",
+			   url: "index.php?page=adminAgregarProfesor",
+			   data: formData,
+			   contentType: false,
+			   cache: false,
+			   processData:false,
+				 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+					 $("#contenido").html(data);
+ 		       //  $("#listaProfesores").html(data);
+ 		        },
+ 		    error: MostrarError,
+ 		  });
 		});
 
 		//ver que ande elver detalle
@@ -131,6 +142,12 @@ $(document).ready(function(){
 		// 	// $('#tarea').val('');
 		// 	// });
 		// });
+		$('#buscarProfesores').click(function(){
+			event.preventDefault();
+			$.get( "index.php?page=buscarProfesoresMat",$("#porMateria").serialize(), function(data)  {
+			$('#listaProfesores').html(data);
+			});
+		});
 	}
 
 

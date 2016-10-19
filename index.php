@@ -65,6 +65,10 @@
 			$abmController = new AbmController;
 			$abmController->modificarProfesor();
 			break;
+		case ConfigApp::$PAGE_ADMIN_BUSCAR_PROFESORES:
+			$abmController = new AbmController;
+			$abmController->buscarProfesoresMat();
+			break;
 		case ConfigApp::$PAGE_ADMIN_LISTA_MATERIAS:
 			$materiaController = new MateriaController;
 			$materiaController->mostrarMaterias();
