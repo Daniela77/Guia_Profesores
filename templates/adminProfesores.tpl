@@ -45,7 +45,7 @@
                     <option>Domicilio</option>
                   </select>
                 </div>
-              <button id="agregarProfesor" type="submit" class="btn btn-default">Agregar Profesor</button>
+              <button id="agregarProfesor" type="submit" class="btn btn-default">Aplicar</button>
             </form>
             </div>
          </div>

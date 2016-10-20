@@ -82,7 +82,6 @@ $(document).ready(function(){
 		$('#formProfesor').on("submit", function(){
 			event.preventDefault();
 			var formData = new FormData(this);
-			alert(56);
 			$.ajax({
 			   method: "POST",
 			   url: "index.php?page=adminAgregarProfesor",
