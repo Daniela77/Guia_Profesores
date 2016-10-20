@@ -1,4 +1,4 @@
-<div class="panel">
+<!-- <div class="panel">
   <div class="col-md-offset-5">
     <label for="porMateria">Buscar profesores segun materia</label>
     <form class="porMateria" href="index.php?page=buscarProfesoresMat"  method="post">
@@ -18,7 +18,7 @@
     {foreach from=$profesores item=profesor}
     <div class="panel">
       <p>
-        <a class="nav-link-cabania" href="cabania" data-idcabania="{$cabania['id_cabania']}"><h3>Cabaña {$cabania["nombre"]}</h3></a>
+        <a class="nav-link-profesor" href="" data-idprofesor="{$profesor['id_profesor']}"><h3>Profesor {$profesor["nombreCompleto"]}</h3></a>
         <div class="panel">
           <p>
             Pertenece a la Materia {$profesor["id_materia"]}.
@@ -31,4 +31,4 @@
       <h4>{$mensaje}</h4>
     </div>
   </div>
-  {/if}
+  {/if} -->

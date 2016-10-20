@@ -42,14 +42,13 @@ $(document).ready(function(){
 		    error: MostrarError,
 		  });
 		  e.preventDefault();
-
 				InicializarEvt();
 				InicializarABMEvt();
 				  return false;
-	}
+		}
 
-	 InicializarEvt();
-	 InicializarABMEvt();
+	 	InicializarEvt();
+	 	InicializarABMEvt();
 
 	function cargarEventos(){
 		$('#agregarMateria').off().click(function(){
@@ -74,10 +73,6 @@ $(document).ready(function(){
 			$('#nombre').val($(this).attr("data-nombre"));
 		});
 
-		// $("#formTasks").on("submit", function(){
-		// 	event.preventDefault();
-		// 	formData = new FormData(this);
-
 
 		$('#formProfesor').on("submit", function(){
 			event.preventDefault();
@@ -91,7 +86,6 @@ $(document).ready(function(){
 			   processData:false,
 				 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
 					 $("#contenido").html(data);
- 		       //  $("#listaProfesores").html(data);
  		        },
  		    error: MostrarError,
  		  });

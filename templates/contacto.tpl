@@ -26,10 +26,10 @@
                     <label>Email</label>
                     <input type="email" class="form-control" id="email" placeholder="Email">
                   </div>
-                <div class="form-group">
-                  <label>Consulta</label>
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
+                  <div class="form-group">
+                    <label>Consulta</label>
+                    <textarea class="form-control" rows="3"></textarea>
+                  </div>
                 <button type="submit" class="btn btn-default">Enviar</button>
               </form>
             </div>

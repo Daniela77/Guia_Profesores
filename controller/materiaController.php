@@ -25,17 +25,17 @@ class MateriaController extends Controller{
    }
 
    function agregarMateria(){
-     if(isset($_POST['id_materia']) && ($_POST['id_materia'] != '')&&(isset($_POST['nombre']) && ($_POST['nombre'] != ''))){
-       $this->modificarMateria();
-     }
-     else{
-       if(isset($_POST['nombre'])){
-         $nombre= $_POST['nombre'];
-         $this->model->crearMateria($nombre);
-         $this->mostrarMaterias();
+       if(isset($_POST['id_materia']) && ($_POST['id_materia'] != '')&&(isset($_POST['nombre']) && ($_POST['nombre'] != ''))){
+         $this->modificarMateria();
+       }
+       else{
+         if(isset($_POST['nombre'])){
+           $nombre= $_POST['nombre'];
+           $this->model->crearMateria($nombre);
+           $this->mostrarMaterias();
+         }
        }
      }
-   }
 
     function modificarMateria(){
       $id_materia = $_POST['id_materia'];
@@ -43,8 +43,6 @@ class MateriaController extends Controller{
       $this->model->toogleMateria($id_materia,$nombre);
       $this->mostrarMaterias();
     }
-
-
 
      function eliminarMateria(){
         $key = $_GET['id_materia'];

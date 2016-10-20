@@ -58,34 +58,33 @@
         $this->mostrarProfesores();
       }
 
-  function getImagenesVerificadas($imagenes){
-    $imagenesVerificadas = [];
-    for ($i=0; $i < count($imagenes['size']); $i++) {
-      if($imagenes['size'][$i]>0 && $imagenes['type'][$i]=="image/jpeg"){
-          $imagen_aux = [];
-          $imagen_aux['tmp_name']=$imagenes['tmp_name'][$i];
-          $imagen_aux['name']=$imagenes['name'][$i];
-          $imagenesVerificadas[]=$imagen_aux;
+    function getImagenesVerificadas($imagenes){
+      $imagenesVerificadas = [];
+      for ($i=0; $i < count($imagenes['size']); $i++) {
+        if($imagenes['size'][$i]>0 && $imagenes['type'][$i]=="image/jpeg"){
+            $imagen_aux = [];
+            $imagen_aux['tmp_name']=$imagenes['tmp_name'][$i];
+            $imagen_aux['name']=$imagenes['name'][$i];
+            $imagenesVerificadas[]=$imagen_aux;
+        }
       }
+      return $imagenesVerificadas;
     }
-    return $imagenesVerificadas;
-  }
 
 
 
   function editarProfesor(){
-   if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
-     (isset($_POST['email']) && ($_POST['email'] != ''))&&
-     (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
-     (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
-     (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
-     (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
-     $this->modificarProfesor();
-   }
-   else{
-      $this->agregarProfesor();
+     if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
+       (isset($_POST['email']) && ($_POST['email'] != ''))&&
+       (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
+       (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
+       (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
+       (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
+       $this->modificarProfesor();
      }
-
+     else{
+        $this->agregarProfesor();
+       }
    }
 
    public function modificarProfesor(){
