@@ -62,8 +62,8 @@
 			$ProfesorController->eliminarProfesor();
 			break;
 		case ConfigApp::$PAGE_ADMIN_MODIFICAR_PROFESOR:
-			$abmController = new AbmController;
-			$abmController->modificarProfesor();
+			$ProfesorController = new ProfesorController;
+			$ProfesorController->editarProfesor();
 			break;
 		case ConfigApp::$PAGE_ADMIN_BUSCAR_PROFESORES:
 			$abmController = new AbmController;

@@ -3,7 +3,8 @@ include_once 'view/view.php';
 
 class ProfesorView extends View{
 
-  function mostrarProfesores($profesores){
+  function mostrarProfesores($profesores, $materias){
+    $this->smarty->assign('materias', $materias);
     $this->smarty->assign('profesores', $profesores);
     $this->smarty->display('profesores.tpl');
   }

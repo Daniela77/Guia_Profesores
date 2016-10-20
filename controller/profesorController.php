@@ -2,21 +2,23 @@
   include_once 'controller/controller.php';
   require_once 'view/profesorView.php';
   include_once 'model/profesorModel.php';
+  include_once 'model/MateriaModel.php';
 
   class ProfesorController extends Controller{
 
     function __construct() {
       $this->model = new ProfesorModel();
       $this->view = new ProfesorView();
+      $this->modelMaterias = new MateriaModel();
      }
 
     function mostrarProfesores(){
-      $this->view->mostrarProfesores($this->model->getProfesores());
+      $this->view->mostrarProfesores($this->model->getProfesores(),$this->modelMaterias->getMaterias());
     }
 
-    // function mostrarProfesor(){
-    //   $this->view->mostrarProfesor($this->model->getProfesor());
-    // }
+    function mostrarProfesor(){
+      $this->view->mostrarProfesor($this->model->getProfesor());
+    }
 
     function agregarProfesor(){//ver que ande!!!
       if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
@@ -31,7 +33,6 @@
         $materia= $_POST['materia'];
         $precio= $_POST['precio'];
         $tipoDeClase= $_POST['tipoDeClase'];
-          print_r("llega?");
           if(isset($_FILES['imagenes'])){
             $imagenesVerificadas = $this->getImagenesVerificadas($_FILES['imagenes']);
             if(count($imagenesVerificadas)>0){
@@ -72,60 +73,32 @@
 
 
 
-  // function agregarProfesor(){
-  //  if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
-  //    (isset($_POST['email']) && ($_POST['email'] != ''))&&
-  //    (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
-  //    (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
-  //    (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
-  //    (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
-  //    $this->modificarProfesor();
-  //  }
-  //  else{
-  //    if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
-  //      (isset($_POST['email']) && ($_POST['email'] != ''))&&
-  //      (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
-  //      (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
-  //      (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
-  //      (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
-  //        $nombreCompleto= $_POST['nombreCompleto'];
-  //        $email= $_POST['email'];
-  //        $telefono= $_POST['telefono'];
-  //        $materia= $_POST['materia'];
-  //        $precio= $_POST['precio'];
-  //        $tipoDeClase= $_POST['tipoDeClase'];
-  //        if(isset($_FILES['imagenes'])){
-  //          $imagenesVerificadas = $this->getImagenesVerificadas($_FILES['imagenes']);
-  //          if(count($imagenesVerificadas)>0){
-  //
-  //            $this->model->crearProfesor($nombreCompleto, $email, $telefono, $materia, $precio, $tipoDeClase,$imagenesVerificadas);
-  //            $this->view->mostrarMensaje("La tarea se creo con imagen y todo!", "success");
-  //          }
-  //          else{
-  //            $this->view->mostrarMensaje("Error con las imagenes", "danger");
-  //          }
-  //        }
-  //        else{
-  //            $this->view->mostrarMensaje("La imagen es requerida","danger");
-  //        }
-  //      }
-  //        // $this->model->crearProfesor($nombreCompleto,$);
-  //        $this->mostrarProfesores();;
-  //    }
-  //
-  //  }
-  //
-  //  public function modificarProfesor(){
-  //      $id_profesor = $_POST['id_profesor'];
-  //      $nombreCompleto= $_POST['nombreCompleto'];
-  //      $email= $_POST['email'];
-  //      $telefono= $_POST['telefono'];
-  //      $materia= $_POST['materia'];
-  //      $precio= $_POST['precio'];
-  //      $tipoDeClase= $_POST['tipoDeClase'];
-  //      FALTA IMAGENES
-  //      $this->model->toogleProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase,$imagenesVerificadas);
-  //      $this->mostrarProfesores();
-  //    }
+  function editarProfesor(){
+   if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
+     (isset($_POST['email']) && ($_POST['email'] != ''))&&
+     (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
+     (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
+     (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
+     (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
+     $this->modificarProfesor();
+   }
+   else{
+      $this->agregarProfesor();
+     }
+
+   }
+
+   public function modificarProfesor(){
+       $id_profesor = $_POST['id_profesor'];
+       $nombreCompleto= $_POST['nombreCompleto'];
+       $email= $_POST['email'];
+       $telefono= $_POST['telefono'];
+       $materia= $_POST['materia'];
+       $precio= $_POST['precio'];
+       $tipoDeClase= $_POST['tipoDeClase'];
+       //FALTA IMAGENES
+       $this->model->toogleProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase);
+       $this->mostrarProfesores();
+     }
   }
 ?>

@@ -1,7 +1,6 @@
 <?php
 include_once "view/view.php";
-include_once "view/materiaView.php";
-include_once "view/profesorView.php";
+
 class AbmView extends View{
 
   function mostrarAdminProfesores($materias,$profesores){
@@ -10,7 +9,8 @@ class AbmView extends View{
     $this->smarty->display('adminProfesores.tpl');
   }
 
-  function mostrarProfesor($profesor){
+  function mostrarProfesor($materias,$profesor){
+    $this->smarty->assign('materias', $materias);
     $this->smarty->assign('profesor', $profesor);
     $this->smarty->display('profesor.tpl');
   }

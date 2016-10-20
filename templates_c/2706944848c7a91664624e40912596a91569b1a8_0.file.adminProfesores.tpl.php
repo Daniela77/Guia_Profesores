@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-20 00:29:23
+/* Smarty version 3.1.30, created on 2016-10-20 01:15:14
   from "C:\xampp\htdocs\Guia_Profesores\templates\adminProfesores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5807f3c3eff0c7_44468881',
+  'unifunc' => 'content_5807fe820ee5c5_46951091',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2706944848c7a91664624e40912596a91569b1a8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\adminProfesores.tpl',
-      1 => 1476849955,
+      1 => 1476918733,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5807f3c3eff0c7_44468881 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5807fe820ee5c5_46951091 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section>
     <div class="container">
@@ -28,7 +28,7 @@ function content_5807f3c3eff0c7_44468881 (Smarty_Internal_Template $_smarty_tpl)
         <div class="row">
           <div class="col-md-6">
             <form id="formProfesor" action="index.php?page=adminAgregarProfesor" method="POST" enctype="multipart/form-data">
-              <!-- <input type="hidden" name="id_profesor" id="id_profesor" value=""> -->
+              <input type="hidden" name="id_profesor" id="id_profesor" value="">
               <div class="form-group">
                 <label for="nombreCompleto">Nombre Completo</label>
                 <input type="text" name="nombreCompleto" class="form-control" id="nombreCompleto" placeholder="Nombre">

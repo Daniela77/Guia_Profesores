@@ -131,17 +131,19 @@ $(document).ready(function(){
 			});
 		});
 
-		// $('.modificarProfesor').click(function(){
-		// 	event.preventDefault();
-		// 	alert(45);
-		// 	$('#id_profesor').val($(this).attr("data-idprofesor"));
-		// 	$('#nombreCompleto').val($(this).attr("data-nombreCompleto"));
-		//
-		// 	// $.put("index.php?page=adminModificarMateria",{ id_materia: $(this).attr("data-idmateria") }, function(data) {
-		// 	// $('#listaTareas').html(data);
-		// 	// $('#tarea').val('');
-		// 	// });
-		// });
+		$('.modificarProfesor').off().click(function(){
+			$("#mostrarForm").toggle('slow');
+			event.preventDefault();
+			$('#id_profesor').val($(this).attr("data-idprofesor"));
+			$('#nombreCompleto').val($(this).attr("data-nombreCompleto"));
+			$('#email').val($(this).attr("data-email"));
+			$('#telefono').val($(this).attr("data-telefono"));
+			$('#materia').val($(this).attr("data-idmateria")).change();
+			console.log($(this).attr("data-idmateria"));
+			$('#precio').val($(this).attr("data-precio"));
+			$('#tipoDeClase').val($(this).attr("data-tipoDeClase"));
+		});
+
 		$('#buscarProfesores').click(function(){
 			event.preventDefault();
 			$.get( "index.php?page=buscarProfesoresMat",$("#porMateria").serialize(), function(data)  {

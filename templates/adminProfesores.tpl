@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-md-6">
             <form id="formProfesor" action="index.php?page=adminAgregarProfesor" method="POST" enctype="multipart/form-data">
-              <!-- <input type="hidden" name="id_profesor" id="id_profesor" value=""> -->
+              <input type="hidden" name="id_profesor" id="id_profesor" value="">
               <div class="form-group">
                 <label for="nombreCompleto">Nombre Completo</label>
                 <input type="text" name="nombreCompleto" class="form-control" id="nombreCompleto" placeholder="Nombre">

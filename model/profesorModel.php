@@ -61,18 +61,18 @@
             $sentencia->execute(array($id_profesor));
         }
           //ver como modificar las imagenes
-        // public function toogleProfesor($id_profesor,$nombreCompleto,$email, $telefono,$id_materia, $precio, $tipoDeClase,$imagenes){//CONSULTAR!!!
-        //
-        //   $profesor = $this->getProfesor($id_profesor);
-        //   $sentencia = $this->db->prepare("update profesor set nombreCompleto= ? email= ? telefono= ? id_materia= ? precio= ? tipoDeClase= ? WHERE id_profesor=?");
-        //   $sentencia->execute(array($nombreCompleto, $email, $telefono, $id_materia, $precio, $tipoDeClase,$id_profesor));
-        //   if($sentencia->rowCount() > 0){
-        //     return 'Profesor actualizado con exito';
-        //   }
-        //   else{
-        //     return 'No se pudo actualizar el profesor';
-        //   }
-        // }
+        public function toogleProfesor($id_profesor,$nombreCompleto,$email, $telefono,$materia, $precio, $tipoDeClase){//CONSULTAR!!!
+
+          $profesor = $this->getProfesor($id_profesor);
+          $sentencia = $this->db->prepare("update profesor set nombreCompleto= ?, email= ?, telefono= ?, id_materia= ?, precio= ?, tipoDeClase= ? WHERE id_profesor=?");
+          $sentencia->execute(array($nombreCompleto, $email, $telefono, $materia, $precio, $tipoDeClase,$id_profesor));
+          if($sentencia->rowCount() > 0){
+            return 'Profesor actualizado con exito';
+          }
+          else{
+            return 'No se pudo actualizar el profesor';
+          }
+        }
 
         function buscarProfesoresMat($id_materia){
           $sentencia = $this->db->prepare("SELECT * from profesor where id_materia=?");
