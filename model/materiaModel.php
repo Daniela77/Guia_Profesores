@@ -20,6 +20,12 @@ class MateriaModel extends Model{
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
+  // public function getMateriaById($id_materia){
+  //     $materia=document.getElementById('id_materia');
+  //     return $materia;
+  //   }
+
+
   public function crearMateria($nombre){
     try{
       $consulta = $this->db->prepare("INSERT INTO materia(nombre) VALUES(?)");
@@ -35,7 +41,7 @@ class MateriaModel extends Model{
     $sentencia->execute(array($id_materia));
   }
 
-  public function toogleMateria($id_materia,$nombre){//CONSULTAR!!!
+  public function actualizarMateria($id_materia,$nombre){//CONSULTAR!!!
     $materia = $this->getMateria($id_materia);
     $sentencia = $this->db->prepare("update materia set nombre= ? WHERE id_materia=?");
     $sentencia->execute(array($nombre,$id_materia));

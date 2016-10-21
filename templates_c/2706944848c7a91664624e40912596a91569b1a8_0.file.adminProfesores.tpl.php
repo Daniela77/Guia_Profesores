@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.30, created on 2016-10-21 16:23:00
+  from "C:\xampp\htdocs\Guia_Profesores\templates\adminProfesores.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_580a24c4e4d878_80169102',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2706944848c7a91664624e40912596a91569b1a8' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\adminProfesores.tpl',
+      1 => 1477005370,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_580a24c4e4d878_80169102 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <section>
     <div class="container">
       <div class="fluid_container">
@@ -20,9 +44,20 @@
               <div class="form-group">
                 <label for="materia">Materia</label>
                 <select id="materia" name="materia"class="form-control">
-                  {foreach $materias as $materia}
-                    <option value='{$materia["id_materia"]}'>{$materia["nombre"]}</option>
-                  {/foreach}
+                  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['materias']->value, 'materia');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['materia']->value) {
+?>
+                    <option value='<?php echo $_smarty_tpl->tpl_vars['materia']->value["id_materia"];?>
+'><?php echo $_smarty_tpl->tpl_vars['materia']->value["nombre"];?>
+</option>
+                  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
                 </select>
               </div>
               <div class="form-group">
@@ -52,3 +87,5 @@
       </div>
    </div>
   </section>
+<?php }
+}

@@ -40,7 +40,7 @@ class MateriaController extends Controller{
     function modificarMateria(){
       $id_materia = $_POST['id_materia'];
       $nombre=$_POST['nombre'];
-      $this->model->toogleMateria($id_materia,$nombre);
+      $this->model->actualizarMateria($id_materia,$nombre);
       $this->mostrarMaterias();
     }
 

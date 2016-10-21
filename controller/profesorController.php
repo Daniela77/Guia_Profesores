@@ -11,9 +11,13 @@
       $this->view = new ProfesorView();
       $this->modelMaterias = new MateriaModel();
      }
-
+//terminar!!!
     function mostrarProfesores(){
-      $this->view->mostrarProfesores($this->model->getProfesores(),$this->modelMaterias->getMaterias());
+      $profesores=$this->model->getProfesores();
+      $materias=$this->modelMaterias->getMaterias();
+      foreach  ($profesores as $profesor)
+        $profesor['materia'] = getMateriaById($profesor['id_materia']);
+      $this->view->mostrarProfesores($profesores,$materias);
     }
 
     function mostrarProfesor(){
@@ -72,19 +76,32 @@
     }
 
 
+       function agregarMateria(){
+           if(isset($_POST['id_materia']) && ($_POST['id_materia'] != '')&&(isset($_POST['nombre']) && ($_POST['nombre'] != ''))){
+             $this->modificarMateria();
+           }
+           else{
+             if(isset($_POST['nombre'])){
+               $nombre= $_POST['nombre'];
+               $this->model->crearMateria($nombre);
+               $this->mostrarMaterias();
+             }
+           }
+         }
 
   function editarProfesor(){
-     if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
+     if(isset($_POST['id_profesor']) && ($_POST['id_profesor'] != '')&&
+       (isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
        (isset($_POST['email']) && ($_POST['email'] != ''))&&
        (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
        (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
        (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
-       (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
+       (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != '')))){
        $this->modificarProfesor();
      }
-     else{
-        $this->agregarProfesor();
-       }
+    //  else{
+    //     $this->agregarProfesor();
+    //    }
    }
 
    public function modificarProfesor(){
@@ -96,7 +113,7 @@
        $precio= $_POST['precio'];
        $tipoDeClase= $_POST['tipoDeClase'];
        //FALTA IMAGENES
-       $this->model->toogleProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase);
+       $this->model->actualizarProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase);
        $this->mostrarProfesores();
      }
   }

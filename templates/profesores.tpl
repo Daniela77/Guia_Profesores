@@ -33,7 +33,7 @@
                   <td>{$profesor['nombreCompleto']}</td>
                   <td>{$profesor['email']}</td>
                   <td>{$profesor['telefono']}</td>
-                  <td>{$profesor['id_materia']}</td>
+                  <td>{$profesor['materia']}</td>
                   <td>${$profesor['precio']}</td>
                   <td>{$profesor['tipoDeClase']}</td>
                   <td><a class="eliminarProfesor" href="index.php?page=adminEliminarProfesor&id_profesor={$profesor['id_profesor']}" data-idprofesor="{$profesor['id_profesor']}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>

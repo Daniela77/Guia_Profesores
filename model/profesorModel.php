@@ -61,10 +61,10 @@
             $sentencia->execute(array($id_profesor));
         }
           //ver como modificar las imagenes
-        public function toogleProfesor($id_profesor,$nombreCompleto,$email, $telefono,$materia, $precio, $tipoDeClase){//CONSULTAR!!!
+        public function actualizarProfesor($id_profesor,$nombreCompleto,$email, $telefono,$materia, $precio, $tipoDeClase){//CONSULTAR!!!
 
           $profesor = $this->getProfesor($id_profesor);
-          $sentencia = $this->db->prepare("update profesor set nombreCompleto= ?, email= ?, telefono= ?, id_materia= ?, precio= ?, tipoDeClase= ? WHERE id_profesor=?");
+          $sentencia = $this->db->prepare("UPDATE profesor set nombreCompleto= ?, email= ?, telefono= ?, id_materia= ?, precio= ?, tipoDeClase= ? WHERE id_profesor=?");
           $sentencia->execute(array($nombreCompleto, $email, $telefono, $materia, $precio, $tipoDeClase,$id_profesor));
           if($sentencia->rowCount() > 0){
             return 'Profesor actualizado con exito';

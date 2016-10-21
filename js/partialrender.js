@@ -54,7 +54,7 @@ $(document).ready(function(){
 		$('#agregarMateria').off().click(function(){
 			event.preventDefault();
 			$.post("index.php?page=adminAgregarMateria",$("#formMateria").serialize(), function(data) {
-				 $('#listaMaterias').html(data);
+				 $('#contenido').html(data);
 					$('#nombre').val('');
 			});
 		});
@@ -62,7 +62,7 @@ $(document).ready(function(){
 		$('.eliminarMateria').click(function(){
 			event.preventDefault();
 			$.get( "index.php?page=adminEliminarMateria",{ id_materia: $(this).attr("data-idmateria") }, function(data) {
-			$('#listaMaterias').html(data);
+			$('#contenido').html(data);
 			});
 		});
 
@@ -76,16 +76,29 @@ $(document).ready(function(){
 
 		$('#formProfesor').on("submit", function(){
 			event.preventDefault();
+			if( $("#id_profesor").val() != ''){
+			var	page="adminModificarProfesor";
+				}
+			else {
+				page="adminAgregarProfesor";
+			}
 			var formData = new FormData(this);
 			$.ajax({
 			   method: "POST",
-			   url: "index.php?page=adminAgregarProfesor",
+			   url: "index.php?page="+page,
 			   data: formData,
 			   contentType: false,
 			   cache: false,
 			   processData:false,
 				 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
 					 $("#contenido").html(data);
+					 $("#id_profesor").val('');
+					 $('#nombreCompleto').val('');
+					 $('#email').val('');
+					 $('#telefono').val('');
+					 $('#materia').val('');
+					 $('#precio').val('');
+					 $('#tipoDeClase').val('');
  		        },
  		    error: MostrarError,
  		  });
@@ -120,7 +133,7 @@ $(document).ready(function(){
 		$('.eliminarProfesor').click(function(){
 			event.preventDefault();
 			$.get( "index.php?page=adminEliminarProfesor",{ id_profesor: $(this).attr("data-idprofesor") }, function(data) {
-			$('#listaProfesores').html(data);
+			$('#contenido').html(data);
 			});
 		});
 
@@ -132,7 +145,6 @@ $(document).ready(function(){
 			$('#email').val($(this).attr("data-email"));
 			$('#telefono').val($(this).attr("data-telefono"));
 			$('#materia').val($(this).attr("data-idmateria")).change();
-			console.log($(this).attr("data-idmateria"));
 			$('#precio').val($(this).attr("data-precio"));
 			$('#tipoDeClase').val($(this).attr("data-tipoDeClase"));
 		});
