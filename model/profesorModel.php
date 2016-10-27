@@ -17,18 +17,6 @@
       //    return $nombre;
       //  }
 
-//       function getProductoById($id_producto) {
-//
-//   $query = $this->db->prepare("select producto.*, categoria.nombre as nombre_categoria from producto inner join categoria on producto.fk_id_categoria = categoria.id_categoria where producto.id_producto=? ORDER BY categoria.nombre ASC");
-//   $query->execute(array($id_producto));
-//   $productos = $query->fetchAll(PDO::FETCH_ASSOC);
-//   foreach ($productos as $key => $producto) {
-//     $productos[$key]['imagenes'] = $this->getImagenesProducto($producto['id_producto']);
-//   }
-//   return $productos;
-// }
-
-
       function getProfesores(){
           $profesores = array();
           // $consulta = $this->db->prepare("SELECT * FROM profesor");
