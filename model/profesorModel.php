@@ -9,9 +9,31 @@
         return $sentencia->fetch(PDO::FETCH_ASSOC);
       }
 
+      // public function getProfesorById($id_profesor){
+      //    $sentencia = $this->db->prepare("SELECT nombreCompleto from profesor where id_materia = ?");
+      //    $sentencia->execute(array($id_profesor));
+      //    $nombre=$sentencia->fetch(PDO::FETCH_ASSOC)['nombreCompleto'];
+      //    print_r($nombre=$sentencia->fetch(PDO::FETCH_ASSOC)['nombreCompleto']);
+      //    return $nombre;
+      //  }
+
+//       function getProductoById($id_producto) {
+//
+//   $query = $this->db->prepare("select producto.*, categoria.nombre as nombre_categoria from producto inner join categoria on producto.fk_id_categoria = categoria.id_categoria where producto.id_producto=? ORDER BY categoria.nombre ASC");
+//   $query->execute(array($id_producto));
+//   $productos = $query->fetchAll(PDO::FETCH_ASSOC);
+//   foreach ($productos as $key => $producto) {
+//     $productos[$key]['imagenes'] = $this->getImagenesProducto($producto['id_producto']);
+//   }
+//   return $productos;
+// }
+
+
       function getProfesores(){
           $profesores = array();
-          $consulta = $this->db->prepare("SELECT * FROM profesor");
+          // $consulta = $this->db->prepare("SELECT * FROM profesor");
+
+          $consulta = $this->db->prepare("select profesor.*,materia.nombre as materia from profesor inner join materia on profesor.id_materia = materia.id_materia ORDER BY materia.nombre ASC");
           $consulta->execute();
           //Todos los profesores
           while($profesor = $consulta->fetch()) {
@@ -37,7 +59,7 @@
             return $sentencia->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function crearProfesor($nombreCompleto, $email, $telefono, $id_materia, $precio, $tipoDeClase,$imagenes){
+        function crearProfesor($nombreCompleto, $email, $telefono, $id_materia, $precio, $tipoDeClase,$imagenes){
             try{
               $consulta = $this->db->prepare("INSERT INTO profesor(nombreCompleto,email,telefono,id_materia,precio,tipoDeClase) VALUES(?,?,?,?,?,?)");
               $consulta->execute(array($nombreCompleto, $email, $telefono, $id_materia, $precio, $tipoDeClase));
@@ -84,5 +106,6 @@
 
           return($profesoresPorMateria);
       }
+
     }
 ?>

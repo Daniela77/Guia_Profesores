@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-21 19:26:46
+/* Smarty version 3.1.30, created on 2016-10-27 04:37:33
   from "C:\xampp\htdocs\Guia_Profesores\templates\profesores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_580a4fd6b26947_00637967',
+  'unifunc' => 'content_5811686d309af5_39121202',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89cb8874c710fbe96d2de278d40d9d2a2b6f610f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\profesores.tpl',
-      1 => 1477065854,
+      1 => 1477535817,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:adminprofesores.tpl' => 1,
   ),
 ),false)) {
-function content_580a4fd6b26947_00637967 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5811686d309af5_39121202 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section>
 <div class="container">

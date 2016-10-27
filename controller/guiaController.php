@@ -1,12 +1,10 @@
 <?php
 	include_once 'controller/controller.php';
 	require_once 'view/guiaView.php';
-	include_once 'model/guiaModel.php';
 
 	class GuiaController extends Controller{
 
 		function __construct(){
-		 	$this->model = new GuiaModel();
 			$this->view = new GuiaView();
 		}
 

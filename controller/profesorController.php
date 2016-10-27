@@ -2,7 +2,7 @@
   include_once 'controller/controller.php';
   require_once 'view/profesorView.php';
   include_once 'model/profesorModel.php';
-  include_once 'model/MateriaModel.php';
+  include_once 'model/materiaModel.php';
 
   class ProfesorController extends Controller{
 
@@ -11,18 +11,45 @@
       $this->view = new ProfesorView();
       $this->modelMaterias = new MateriaModel();
      }
+
+     function adminProfesores(){
+       $this->view->mostrarAdminProfesores($this->modelMaterias->getMaterias(),$this->model->getProfesores());
+     }
+
+     function mostrarProfesor(){
+         // $profesor=$this->modelp->getProfesor($id_profesor);
+   			if(isset($_REQUEST['id_profesor'])) $this->model->getProfesorById($profesor['id_profesor']);
+   			else echo "";
+   		}
+       // $this->view->mostrarProfesor($this->model->getProfesor($id_profesor));
+     // }
+
+     function buscarProfesoresMat(){
+       $id_materia = $_POST["id_materia"];
+       //llega
+       $profesores = $this->model->buscarProfesoresMat($id_materia);
+       $materias = $this->modelMaterias->getMaterias();
+       // if (count($profesores)>0) {
+       //   $mensaje = "Su busqueda fue exitosa!";
+       // }else {
+       //   $mensaje = "No hay profesores para esa materia";
+       // }
+
+       $this->view->mostrarProfesoresMat($profesores,$mensaje,$materias);
+     }
 //terminar!!!
     function mostrarProfesores(){
       $profesores=$this->model->getProfesores();
       $materias=$this->modelMaterias->getMaterias();
-      foreach  ($profesores as $profesor)
-        $profesor['materia'] = getMateriaById($profesor['id_materia']);
+      // foreach  ($profesores as $profesor){
+      //   $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
+      // }
       $this->view->mostrarProfesores($profesores,$materias);
     }
 
-    function mostrarProfesor(){
-      $this->view->mostrarProfesor($this->model->getProfesor());
-    }
+    // function mostrarProfesor(){
+    //   $this->view->mostrarProfesor($this->model->getProfesor());
+    // }
 
     function agregarProfesor(){//ver que ande!!!
       if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
@@ -76,35 +103,32 @@
     }
 
 
-       function agregarMateria(){
-           if(isset($_POST['id_materia']) && ($_POST['id_materia'] != '')&&(isset($_POST['nombre']) && ($_POST['nombre'] != ''))){
-             $this->modificarMateria();
-           }
-           else{
-             if(isset($_POST['nombre'])){
-               $nombre= $_POST['nombre'];
-               $this->model->crearMateria($nombre);
-               $this->mostrarMaterias();
-             }
-           }
+   function agregarMateria(){
+       if(isset($_POST['id_materia']) && ($_POST['id_materia'] != '')&&(isset($_POST['nombre']) && ($_POST['nombre'] != ''))){
+         $this->modificarMateria();
+       }
+       else{
+         if(isset($_POST['nombre'])){
+           $nombre= $_POST['nombre'];
+           $this->model->crearMateria($nombre);
+           $this->mostrarMaterias();
          }
-
-  function editarProfesor(){
-     if(isset($_POST['id_profesor']) && ($_POST['id_profesor'] != '')&&
-       (isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
-       (isset($_POST['email']) && ($_POST['email'] != ''))&&
-       (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
-       (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
-       (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
-       (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != '')))){
-       $this->modificarProfesor();
+       }
      }
-    //  else{
-    //     $this->agregarProfesor();
-    //    }
-   }
 
-   public function modificarProfesor(){
+    function editarProfesor(){
+       if(isset($_POST['id_profesor']) && ($_POST['id_profesor'] != '')&&
+         (isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
+         (isset($_POST['email']) && ($_POST['email'] != ''))&&
+         (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
+         (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
+         (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
+         (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != '')))){
+         $this->modificarProfesor();
+       }
+     }
+
+   function modificarProfesor(){
        $id_profesor = $_POST['id_profesor'];
        $nombreCompleto= $_POST['nombreCompleto'];
        $email= $_POST['email'];

@@ -5,7 +5,6 @@
 	include_once 'controller/controller.php';
 	include_once 'controller/profesorController.php';
 	include_once 'controller/materiaController.php';
-	include_once 'controller/abmController.php';
 
 	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) || $_REQUEST[ConfigApp::$PAGE] == ConfigApp::$PAGE_DEFAULT){
 		$guiaController = new GuiaController();
@@ -26,8 +25,8 @@
 			$profesorController->mostrarProfesores();
 			break;
 		case ConfigApp::$PAGE_PROFESOR:
-			$abmController = new AbmController;
-			$abmController->mostrarProfesor();
+			$profesorController = new ProfesorController;
+			$profesorController->mostrarProfesor();
 			break;
 		case ConfigApp::$PAGE_MATERIAS:
 		  $materiaController = new MateriaController;
@@ -42,8 +41,8 @@
 			$guiaController->mostrarAdministrador();
 			break;
 		case ConfigApp::$PAGE_ADMIN_PROFESORES:
-		  $abmController = new AbmController;
-			$abmController->adminProfesores();
+		  $profesorController = new ProfesorController;
+			$profesorController->adminProfesores();
 			break;
 		case ConfigApp::$PAGE_ADMIN_MATERIAS:
 			$materiaController = new MateriaController;
@@ -54,20 +53,20 @@
 			$profesorController->mostrarProfesores();
 			break;
 		case ConfigApp::$PAGE_ADMIN_AGREGAR_PROFESOR:
-			$ProfesorController = new ProfesorController;
-			$ProfesorController->agregarProfesor();
+			$profesorController = new ProfesorController;
+			$profesorController->agregarProfesor();
 			break;
 		case ConfigApp::$PAGE_ADMIN_ELIMINAR_PROFESOR:
-			$ProfesorController = new ProfesorController;
-			$ProfesorController->eliminarProfesor();
+			$profesorController = new ProfesorController;
+			$profesorController->eliminarProfesor();
 			break;
 		case ConfigApp::$PAGE_ADMIN_MODIFICAR_PROFESOR:
-			$ProfesorController = new ProfesorController;
-			$ProfesorController->editarProfesor();
+			$profesorController = new ProfesorController;
+			$profesorController->editarProfesor();
 			break;
 		case ConfigApp::$PAGE_ADMIN_BUSCAR_PROFESORES:
-			$abmController = new AbmController;
-			$abmController->buscarProfesoresMat();
+			$profesorController = new ProfesorController;
+			$profesorController->buscarProfesoresMat();
 			break;
 		case ConfigApp::$PAGE_ADMIN_LISTA_MATERIAS:
 			$materiaController = new MateriaController;

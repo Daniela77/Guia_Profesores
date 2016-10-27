@@ -149,12 +149,12 @@ $(document).ready(function(){
 			$('#tipoDeClase').val($(this).attr("data-tipoDeClase"));
 		});
 
-		$('#buscarProfesores').click(function(){
-			event.preventDefault();
-			$.get( "index.php?page=buscarProfesoresMat",$("#porMateria").serialize(), function(data)  {
-			$('#listaProfesores').html(data);
-			});
-		});
+		// $('#buscarProfesores').click(function(){
+		// 	event.preventDefault();
+		// 	$.get( "index.php?page=buscarProfesoresMat",$("#porMateria").serialize(), function(data)  {
+		// 	$('#listaProfesores').html(data);
+		// 	});
+		// });
 	}
 
 
