@@ -15,9 +15,9 @@ class MateriaController extends Controller{
    }
 
    function mostrarMateria(){
-  			if(isset($_REQUEST['nro'])) {$this->view->mostrarMateria($this->model->getMateria($_REQUEST['nro']));
-        }
-  			else echo "";
+    $id_materia=$_GET['nro'];
+    $materia=$this->model->getMateriaById('id_materia');
+    $this->view->mostrarMateria($materia);
   		}
 
    function adminMaterias(){
