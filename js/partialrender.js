@@ -107,7 +107,7 @@ $(document).ready(function(){
 		//ver que ande elver detalle
 		$(".detallesMateria").each(function(i,obj){
 			$(this).off().on("click", function(ev){
-				$.get("index.php?page=materia&nro="+$(obj).attr('materia'), function(data){
+				$.get("index.php?page=materia&nro="+$(obj).data('materia'), function(data){
 					$("#contenido").html(data);
 				})
 					.fail(function(){
@@ -118,8 +118,7 @@ $(document).ready(function(){
 		});
 
 
-		$(".detalles").each(function(i,obj){
-			
+		$(".detalles").each(function(i,obj){			
 			$(this).off().on("click", function(ev){
 
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
