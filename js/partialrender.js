@@ -119,8 +119,10 @@ $(document).ready(function(){
 
 
 		$(".detalles").each(function(i,obj){
+			
 			$(this).off().on("click", function(ev){
-				$.get("index.php?page=profesor&nro="+$(obj).attr('id_profesor'), function(data){
+
+				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
 					$("#contenido").html(data);
 				})
 					.fail(function(){

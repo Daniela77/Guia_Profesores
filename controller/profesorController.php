@@ -16,13 +16,13 @@
        $this->view->mostrarAdminProfesores($this->modelMaterias->getMaterias(),$this->model->getProfesores());
      }
 
-     function mostrarProfesor(){
-         // $profesor=$this->modelp->getProfesor($id_profesor);
-   			if(isset($_REQUEST['id_profesor'])) $this->model->getProfesorById($profesor['id_profesor']);
-   			else echo "";
-   		}
-       // $this->view->mostrarProfesor($this->model->getProfesor($id_profesor));
-     // }
+    //  function mostrarProfesor(){
+    //       $profesor=$this->modelp->getProfesor($id_profesor);
+   // 			if(isset($_REQUEST['id_profesor'])) $this->model->getProfesorById($profesor['id_profesor']);
+   // 			else echo "";
+   // 		}
+    //     $this->view->mostrarProfesor($this->model->getProfesor($id_profesor));
+    //  }
 
      function buscarProfesoresMat(){
        $id_materia = $_POST["id_materia"];
@@ -37,19 +37,27 @@
 
        $this->view->mostrarProfesoresMat($profesores,$mensaje,$materias);
      }
-//terminar!!!
+
     function mostrarProfesores(){
       $profesores=$this->model->getProfesores();
       $materias=$this->modelMaterias->getMaterias();
-      // foreach  ($profesores as $profesor){
-      //   $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
-      // }
+      foreach  ($profesores as $key => $profesor){
+        $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
+        $profesores[$key] = $profesor;
+      }
       $this->view->mostrarProfesores($profesores,$materias);
     }
 
-    // function mostrarProfesor(){
-    //   $this->view->mostrarProfesor($this->model->getProfesor());
-    // }
+    function mostrarProfesor(){
+      // if (isset($_GET['nro'])) {
+      $id_profesor=$_GET['nro'];
+      // }
+      print_r($_GET);
+      $profesor=$this->model->getProfesor($id_profesor);
+      print_r($profesor);
+      $materia=$this->modelMaterias->getMateriaById($profesor['id_materia']);
+      $this->view->mostrarProfesor($materia,$profesor);
+    }
 
     function agregarProfesor(){//ver que ande!!!
       if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
@@ -102,19 +110,6 @@
       return $imagenesVerificadas;
     }
 
-
-   function agregarMateria(){
-       if(isset($_POST['id_materia']) && ($_POST['id_materia'] != '')&&(isset($_POST['nombre']) && ($_POST['nombre'] != ''))){
-         $this->modificarMateria();
-       }
-       else{
-         if(isset($_POST['nombre'])){
-           $nombre= $_POST['nombre'];
-           $this->model->crearMateria($nombre);
-           $this->mostrarMaterias();
-         }
-       }
-     }
 
     function editarProfesor(){
        if(isset($_POST['id_profesor']) && ($_POST['id_profesor'] != '')&&

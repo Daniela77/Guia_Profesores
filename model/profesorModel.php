@@ -5,7 +5,9 @@
 
      function getProfesor($id_profesor){
         $sentencia = $this->db->prepare( "SELECT * from profesor where id_profesor=?");
+        print_r($id_profesor);
         $sentencia->execute(array($id_profesor));
+        // print_r($sentencia->errorInfo());
         return $sentencia->fetch(PDO::FETCH_ASSOC);
       }
 
@@ -13,26 +15,17 @@
       //    $sentencia = $this->db->prepare("SELECT nombreCompleto from profesor where id_materia = ?");
       //    $sentencia->execute(array($id_profesor));
       //    $nombre=$sentencia->fetch(PDO::FETCH_ASSOC)['nombreCompleto'];
-      //    print_r($nombre=$sentencia->fetch(PDO::FETCH_ASSOC)['nombreCompleto']);
       //    return $nombre;
       //  }
 
       function getProfesores(){
           $profesores = array();
-          // $consulta = $this->db->prepare("SELECT * FROM profesor");
-
-          $consulta = $this->db->prepare("select profesor.*,materia.nombre as materia from profesor inner join materia on profesor.id_materia = materia.id_materia ORDER BY materia.nombre ASC");
+          $consulta = $this->db->prepare("SELECT * FROM profesor");
           $consulta->execute();
           //Todos los profesores
           while($profesor = $consulta->fetch()) {
-              $profesor['nombreCompleto'] = $profesor['nombreCompleto'];
-              $profesor['email'] = $profesor['email'];
-              $profesor['telefono'] = $profesor['telefono'];
-              $profesor['precio'] =$profesor['precio'];
-              $profesor['tipoDeClase'] = $profesor['tipoDeClase'];
               $profesor['materia'] = $profesor['id_materia'];
               $profesores[]=$profesor;
-
               foreach ($profesores as $key => $profesor) {
                 $profesores[$key]['imagenes']=$this->getImagenes($profesor['id_profesor']);
               }

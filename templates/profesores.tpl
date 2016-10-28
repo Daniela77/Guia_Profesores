@@ -33,14 +33,14 @@
                   <td>{$profesor['nombreCompleto']}</td>
                   <td>{$profesor['email']}</td>
                   <td>{$profesor['telefono']}</td>
-                  <td>{$profesor['materia']}</td>
+                  <td>{$profesor['materia']['nombre']}</td>
                   <td>${$profesor['precio']}</td>
                   <td>{$profesor['tipoDeClase']}</td>
                   <td><a class="eliminarProfesor" href="index.php?page=adminEliminarProfesor&id_profesor={$profesor['id_profesor']}" data-idprofesor="{$profesor['id_profesor']}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                       <a class="modificarProfesor" data-nombreCompleto="{$profesor['nombreCompleto']}" data-idprofesor="{$profesor['id_profesor']}" data-email="{$profesor['email']}"data-telefono="{$profesor['telefono']}" data-idmateria="{$profesor['id_materia']}" data-precio="{$profesor['precio']}"  data-tipoDeClase="{$profesor['tipoDeClase']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                   </td>
                   <td>
-                    <div> <a href="index.php?page=profesor" class="detalles" id="profesor">Ver m&aacutes...</a></div>
+                    <div> <a href="index.php?page=profesor" data-idprofesor="{$profesor['id_profesor']}"class="detalles" id="profesor">Ver m&aacutes...</a></div>
                   </td>
                 </tr>
       			  {/foreach}

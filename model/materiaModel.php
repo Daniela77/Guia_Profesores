@@ -20,13 +20,12 @@ class MateriaModel extends Model{
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
-  //  public function getMateriaById($id_materia){
-  //     $sentencia = $this->db->prepare("SELECT nombre from materia where id_materia = ?");
-  //     $sentencia->execute(array($id_materia));
-  //     $materia=$sentencia->fetch(PDO::FETCH_ASSOC)['nombre'];
-  //     print_r($materia=$sentencia->fetch(PDO::FETCH_ASSOC)['nombre']);
-  //     return $materia;
-  //   }
+   public function getMateriaById($id_materia){
+      $sentencia = $this->db->prepare("SELECT nombre from materia where id_materia = ?");
+      $sentencia->execute(array($id_materia));
+      $materia=$sentencia->fetch(PDO::FETCH_ASSOC);
+      return $materia;
+    }
 
 
   public function crearMateria($nombre){

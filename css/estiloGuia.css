@@ -1,15 +1,15 @@
 
-body{
+/*body{
    font-family:"Florence-Regular", Helvetica, Arial, sans-serif;
-}
+}*/
 
 div #mostrarForm{
   display:none;
 }
-
+/*
 h1,h2,h3 {
   font-family: "HappyTime";
-}
+}*/
 
 td,th {
     display: table-cell;
@@ -18,18 +18,6 @@ td,th {
 .contenedor{
  margin-top: 20px;
 }
-
-/*@font-face {
- font-family: "Florence-Regular";
- src: url(fonts/Florence-Regular.ttf) format("truetype");
-}*/
-
-
-
-/*body{
- font-family: "HappyTime",verdana;
- font-size: 16px;
-}*/
 
 section.intro{
  margin: 30px;

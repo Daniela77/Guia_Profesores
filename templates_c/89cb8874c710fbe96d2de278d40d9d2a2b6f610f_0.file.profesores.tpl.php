@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-27 04:37:33
+/* Smarty version 3.1.30, created on 2016-10-28 17:48:11
   from "C:\xampp\htdocs\Guia_Profesores\templates\profesores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5811686d309af5_39121202',
+  'unifunc' => 'content_5813733b965f65_16125095',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89cb8874c710fbe96d2de278d40d9d2a2b6f610f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\profesores.tpl',
-      1 => 1477535817,
+      1 => 1477669685,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:adminprofesores.tpl' => 1,
   ),
 ),false)) {
-function content_5811686d309af5_39121202 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5813733b965f65_16125095 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section>
 <div class="container">
@@ -79,7 +79,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 </td>
                   <td><?php echo $_smarty_tpl->tpl_vars['profesor']->value['telefono'];?>
 </td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['profesor']->value['materia'];?>
+                  <td><?php echo $_smarty_tpl->tpl_vars['profesor']->value['materia']['nombre'];?>
 </td>
                   <td>$<?php echo $_smarty_tpl->tpl_vars['profesor']->value['precio'];?>
 </td>
@@ -98,7 +98,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 "><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                   </td>
                   <td>
-                    <div> <a href="index.php?page=profesor" class="detalles" id="profesor">Ver m&aacutes...</a></div>
+                    <div> <a href="index.php?page=profesor" data-idprofesor="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['id_profesor'];?>
+"class="detalles" id="profesor">Ver m&aacutes...</a></div>
                   </td>
                 </tr>
       			  <?php
