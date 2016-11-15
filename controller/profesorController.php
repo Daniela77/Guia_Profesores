@@ -25,17 +25,16 @@
     //  }
 
      function buscarProfesoresMat(){
-       $id_materia = $_POST["id_materia"];
-       //llega
+       $id_materia = $_POST['id_materia'];
        $profesores = $this->model->buscarProfesoresMat($id_materia);
-       $materias = $this->modelMaterias->getMaterias();
-       // if (count($profesores)>0) {
-       //   $mensaje = "Su busqueda fue exitosa!";
-       // }else {
-       //   $mensaje = "No hay profesores para esa materia";
-       // }
+      //  $materias = $this->modelMaterias->getMaterias();
+       if (count($profesores)>0) {
+         $mensaje = "Su busqueda fue exitosa!";
+       }else {
+         $mensaje = "No hay profesores para esa materia";
+       }
 
-       $this->view->mostrarProfesoresMat($profesores,$mensaje,$materias);
+       $this->view->mostrarProfesores($profesores,$mensaje);
      }
 
     function mostrarProfesores(){
@@ -48,15 +47,26 @@
       $this->view->mostrarProfesores($profesores,$materias);
     }
 
+    function mostrarListaProfesores(){
+      $profesores=$this->model->getProfesores();
+      $materias=$this->modelMaterias->getMaterias();
+      foreach  ($profesores as $key => $profesor){
+        $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
+        $profesores[$key] = $profesor;
+      }
+      $this->view->mostrarListaProfesores($profesores,$materias);
+    }
+
+
+
     function mostrarProfesor(){
       // if (isset($_GET['nro'])) {
       $id_profesor=$_GET['nro'];
       // }
-      print_r($_GET);
       $profesor=$this->model->getProfesor($id_profesor);
-      print_r($profesor);
-      $materia=$this->modelMaterias->getMateriaById($profesor['id_materia']);
-      $this->view->mostrarProfesor($materia,$profesor);
+      $profesor['materia'] =$this->modelMaterias->getMateriaById($profesor['id_materia']);
+      $profesor['imagenes'] =$this->model->getImagenes($id_profesor);
+      $this->view->mostrarProfesor($profesor);
     }
 
     function agregarProfesor(){//ver que ande!!!

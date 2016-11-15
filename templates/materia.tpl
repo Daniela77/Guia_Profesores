@@ -7,6 +7,9 @@
               <ul>
                 <li>{$materia['nombre']}</li>
               </ul>
+              <div class="profesoresPorMateria">
+                {include file="listaProfesores.tpl"}
+              </div>
           </div>
         </div>
       </div>

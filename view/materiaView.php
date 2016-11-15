@@ -8,7 +8,8 @@
       $this->smarty->display('materias.tpl');
     }
 
-    function mostrarMateria($materia){
+    function mostrarMateria($materia,$profesores){
+      $this->smarty->assign('profesores', $profesores);
       $this->smarty->assign('materia', $materia);
       $this->smarty->display('materia.tpl');
     }

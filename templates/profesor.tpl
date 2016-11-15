@@ -23,7 +23,7 @@
 						</tr>
 						<tr>
 							<th>Materia:</th>
-							<td>{$profesor['id_materia']}</td>
+							<td>{$profesor['materia']['nombre']}</td>
 						</tr>
 						<tr>
 							<th>Precio:</th>

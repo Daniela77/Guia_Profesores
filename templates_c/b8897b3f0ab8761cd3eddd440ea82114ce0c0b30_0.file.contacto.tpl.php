@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-21 00:53:42
+/* Smarty version 3.1.30, created on 2016-11-10 20:35:39
   from "C:\xampp\htdocs\Guia_Profesores\templates\contacto.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58094af61dbb91_82437000',
+  'unifunc' => 'content_5824cc0b9fa505_87833293',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b8897b3f0ab8761cd3eddd440ea82114ce0c0b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\contacto.tpl',
-      1 => 1476931890,
+      1 => 1478806530,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58094af61dbb91_82437000 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5824cc0b9fa505_87833293 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
   <section>

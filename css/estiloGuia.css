@@ -150,3 +150,33 @@ margin: 0 5px;
  margin-top: 20px;
 
 }
+
+section .T_container{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content:space-between;
+  border-radius:5px;
+  border:1px solid #36aae7;
+  padding:5px;
+  margin-top:10px;
+}
+
+section .form-control{
+  border:1px solid #36aae7;
+  border-radius:5px;
+  padding:10px;
+}
+
+section .T_container div{
+  width:30%;
+}
+
+section ul li{
+  border:1px solid #36aae7;
+  border-radius:5px;
+  padding:10px;
+  margin:10px 0px;
+  display:flex;
+  flex-flow:row wrap;
+  justify-content:flex-start;
+}

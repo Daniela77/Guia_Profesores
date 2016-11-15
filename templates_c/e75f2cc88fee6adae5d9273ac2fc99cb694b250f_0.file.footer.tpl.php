@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-20 23:55:02
+/* Smarty version 3.1.30, created on 2016-11-11 18:11:40
   from "C:\xampp\htdocs\Guia_Profesores\templates\footer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58093d36196890_67623088',
+  'unifunc' => 'content_5825fbcc701560_93851557',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e75f2cc88fee6adae5d9273ac2fc99cb694b250f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\footer.tpl',
-      1 => 1476931908,
+      1 => 1478884264,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58093d36196890_67623088 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5825fbcc701560_93851557 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Footer -->
 <footer>
@@ -31,7 +31,7 @@ function content_58093d36196890_67623088 (Smarty_Internal_Template $_smarty_tpl)
         <div class="panel-body">
           <p class="simplenav">
             <a href="index.php?page=inicio">Inicio</a>|
-            <a href="index.php?page=profesores">Profesores</a>|
+            <a href="index.php?page=listaProfesores">Profesores</a>|
             <a href="index.php?page=materias">Materias</a>|
             <a href="index.php?page=contacto">Contacto</a>|
             <a href="index.php?page=admin">Administrador</a>

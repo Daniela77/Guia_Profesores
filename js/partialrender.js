@@ -107,7 +107,7 @@ $(document).ready(function(){
 		//ver que ande elver detalle
 		$(".detallesMateria").each(function(i,obj){
 			$(this).off().on("click", function(ev){
-				$.get("index.php?page=materia&nro="+$(obj).data('materia'), function(data){
+				$.get("index.php?page=materia&nro="+$(obj).data('idmateria'), function(data){
 					$("#contenido").html(data);
 				})
 					.fail(function(){
@@ -118,7 +118,7 @@ $(document).ready(function(){
 		});
 
 
-		$(".detalles").each(function(i,obj){			
+		$(".detalles").each(function(i,obj){
 			$(this).off().on("click", function(ev){
 
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
@@ -150,12 +150,15 @@ $(document).ready(function(){
 			$('#tipoDeClase').val($(this).attr("data-tipoDeClase"));
 		});
 
-		// $('#buscarProfesores').click(function(){
-		// 	event.preventDefault();
-		// 	$.get( "index.php?page=buscarProfesoresMat",$("#porMateria").serialize(), function(data)  {
-		// 	$('#listaProfesores').html(data);
-		// 	});
-		// });
+		$('#buscarProfesores').click(function(){
+			event.preventDefault();
+			$.get( "index.php?page=buscarProfesoresMat&id_materia",{ id_materia: $(this).attr("data-idmateria") }, function(data)  {
+				$('#contenido').html(data);
+				$('#materia').val('');
+			});
+		});
+
+
 	}
 
 

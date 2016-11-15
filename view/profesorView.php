@@ -9,20 +9,18 @@ class ProfesorView extends View{
     $this->smarty->display('adminProfesores.tpl');
   }
 
-  function mostrarProfesor($materia,$profesor){
-    print_r($profesor);
-    $this->smarty->assign('materia', $materia);
+  function mostrarProfesor($profesor){
+    // $this->smarty->assign('materia', $materia);
     $this->smarty->assign('profesor', $profesor);
     $this->smarty->display('profesor.tpl');
   }
 
-  function mostrarProfesoresMat($profesores,$mensaje,$materias){
-    $this->smarty->assign('lista', true);
-    $this->smarty->assign('mensaje', $mensaje);
-    $this->smarty->assign('materias', $materias);
-    $this->smarty->assign('profesores', $profesores);
-    $this->smarty->display("profesoresPorMateria.tpl");
-  }
+  // function mostrarProfesoresMat($profesores,$mensaje,$materias){
+  //   $this->smarty->assign('mensaje', $mensaje);
+  //   $this->smarty->assign('materias', $materias);
+  //   $this->smarty->assign('profesores', $profesores);
+  //   $this->smarty->display("profesoresPorMateria.tpl");
+  // }
 
   function mostrarProfesores($profesores, $materias){
     $this->smarty->assign('materias', $materias);
@@ -30,6 +28,11 @@ class ProfesorView extends View{
     $this->smarty->display('profesores.tpl');
   }
 
+  function mostrarListaProfesores($profesores, $materias){
+    $this->smarty->assign('materias', $materias);
+    $this->smarty->assign('profesores', $profesores);
+    $this->smarty->display('listaProfesores.tpl');
+  }
 
   // function mostrarAdminLista($profesores){
   //   $this->smarty->assign('profesores', $profesores);

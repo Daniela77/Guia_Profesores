@@ -5,9 +5,7 @@
 
      function getProfesor($id_profesor){
         $sentencia = $this->db->prepare( "SELECT * from profesor where id_profesor=?");
-        print_r($id_profesor);
         $sentencia->execute(array($id_profesor));
-        // print_r($sentencia->errorInfo());
         return $sentencia->fetch(PDO::FETCH_ASSOC);
       }
 

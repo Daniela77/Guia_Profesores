@@ -1,12 +1,14 @@
 <?php
 include_once 'controller/controller.php';
 require_once 'view/materiaView.php';
+include_once 'model/profesorModel.php';
 include_once 'model/materiaModel.php';
 
 class MateriaController extends Controller{
 
   function __construct() {
      $this->model = new MateriaModel();
+     $this->modelProfesor = new ProfesorModel();
      $this->view = new MateriaView();
    }
 
@@ -15,10 +17,11 @@ class MateriaController extends Controller{
    }
 
    function mostrarMateria(){
-    $id_materia=$_GET['nro'];
-    $materia=$this->model->getMateriaById('id_materia');
-    $this->view->mostrarMateria($materia);
-  		}
+      $id_materia=$_GET['nro'];
+      $materia=$this->model->getMateria($id_materia);
+      $profesores=$this->modelProfesor->buscarProfesoresMat($id_materia);
+      $this->view->mostrarMateria($materia,$profesores);
+    }
 
    function adminMaterias(){
      $this->view->mostrarAdminMaterias();

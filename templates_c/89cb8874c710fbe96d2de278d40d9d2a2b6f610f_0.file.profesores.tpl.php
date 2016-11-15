@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-28 17:48:11
+/* Smarty version 3.1.30, created on 2016-11-11 17:47:48
   from "C:\xampp\htdocs\Guia_Profesores\templates\profesores.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5813733b965f65_16125095',
+  'unifunc' => 'content_5825f6348d29d5_32124291',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89cb8874c710fbe96d2de278d40d9d2a2b6f610f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\profesores.tpl',
-      1 => 1477669685,
+      1 => 1478879133,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:adminprofesores.tpl' => 1,
   ),
 ),false)) {
-function content_5813733b965f65_16125095 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5825f6348d29d5_32124291 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section>
 <div class="container">
@@ -34,6 +34,7 @@ function content_5813733b965f65_16125095 (Smarty_Internal_Template $_smarty_tpl)
 </div>
           <?php }?>
           <h2>Lista de profesores</h2>
+          
           <div class="table-responsive">
             <table class="table table-hover">
               <thead class= "head-table">
@@ -43,8 +44,8 @@ function content_5813733b965f65_16125095 (Smarty_Internal_Template $_smarty_tpl)
                   <th>EMAIL</th>
                   <th>TELEFONO</th>
                   <th>MATERIA</th>
-                  <th>PRECIO POR HORA</th>
-                  <th>TIPO DE CLASE</th>
+                  <th>PRECIO</th>
+                  <th>CLASE</th>
                 </tr>
               </thead>
               <tbody >
@@ -71,7 +72,7 @@ _<?php echo $_smarty_tpl->tpl_vars['imagen']->value['fk_id_profesor'];?>
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-                  </div>
+                    </div>
                   </td>
                   <td><?php echo $_smarty_tpl->tpl_vars['profesor']->value['nombreCompleto'];?>
 </td>
@@ -87,21 +88,17 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 </td>
                   <td><a class="eliminarProfesor" href="index.php?page=adminEliminarProfesor&id_profesor=<?php echo $_smarty_tpl->tpl_vars['profesor']->value['id_profesor'];?>
 " data-idprofesor="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['id_profesor'];?>
-"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                      <a class="modificarProfesor" data-nombreCompleto="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['nombreCompleto'];?>
+"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                  <td><a class="modificarProfesor" data-nombreCompleto="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['nombreCompleto'];?>
 " data-idprofesor="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['id_profesor'];?>
 " data-email="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['email'];?>
 "data-telefono="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['telefono'];?>
 " data-idmateria="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['id_materia'];?>
 " data-precio="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['precio'];?>
 "  data-tipoDeClase="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['tipoDeClase'];?>
-"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                  </td>
-                  <td>
-                    <div> <a href="index.php?page=profesor" data-idprofesor="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['id_profesor'];?>
-"class="detalles" id="profesor">Ver m&aacutes...</a></div>
-                  </td>
-                </tr>
+"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                  <td><a href="index.php?page=profesor" data-idprofesor="<?php echo $_smarty_tpl->tpl_vars['profesor']->value['id_profesor'];?>
+"class="detalles" id="profesor"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
       			  <?php
 }
 }

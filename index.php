@@ -5,6 +5,7 @@
 	include_once 'controller/controller.php';
 	include_once 'controller/profesorController.php';
 	include_once 'controller/materiaController.php';
+	include_once 'controller/loginController.php';
 
 	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) || $_REQUEST[ConfigApp::$PAGE] == ConfigApp::$PAGE_DEFAULT){
 		$guiaController = new GuiaController();
@@ -19,6 +20,10 @@
 		case ConfigApp::$PAGE_CONTACTO:
 			$guiaController = new GuiaController;
 			$guiaController->mostrarContacto();
+			break;
+		case ConfigApp::$PAGE_LISTA_PROFESORES:
+			$profesorController = new ProfesorController;
+			$profesorController->mostrarListaProfesores();
 			break;
 		case ConfigApp::$PAGE_PROFESORES:
 			$profesorController = new ProfesorController;
@@ -73,16 +78,24 @@
 			$materiaController->mostrarMaterias();
 			break;
 		case ConfigApp::$PAGE_ADMIN_AGREGAR_MATERIA:
-			$materiaController = new materiaController;
+			$materiaController = new MateriaController;
 			$materiaController->agregarMateria();
 			break;
 		case ConfigApp::$PAGE_ADMIN_ELIMINAR_MATERIA:
-			$materiaController = new materiaController;
+			$materiaController = new MateriaController;
 			$materiaController->eliminarMateria();
 			break;
 		case ConfigApp::$PAGE_ADMIN_MODIFICAR_MATERIA:
-			$materiaController = new materiaController;
+			$materiaController = new MateriaController;
 			$materiaController->modificarMateria();
+			break;
+		case ConfigApp::$PAGE_LOGIN:
+			$loginController = new LoginController;
+			$loginController->login();
+			break;
+		case ConfigApp::$PAGE_LOGOUT:
+			$loginController = new LoginController;
+			$loginController->logout();
 			break;
 		default:
 			echo 'Pagina no encontrada';
