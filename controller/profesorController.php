@@ -3,6 +3,7 @@
   require_once 'view/profesorView.php';
   include_once 'model/profesorModel.php';
   include_once 'model/materiaModel.php';
+  include_once 'model/comentarioModel.php';
 
   class ProfesorController extends Controller{
 
@@ -10,19 +11,13 @@
       $this->model = new ProfesorModel();
       $this->view = new ProfesorView();
       $this->modelMaterias = new MateriaModel();
+      $this->modelComentarios = new ComentarioModel();
+      // $this->checkLogin();
      }
 
      function adminProfesores(){
        $this->view->mostrarAdminProfesores($this->modelMaterias->getMaterias(),$this->model->getProfesores());
      }
-
-    //  function mostrarProfesor(){
-    //       $profesor=$this->modelp->getProfesor($id_profesor);
-   // 			if(isset($_REQUEST['id_profesor'])) $this->model->getProfesorById($profesor['id_profesor']);
-   // 			else echo "";
-   // 		}
-    //     $this->view->mostrarProfesor($this->model->getProfesor($id_profesor));
-    //  }
 
      function buscarProfesoresMat(){
        $id_materia = $_POST['id_materia'];
@@ -57,16 +52,15 @@
       $this->view->mostrarListaProfesores($profesores,$materias);
     }
 
-
-
     function mostrarProfesor(){
       // if (isset($_GET['nro'])) {
       $id_profesor=$_GET['nro'];
       // }
+      $comentarios=$this->modelComentarios->getComentario($id_profesor);
       $profesor=$this->model->getProfesor($id_profesor);
       $profesor['materia'] =$this->modelMaterias->getMateriaById($profesor['id_materia']);
       $profesor['imagenes'] =$this->model->getImagenes($id_profesor);
-      $this->view->mostrarProfesor($profesor);
+      $this->view->mostrarProfesor($comentarios,$profesor);
     }
 
     function agregarProfesor(){//ver que ande!!!

@@ -97,6 +97,10 @@
 			$loginController = new LoginController;
 			$loginController->logout();
 			break;
+		case ConfigApp::$PAGE_REGISTRAR:
+			$loginController = new LoginController;
+			$loginController->mostrarRegistrar();
+			break;
 		default:
 			echo 'Pagina no encontrada';
 			break;

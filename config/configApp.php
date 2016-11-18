@@ -27,6 +27,13 @@
 
 		public static $PAGE_LOGIN = 'login';
 		public static $PAGE_LOGOUT = 'logout';
+		public static $PAGE_REGISTRAR = 'registrar';
+
+		public static $PAGE_AGREGAR_COMENTARIO ='agregarComentario';
+		public static $PAGE_ELIMINAR_COMENTARIO= 'eliminarComentario';
+		public static $PAGE_LISTAR_COMENTARIOS= 'listarComentarios';
+
+
 
 	}
 

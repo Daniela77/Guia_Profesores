@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2016 a las 04:34:31
+-- Tiempo de generación: 15-11-2016 a las 17:20:04
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -37,13 +37,11 @@ CREATE TABLE `imagen` (
 --
 
 INSERT INTO `imagen` (`id_imagen`, `ruta`, `fk_id_profesor`) VALUES
-(28, 'images/58082728b90a9_profesor jirafales.jpg', 34),
-(29, 'images/5808282b24b7a_docbrownchile.jpg', 35),
-(30, 'images/5808282b2fb56_maxresdefault.jpg', 35),
-(31, 'images/58082982e7686_IMAGEN-13992173-0.jpg', 36),
-(32, 'images/58082a4ecb694_IMAGEN-13992295-2.jpg', 37),
-(33, 'images/58082ae805c24_IMAGEN-13992139-2.jpg', 38),
-(34, 'images/58082c1bd1c5d_2202721.jpg', 39);
+(48, 'images/58100f91933ef_google.com_.mx-profesor-jirafales3.jpg', 53),
+(50, 'images/5810d4277a65f_IMAGEN-13992173-0.jpg', 55),
+(51, 'images/5813639c632d9_IMAGEN-13992173-0.jpg', 56),
+(53, 'images/5824bc6201569_2202721.jpg', 58),
+(54, 'images/5824bc62095f0_docbrownchile.jpg', 58);
 
 -- --------------------------------------------------------
 
@@ -61,12 +59,8 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`id_materia`, `nombre`) VALUES
-(15, 'literatura'),
-(55, 'pedagogia'),
-(56, 'ciencias'),
-(57, 'nivel primario'),
-(58, 'música'),
-(59, 'matemática');
+(62, 'musica1'),
+(63, 'web 2');
 
 -- --------------------------------------------------------
 
@@ -89,12 +83,23 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`id_profesor`, `nombreCompleto`, `email`, `telefono`, `id_materia`, `precio`, `tipoDeClase`) VALUES
-(34, 'Profesor Jirafales', 'profesorjirafales@gmail.com', '1234567', 55, '150', 'Grupal'),
-(35, 'Dr. Emmett Brown', 'emmettbrown@gmail.com', '123455', 54, '400', 'Domicilio'),
-(36, 'Seymour Skinner', 'seymourskinner@gmail.com', '77777777', 57, '300', 'Grupal'),
-(37, 'Dewey Finn', 'deweyfinn@gmail.com', '1200000', 58, '280', 'Grupal'),
-(38, 'María Jimena', 'mariajimena@gmail.com', '22222222', 57, '190', 'Grupal'),
-(39, 'Adrian Paenza', 'adrianpaenza@gmail.com', '55443321', 59, '500', 'Grupal');
+(53, 'Profesor Jirafales', 'profesorjirafales@gmail.com', '1234567', 62, '123', 'Individual'),
+(55, 'Seymour Skinner', 'seymourskinner@gmail.com', '1234567', 62, '14000', 'Grupal'),
+(56, 'fddd', 'zaafa@jojk', '22222222', 62, '222', 'Grupal'),
+(58, 'pancho', 'profesorjirafales@gmail.com', '123', 63, '123', 'Grupal');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `usuario` varchar(11) NOT NULL,
+  `contraseña` varchar(11) NOT NULL,
+  `rol_usuario` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Índices para tablas volcadas
@@ -117,7 +122,14 @@ ALTER TABLE `materia`
 -- Indices de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  ADD PRIMARY KEY (`id_profesor`);
+  ADD PRIMARY KEY (`id_profesor`),
+  ADD KEY `fk_id_materia` (`id_materia`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -127,17 +139,22 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `id_materia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_materia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `id_profesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_profesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
@@ -147,6 +164,12 @@ ALTER TABLE `profesor`
 --
 ALTER TABLE `imagen`
   ADD CONSTRAINT `fk_id_profesor` FOREIGN KEY (`fk_id_profesor`) REFERENCES `profesor` (`id_profesor`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `profesor`
+--
+ALTER TABLE `profesor`
+  ADD CONSTRAINT `fk_id_materia` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

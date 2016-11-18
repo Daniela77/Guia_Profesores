@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-14 19:49:48
+/* Smarty version 3.1.30, created on 2016-11-16 23:45:59
   from "C:\xampp\htdocs\Guia_Profesores\templates\nav.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582a074c410717_79529936',
+  'unifunc' => 'content_582ce1a703c180_86129092',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1690ce7c16bf5838859898d1700abaf41c1b1f29' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\nav.tpl',
-      1 => 1479149384,
+      1 => 1479236126,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_582a074c410717_79529936 (Smarty_Internal_Template $_smarty_tpl) {
+function content_582ce1a703c180_86129092 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <nav class="navbar navbar-inverse">
       <div class="container">
@@ -44,6 +44,8 @@ function content_582a074c410717_79529936 (Smarty_Internal_Template $_smarty_tpl)
             <li href="index.php?page=contacto"><a href="#"><strong>Contacto</strong></a></li>
             <li href="index.php?page=login"><a href="#"><strong>Administrador</strong></a></li>
           </ul>
+        </li>
+      </ul>
         </div>
         <!--/.nav-collapse -->
       </div>

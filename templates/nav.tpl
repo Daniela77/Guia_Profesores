@@ -20,6 +20,8 @@
             <li href="index.php?page=contacto"><a href="#"><strong>Contacto</strong></a></li>
             <li href="index.php?page=login"><a href="#"><strong>Administrador</strong></a></li>
           </ul>
+        </li>
+      </ul>
         </div>
         <!--/.nav-collapse -->
       </div>

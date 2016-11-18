@@ -9,8 +9,8 @@ class ProfesorView extends View{
     $this->smarty->display('adminProfesores.tpl');
   }
 
-  function mostrarProfesor($profesor){
-    // $this->smarty->assign('materia', $materia);
+  function mostrarProfesor($comentarios,$profesor){
+    $this->smarty->assign('comentarios', $comentarios);
     $this->smarty->assign('profesor', $profesor);
     $this->smarty->display('profesor.tpl');
   }
@@ -37,11 +37,6 @@ class ProfesorView extends View{
   // function mostrarAdminLista($profesores){
   //   $this->smarty->assign('profesores', $profesores);
   //   $this->smarty->display('profesores.tpl');
-  // }
-
-  // function mostrarProfesor($profesor){
-  //   $this->smarty->assign('profesor', $profesor);
-  //   $this->smarty->display('profesor.tpl');
   // }
 
   // function getprofesoresLista($profesores){//ver que funcione ,sino cambiar tpl a mostrar

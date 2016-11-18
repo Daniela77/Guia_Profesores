@@ -1,10 +1,12 @@
 <?php
 	include_once 'controller/controller.php';
+	include_once 'controller/loginController.php';
 	require_once 'view/guiaView.php';
 
-	class GuiaController extends Controller{
+	class GuiaController extends loginController{
 
 		function __construct(){
+			parent::__construct();
 			$this->view = new GuiaView();
 		}
 
@@ -21,7 +23,8 @@
 		}
 
 		function mostrarAdministrador(){
-			$this->view->mostrarAdministrador();
+			if($this->login())
+				$this->view->mostrarAdministrador();
 		}
 
 	}

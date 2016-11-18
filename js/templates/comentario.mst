@@ -1,0 +1,11 @@
+<li>
+{{titulo}}
+</li>
+
+{{#paquete}}
+  <li>
+    {{comentario}}
+    {{puntaje}}
+    <a class="eliminarComentario" href="#" data-idcomentario="{{id_comentario}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+  </li>
+{{/paquete}}

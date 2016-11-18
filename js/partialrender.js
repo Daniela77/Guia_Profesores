@@ -23,6 +23,7 @@ $(document).ready(function(){
 	  $("aside ul li #adminListaP").on("click",CargarAjax);
 		$("aside ul li #adminListaM").on("click",CargarAjax);
 		$("article #admin_cont").on("click",CargarAjax);
+		// $("article #admin_cont").on("click",CargarAjax);
 	}
 
 	function CargarAjax(e){
@@ -104,7 +105,7 @@ $(document).ready(function(){
  		  });
 		});
 
-		//ver que ande elver detalle
+		//ver detalle de materia
 		$(".detallesMateria").each(function(i,obj){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=materia&nro="+$(obj).data('idmateria'), function(data){
@@ -117,7 +118,7 @@ $(document).ready(function(){
 			});
 		});
 
-
+		//ver detalle de profesor
 		$(".detalles").each(function(i,obj){
 			$(this).off().on("click", function(ev){
 
@@ -158,8 +159,76 @@ $(document).ready(function(){
 			});
 		});
 
+		$("#iniciarSesion").click(function(){
+			var data = {'email':$('#inputEmail').val(),'password':$('#inputPassword').val()};
+			$('#inputEmail').val('');
+			$('#inputPassword').val('');
+			$.ajax({
+				type:"POST",
+				datatype: "JSON",
+				url:"index.php?page=admin",
+				data: data,
+				success:function(data){
+					$("#contenido").html(data);
+				},
+				error: function(){
+					alert("error al iniciar sesion");
+				}
+			});
+			event.preventDefault();
+		});
+
+		$('#cerrarSesion').on('click', function(event){
+			event.preventDefault();
+			$.ajax({
+				method: 'POST',
+				url:'index.php?page=login',
+				success: function(data){
+					$("#contenido").html(data);
+				},
+				error: function () {
+					alert('Error al cerrar sesion');
+				}
+			});
+		});
+
+		$('#irregistrar').on('click', function(event){
+			event.preventDefault();
+			$.ajax({
+				method: 'POST',
+				url:'index.php?page=registrar',
+				success: function(data){
+					$("#contenido").html(data);
+				},
+				error: function () {
+					alert('Error al ir registrar');
+				}
+			});
+		});
+
+		$('#registrarForm').on("submit", function(){
+			event.preventDefault();
+			var formData = new FormData(this);
+			$.ajax({
+			   method: "POST",
+			   url: "index.php?page=registrar",
+			   data: formData,
+			   contentType: false,
+			   cache: false,
+			   processData:false,
+				 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+					 $("#contenido").html(data);
+					 $('#email').val('');
+					 $('#password').val('');
+					 $('#rol_usuario').val('');
+ 		        },
+ 		    error: MostrarError,
+ 		  });
+		});
 
 	}
+
+
 
 
 

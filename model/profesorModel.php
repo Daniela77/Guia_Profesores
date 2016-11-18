@@ -53,7 +53,7 @@
               return $id_profesor;
             }
             catch (PDOException $e){
-              echo ("Ya existe el profes a agregar, elija otro nombre");
+              echo ("Ya existe el profesor a agregar, elija otro nombre");
             }
         }
 

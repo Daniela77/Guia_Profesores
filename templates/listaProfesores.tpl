@@ -16,6 +16,7 @@
                   <th>PROFESORES</th>
                   <th>EMAIL</th>
                   <th>TELEFONO</th>
+                  <th>MATERIA</th>
                   <th>PRECIO</th>
                   <th>CLASE</th>
                 </tr>
@@ -33,6 +34,7 @@
                   <td>{$profesor['nombreCompleto']}</td>
                   <td>{$profesor['email']}</td>
                   <td>{$profesor['telefono']}</td>
+                  <td>{$profesor['materia']['nombre']}</td>
                   <td>${$profesor['precio']}</td>
                   <td>{$profesor['tipoDeClase']}</td>
                   <td><a href="index.php?page=profesor" data-idprofesor="{$profesor['id_profesor']}"class="detalles" id="profesor"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
