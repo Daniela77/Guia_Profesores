@@ -37,5 +37,6 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/partialrender.js"></script>
 <script src="js/comentarios.js"></script>
+<script src="js/dbCredentials.js"></script>
 </body>
 </html>

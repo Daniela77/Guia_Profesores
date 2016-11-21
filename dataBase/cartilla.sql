@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2016 a las 17:20:04
+-- Tiempo de generación: 18-11-2016 a las 16:24:14
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cartilla`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_comentario` int(11) NOT NULL,
+  `fk_id_profesor` int(11) NOT NULL,
+  `fk_id_usuario` int(11) NOT NULL,
+  `comentario` varchar(400) NOT NULL,
+  `puntaje` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id_comentario`, `fk_id_profesor`, `fk_id_usuario`, `comentario`, `puntaje`) VALUES
+(1, 53, 1, 'excelente', 5);
 
 -- --------------------------------------------------------
 
@@ -96,14 +117,30 @@ INSERT INTO `profesor` (`id_profesor`, `nombreCompleto`, `email`, `telefono`, `i
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
-  `usuario` varchar(11) NOT NULL,
-  `contraseña` varchar(11) NOT NULL,
-  `rol_usuario` varchar(11) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `rol_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `rol_usuario`) VALUES
+(1, 'danielacolamai@gmail.com', '$2y$10$ZxjePrSdmsL6cOMhAWKRI.umyXm0tF4FkMKv/34vlSpYlL7/3sdUu', 'administrador');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `fk_id_profesor` (`fk_id_profesor`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`),
+  ADD KEY `fk_id_profesor_2` (`fk_id_profesor`);
 
 --
 -- Indices de la tabla `imagen`
@@ -136,6 +173,11 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
@@ -154,10 +196,16 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `fk_id_usuario` FOREIGN KEY (`fk_id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `imagen`

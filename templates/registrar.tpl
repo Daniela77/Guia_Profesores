@@ -8,7 +8,7 @@
       <input type="password" id="inputPassword" name="txtPass" class="form-control" placeholder="Password" required>
       <label for="inputRol" class="sr-only">Rol del usuario</label>
       <input type="rol" id="inputRol" name="txtRol" class="form-control" placeholder="Rol del usuario" required>
-      <button class="btn btn-lg btn-primary btn-block" type="submit"id="registrar" name="registrar" href="#">Registrar</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="registrar" name="registrar" href="#">Registrar</button>
         {if isset($error)}
           <div class="panel panel-filled panel-c-danger">
               <div class="panel-heading">{$error}</div>

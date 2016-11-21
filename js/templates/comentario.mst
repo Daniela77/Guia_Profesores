@@ -1,11 +1,7 @@
-<li>
-{{titulo}}
-</li>
 
-{{#paquete}}
-  <li>
-    {{comentario}}
-    {{puntaje}}
-    <a class="eliminarComentario" href="#" data-idcomentario="{{id_comentario}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-  </li>
-{{/paquete}}
+
+
+<tr id="comentario{{id_comentario}}">
+<td>{{comentario}}</td></td><td>{{puntaje}}</td><td><a class="eliminarComentario" href="#" data-idcomentario="{{id_comentario}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+</td>
+</tr>

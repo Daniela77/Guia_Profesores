@@ -8,7 +8,7 @@
       <input type="password" id="inputPassword" name="txtPass" class="form-control" placeholder="Password" required>
       <div>
         <button class="btn btn-lg btn-primary btn-block" type="submit"id="iniciarSesion" name="iniciarSesion" href="#">Iniciar Sesion</button>
-        <a class="btn btn-default" href="index.php?page=registrar" id="irregistrar" name="irregistrar">Registrese</a>
+        <a class="btn btn-default" href="index.php?page=mostrarRegistrar" id="irregistrar" name="irregistrar">Registrese</a>
       </div>
 
         {if isset($error)}

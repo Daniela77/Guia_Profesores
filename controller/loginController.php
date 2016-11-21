@@ -48,21 +48,25 @@ class LoginController extends Controller {
 
   function mostrarRegistrar(){
     $this->loginView->mostrarRegistrar();
-    $this->registrar();
   }
 
   function registrar(){
     if(isset($_POST['email'])&&($_POST['email'] != '')&&
       (isset($_POST['password']) && ($_POST['password'] != '')&&
-      (isset($_POST['rol_usuario'])&&($_POST['rol_usuario'] != '')))){
+      (isset($_POST['rol'])&&($_POST['rol'] != '')))){
       $user = $_POST["email"];
+      print_r($user);
       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      $rol=$_POST['rol_usuario'];
+      print_r($password);
+      $rol=$_POST['rol'];
+      print_r($rol);
       $usuarioARegistrar = $this->model->getUsuario($user);
+        print_r($usuarioARegistrar);
       if ($usuarioARegistrar) {
         $this->loginView->MostrarError("El usuario ya existe");
       }
       else{
+        echo "llego??";
         $this->model->crearUsuario($user,$password,$rol);
         $this->loginView->mostrarLogin();
       }

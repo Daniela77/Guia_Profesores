@@ -6,6 +6,19 @@
 	include_once 'controller/profesorController.php';
 	include_once 'controller/materiaController.php';
 	include_once 'controller/loginController.php';
+	include_once('controller/DbController.php');
+
+	$dbController = new DbController();
+
+  if (!$dbController->dbExists()) {
+    if (isset($_POST["host"]) && isset($_POST['dbName']) && isset($_POST['user']) && isset($_POST['password'])){
+      $dbController->createDatabase($_POST['host'],$_POST['dbName'],$_POST['user'],$_POST['password']);
+      die();
+    } else {
+        $dbController->newCredentials();
+        die();
+    }
+  }
 
 	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) || $_REQUEST[ConfigApp::$PAGE] == ConfigApp::$PAGE_DEFAULT){
 		$guiaController = new GuiaController();
@@ -98,6 +111,10 @@
 			$loginController->logout();
 			break;
 		case ConfigApp::$PAGE_REGISTRAR:
+			$loginController = new LoginController;
+			$loginController->registrar();
+			break;
+		case ConfigApp::$PAGE_MOSTRAR_REGISTRAR:
 			$loginController = new LoginController;
 			$loginController->mostrarRegistrar();
 			break;

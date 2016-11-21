@@ -23,7 +23,7 @@ $(document).ready(function(){
 	  $("aside ul li #adminListaP").on("click",CargarAjax);
 		$("aside ul li #adminListaM").on("click",CargarAjax);
 		$("article #admin_cont").on("click",CargarAjax);
-		// $("article #admin_cont").on("click",CargarAjax);
+
 	}
 
 	function CargarAjax(e){
@@ -50,6 +50,7 @@ $(document).ready(function(){
 
 	 	InicializarEvt();
 	 	InicializarABMEvt();
+
 
 	function cargarEventos(){
 		$('#agregarMateria').off().click(function(){
@@ -182,7 +183,7 @@ $(document).ready(function(){
 			event.preventDefault();
 			$.ajax({
 				method: 'POST',
-				url:'index.php?page=login',
+				url:'index.php?page=login',//logout?
 				success: function(data){
 					$("#contenido").html(data);
 				},
@@ -196,7 +197,7 @@ $(document).ready(function(){
 			event.preventDefault();
 			$.ajax({
 				method: 'POST',
-				url:'index.php?page=registrar',
+				url:'index.php?page=mostrarRegistrar',
 				success: function(data){
 					$("#contenido").html(data);
 				},
@@ -206,30 +207,35 @@ $(document).ready(function(){
 			});
 		});
 
-		$('#registrarForm').on("submit", function(){
-			event.preventDefault();
-			var formData = new FormData(this);
-			$.ajax({
-			   method: "POST",
-			   url: "index.php?page=registrar",
-			   data: formData,
-			   contentType: false,
-			   cache: false,
-			   processData:false,
-				 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
-					 $("#contenido").html(data);
-					 $('#email').val('');
-					 $('#password').val('');
-					 $('#rol_usuario').val('');
- 		        },
- 		    error: MostrarError,
- 		  });
-		});
+		// $("#registrar").on("click",function(event){
+		// 	registrar();
+		// });
+
+		// $(document).on("click","#registrar",registrar);
+		$(document).on("submit", "#registrarForm", function(){
+		// function registrar() {
+		// 	$('#registrarForm').on("submit", function(event){
+				event.preventDefault();
+				var formData = new FormData(this);
+				$.ajax({
+					 method: "POST",
+					 url: "index.php?page=mostrarRegistrar",
+					 data: formData,
+					 contentType: false,
+					 cache: false,
+					 processData:false,
+					 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+						 $("#contenido").html(data);
+						 $('#email').val('');
+						 $('#password').val('');
+						 $('#rol_usuario').val('');
+							},
+					error: MostrarError,
+					});
+				});
+			// }
 
 	}
-
-
-
 
 
 	});
