@@ -11,19 +11,17 @@ $(document).ready(function(){
 
 	//prueba
 	function InicializarEvt() {
-	  $("nav ul li").on("click",CargarAjax);
-	  $(".simplenav a").on("click",CargarAjax);
+		$("nav ul li").on("click",CargarAjax);
+		$(".simplenav a").on("click",CargarAjax);
 		cargarEventos();
-
 	}
 
 	function InicializarABMEvt(){
-	  $("aside  nav ul li #adminAgregarProfesor").on("click",CargarAjax);
+		$("aside  nav ul li #adminAgregarProfesor").on("click",CargarAjax);
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
-	  $("aside ul li #adminListaP").on("click",CargarAjax);
+		$("aside ul li #adminListaP").on("click",CargarAjax);
 		$("aside ul li #adminListaM").on("click",CargarAjax);
 		$("article #admin_cont").on("click",CargarAjax);
-
 	}
 
 	function CargarAjax(e){
@@ -31,33 +29,32 @@ $(document).ready(function(){
 		$("nav ul li").removeClass("active");
 		$(".simplenav a").removeClass("active");
 		$(this).addClass("active");
-		$.ajax(
-		  {
+		$.ajax({
 		    url: myUrl,
 		    dataType: "html",
 		    success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
 		        $("#contenido").html(data);
 		        InicializarABMEvt();
-						InicializarEvt();
-		        },
-		    error: MostrarError,
-		  });
-		  e.preventDefault();
 				InicializarEvt();
-				InicializarABMEvt();
-				  return false;
-		}
+		    },
+		    error: MostrarError,
+		});
+		e.preventDefault();
+		InicializarEvt();
+		InicializarABMEvt();
+		return false;
+	}
 
-	 	InicializarEvt();
-	 	InicializarABMEvt();
+	InicializarEvt();
+	InicializarABMEvt();
 
 
 	function cargarEventos(){
 		$('#agregarMateria').off().click(function(){
 			event.preventDefault();
 			$.post("index.php?page=adminAgregarMateria",$("#formMateria").serialize(), function(data) {
-				 $('#contenido').html(data);
-					$('#nombre').val('');
+				$('#contenido').html(data);
+				$('#nombre').val('');
 			});
 		});
 
@@ -79,31 +76,31 @@ $(document).ready(function(){
 		$('#formProfesor').on("submit", function(){
 			event.preventDefault();
 			if( $("#id_profesor").val() != ''){
-			var	page="adminModificarProfesor";
-				}
+				var	page="adminModificarProfesor";
+			}
 			else {
 				page="adminAgregarProfesor";
 			}
 			var formData = new FormData(this);
 			$.ajax({
-			   method: "POST",
-			   url: "index.php?page="+page,
-			   data: formData,
-			   contentType: false,
-			   cache: false,
-			   processData:false,
-				 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
-					 $("#contenido").html(data);
-					 $("#id_profesor").val('');
-					 $('#nombreCompleto').val('');
-					 $('#email').val('');
-					 $('#telefono').val('');
-					 $('#materia').val('');
-					 $('#precio').val('');
-					 $('#tipoDeClase').val('');
+				method: "POST",
+				url: "index.php?page="+page,
+				data: formData,
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+					$("#contenido").html(data);
+					$("#id_profesor").val('');
+					$('#nombreCompleto').val('');
+					$('#email').val('');
+					$('#telefono').val('');
+					$('#materia').val('');
+					$('#precio').val('');
+					$('#tipoDeClase').val('');
  		        },
- 		    error: MostrarError,
- 		  });
+ 		    	error: MostrarError,
+ 		  	});
 		});
 
 		//ver detalle de materia
@@ -111,10 +108,10 @@ $(document).ready(function(){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=materia&nro="+$(obj).data('idmateria'), function(data){
 					$("#contenido").html(data);
-				})
-					.fail(function(){
-						alert("Error");
-					});
+				});
+				// .fail(function(){
+				// 	alert("Error");
+				// });
 				ev.preventDefault();
 			});
 		});
@@ -122,13 +119,12 @@ $(document).ready(function(){
 		//ver detalle de profesor
 		$(".detalles").each(function(i,obj){
 			$(this).off().on("click", function(ev){
-
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
 					$("#contenido").html(data);
-				})
-					.fail(function(){
-						alert("Error");
-					});
+				});
+				// .fail(function(){
+				// 	alert("Error");
+				// });
 				ev.preventDefault();
 			});
 		});
@@ -136,7 +132,7 @@ $(document).ready(function(){
 		$('.eliminarProfesor').click(function(){
 			event.preventDefault();
 			$.get( "index.php?page=adminEliminarProfesor",{ id_profesor: $(this).attr("data-idprofesor") }, function(data) {
-			$('#contenido').html(data);
+				$('#contenido').html(data);
 			});
 		});
 
@@ -174,7 +170,7 @@ $(document).ready(function(){
 				},
 				error: function(){
 					alert("error al iniciar sesion");
-				}
+				},
 			});
 			event.preventDefault();
 		});
@@ -189,7 +185,7 @@ $(document).ready(function(){
 				},
 				error: function () {
 					alert('Error al cerrar sesion');
-				}
+				},
 			});
 		});
 
@@ -203,39 +199,37 @@ $(document).ready(function(){
 				},
 				error: function () {
 					alert('Error al ir registrar');
-				}
+				},
 			});
 		});
 
-		// $("#registrar").on("click",function(event){
-		// 	registrar();
-		// });
+		$("#registrar").on("click",function(event){
+			registrar();
+		});
+	}//cierra el cargar eventos
 
-		// $(document).on("click","#registrar",registrar);
-		$(document).on("submit", "#registrarForm", function(){
-		// function registrar() {
-		// 	$('#registrarForm').on("submit", function(event){
+	// $(document).on("click","#registrar",registrar);
+	$(document).on("submit", "#registrarForm", function(){
+		function registrar(){
+			$('#registrarForm').on("submit", function(event){
 				event.preventDefault();
 				var formData = new FormData(this);
 				$.ajax({
-					 method: "POST",
-					 url: "index.php?page=mostrarRegistrar",
-					 data: formData,
-					 contentType: false,
-					 cache: false,
-					 processData:false,
-					 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
-						 $("#contenido").html(data);
-						 $('#email').val('');
-						 $('#password').val('');
-						 $('#rol_usuario').val('');
-							},
+					method:'POST',
+					url: "index.php?page=mostrarRegistrar",
+					data: formData,
+					contentType: false,
+					cache: false,
+					processData:false,
+					success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+						$("#contenido").html(data);
+						$('#email').val('');
+						$('#password').val('');
+						$('#rol_usuario').val('');
+					},
 					error: MostrarError,
-					});
 				});
-			// }
-
-	}
-
-
+			});
+		}
 	});
+});

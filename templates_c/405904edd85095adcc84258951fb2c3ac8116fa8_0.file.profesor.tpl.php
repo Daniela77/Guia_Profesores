@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-18 03:19:48
+/* Smarty version 3.1.30, created on 2016-11-22 21:04:37
   from "C:\xampp\htdocs\Guia_Profesores\templates\profesor.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582e65449cac27_73668766',
+  'unifunc' => 'content_5834a4d52593a2_81866542',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '405904edd85095adcc84258951fb2c3ac8116fa8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\profesor.tpl',
-      1 => 1479435575,
+      1 => 1479435576,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:comentarios.tpl' => 1,
   ),
 ),false)) {
-function content_582e65449cac27_73668766 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5834a4d52593a2_81866542 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_capitalize')) require_once 'C:\\xampp\\htdocs\\Guia_Profesores\\libs\\plugins\\modifier.capitalize.php';
 ?>
 <article class="main">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-16 23:45:59
+/* Smarty version 3.1.30, created on 2016-11-22 20:22:16
   from "C:\xampp\htdocs\Guia_Profesores\templates\inicio.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ce1a72377d6_18350085',
+  'unifunc' => 'content_58349ae8d98e36_79268713',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8d87e9c3815240aa56bf98afa18186eeb8b20954' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\inicio.tpl',
-      1 => 1478806112,
+      1 => 1478806114,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_582ce1a72377d6_18350085 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58349ae8d98e36_79268713 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="intro">
   <div class="container">

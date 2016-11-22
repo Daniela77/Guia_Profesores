@@ -5,7 +5,7 @@
 
     function mostrarMaterias($materias){
       $this->smarty->assign('materias', $materias);
-      $this->smarty->display('materias.tpl');
+      $this->smarty->display('listaMaterias.tpl');
     }
 
     function mostrarMateria($materia,$profesores){

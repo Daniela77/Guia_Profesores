@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-16 23:45:59
+/* Smarty version 3.1.30, created on 2016-11-22 20:22:16
   from "C:\xampp\htdocs\Guia_Profesores\templates\nav.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_582ce1a703c180_86129092',
+  'unifunc' => 'content_58349ae8c2d953_16401480',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1690ce7c16bf5838859898d1700abaf41c1b1f29' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\nav.tpl',
-      1 => 1479236126,
+      1 => 1479236128,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_582ce1a703c180_86129092 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58349ae8c2d953_16401480 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <nav class="navbar navbar-inverse">
       <div class="container">
