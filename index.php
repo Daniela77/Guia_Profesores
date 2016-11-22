@@ -10,21 +10,26 @@
 
 	$dbController = new DbController();
 
-  if (!$dbController->dbExists()) {
-    if (isset($_POST["host"]) && isset($_POST['dbName']) && isset($_POST['user']) && isset($_POST['password'])){
-      $dbController->createDatabase($_POST['host'],$_POST['dbName'],$_POST['user'],$_POST['password']);
-      die();
-    } else {
-        $dbController->newCredentials();
-        die();
-    }
-  }
+  	if (!$dbController->dbExists()) {
+    	if (isset($_POST["host"]) && isset($_POST['dbName']) && 
+    		isset($_POST['user']) && isset($_POST['password'])){
+    		
+    		$dbController->createDatabase($_POST['host'],$_POST['dbName'],$_POST['user'],$_POST['password']);
+    		die();
+    	} 
+    	else {
+        	$dbController->newCredentials();
+        	die();
+    	}
+	}
 
-	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) || $_REQUEST[ConfigApp::$PAGE] == ConfigApp::$PAGE_DEFAULT){
+	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) || 
+		$_REQUEST[ConfigApp::$PAGE] == ConfigApp::$PAGE_DEFAULT){
+		
 		$guiaController = new GuiaController();
 		$guiaController->mostrarDefault();
 	}
-	else
+	else{
 		switch ($_REQUEST[ConfigApp::$PAGE]){
 		case ConfigApp::$PAGE_HOME:
 			$guiaController = new GuiaController;
@@ -47,11 +52,11 @@
 			$profesorController->mostrarProfesor();
 			break;
 		case ConfigApp::$PAGE_MATERIAS:
-		  $materiaController = new MateriaController;
+		  	$materiaController = new MateriaController;
 			$materiaController->mostrarMaterias();
 			break;
 		case ConfigApp::$PAGE_MATERIA:
-		  $materiaController = new MateriaController;
+		  	$materiaController = new MateriaController;
 			$materiaController->mostrarMateria();
 			break;
 		case ConfigApp:: $PAGE_ADMIN:
@@ -59,7 +64,7 @@
 			$guiaController->mostrarAdministrador();
 			break;
 		case ConfigApp::$PAGE_ADMIN_PROFESORES:
-		  $profesorController = new ProfesorController;
+			$profesorController = new ProfesorController;
 			$profesorController->adminProfesores();
 			break;
 		case ConfigApp::$PAGE_ADMIN_MATERIAS:
@@ -122,5 +127,5 @@
 			echo 'Pagina no encontrada';
 			break;
 		}
-
+	}
 ?>
