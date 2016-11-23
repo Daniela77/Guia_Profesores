@@ -38,6 +38,11 @@
             return $sentencia->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        function eliminarImagen ($imgruta) {
+          $sentencia = $this->db->prepare("delete from imagen where ruta=?");
+          $sentencia->execute(array($imgruta));
+        }
+
         function crearProfesor($nombreCompleto, $email, $telefono, $id_materia, $precio, $tipoDeClase,$imagenes){
             try{
               $consulta = $this->db->prepare("INSERT INTO profesor(nombreCompleto,email,telefono,id_materia,precio,tipoDeClase) VALUES(?,?,?,?,?,?)");

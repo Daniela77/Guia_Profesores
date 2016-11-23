@@ -19,6 +19,15 @@
             <li href="index.php?page=materias"><a href="#"><strong>Materias</strong></a></li>
             <li href="index.php?page=contacto"><a href="#"><strong>Contacto</strong></a></li>
             <li href="index.php?page=login"><a href="#"><strong>Administrador</strong></a></li>
+
+            <!-- {if $usuario['rol_usuario']==usuario}
+                  <li href="index.php?page=login"><a href=# id="login">Ingresar</a></li>
+                {else}
+                  <li href="index.php?page=logout"><a href=# id="logout">Logout</a><span class="glyphicon glyphicon-user">{$usuario['email']}</span></li>
+                {/if}
+                  {if $usuario['rol_usuario']==administrador}
+                    <li href="index.php?page=login"><a href="#"><strong>Administrador</strong></a></li>
+                  {/if} -->
           </ul>
         </li>
       </ul>

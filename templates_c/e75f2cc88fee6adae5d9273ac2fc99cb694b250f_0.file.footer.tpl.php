@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-22 20:22:16
+/* Smarty version 3.1.30, created on 2016-11-23 05:14:51
   from "C:\xampp\htdocs\Guia_Profesores\templates\footer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58349ae8e2d552_83205525',
+  'unifunc' => 'content_583517bb147a12_95153489',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e75f2cc88fee6adae5d9273ac2fc99cb694b250f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\footer.tpl',
-      1 => 1479747754,
+      1 => 1479872615,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58349ae8e2d552_83205525 (Smarty_Internal_Template $_smarty_tpl) {
+function content_583517bb147a12_95153489 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Footer -->
 <footer>
@@ -59,7 +59,6 @@ function content_58349ae8e2d552_83205525 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="js/jquery-2.1.4.min.js"><?php echo '</script'; ?>
 >
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <?php echo '<script'; ?>
  src="js/bootstrap.min.js"><?php echo '</script'; ?>
 >

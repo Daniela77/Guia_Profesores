@@ -9,23 +9,24 @@
 	include_once('controller/DbController.php');
 
 	$dbController = new DbController();
+	$loginController = new LoginController;
 
   	if (!$dbController->dbExists()) {
-    	if (isset($_POST["host"]) && isset($_POST['dbName']) && 
+    	if (isset($_POST["host"]) && isset($_POST['dbName']) &&
     		isset($_POST['user']) && isset($_POST['password'])){
-    		
+
     		$dbController->createDatabase($_POST['host'],$_POST['dbName'],$_POST['user'],$_POST['password']);
     		die();
-    	} 
+    	}
     	else {
         	$dbController->newCredentials();
         	die();
     	}
 	}
 
-	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) || 
+	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) ||
 		$_REQUEST[ConfigApp::$PAGE] == ConfigApp::$PAGE_DEFAULT){
-		
+
 		$guiaController = new GuiaController();
 		$guiaController->mostrarDefault();
 	}
@@ -122,6 +123,11 @@
 		case ConfigApp::$PAGE_MOSTRAR_REGISTRAR:
 			$loginController = new LoginController;
 			$loginController->mostrarRegistrar();
+			break;
+		case ConfigApp::$PAGE_ELIMINAR_IMAGEN:
+			// $adminController = new AdminController($usuariosController);
+			$profesorController = new ProfesorController;
+			$profesorController->eliminarImagen();
 			break;
 		default:
 			echo 'Pagina no encontrada';

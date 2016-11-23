@@ -10,8 +10,8 @@
       </div>
       <form id="formComentario" action="agregarComentario" method="post" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="comment">Comentario</label>
-          <textarea class="form-control" id="comment" name="comment"  placeholder="Dejá tu comentario..." required="required"></textarea>
+          <label for="comentario">Comentario</label>
+          <textarea class="form-control" id="comentario" name="comentario"  placeholder="Dejá tu comentario..." required="required"></textarea>
         </div>
         <div class="form-group">
           <select id="puntaje" name="puntaje" class="custom-select">

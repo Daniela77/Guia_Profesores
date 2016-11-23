@@ -115,6 +115,13 @@
     }
 
 
+    function eliminarImagen() {
+      if(isset($_POST['imgruta'])) {
+        $this->model->eliminarImagen($_POST['imgruta']);
+        $this->mostrarProfesores();
+      }
+    }
+
     function editarProfesor(){
        if(isset($_POST['id_profesor']) && ($_POST['id_profesor'] != '')&&
          (isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&

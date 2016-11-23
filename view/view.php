@@ -11,6 +11,7 @@
         $this->errores = array();
       }
 
+
       function mostrarError($error){
         array_push($this->errores, $error);
       }

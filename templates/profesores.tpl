@@ -7,7 +7,7 @@
           <div class="alert alert-{$tipoMensaje}" role="alert">{$mensaje}</div>
           {/if}
           <h2>Lista de profesores</h2>
-          
+
           <div class="table-responsive">
             <table class="table table-hover">
               <thead class= "head-table">
@@ -27,7 +27,8 @@
       			  	  <td>
                     <div class="slides">
                     {foreach from=$profesor['imagenes'] key=index item=imagen}
-                      <img src="{$imagen['ruta']}" alt="ProfesorImagen_{$profeso['nombre']}_{$imagen['fk_id_profesor']}"  class="img-thumbnail">
+                      <img src="{$imagen['ruta']}" alt=""  class="img-thumbnail">
+                      <button class="btn btn-danger btn-xs eliminarImagen" type="button" data-imgruta="{$imagen['ruta']}">Eliminar</button>
                     {/foreach}
                     </div>
                   </td>

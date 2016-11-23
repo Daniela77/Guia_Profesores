@@ -19,9 +19,9 @@ $(document).ready(function(){
 	function InicializarABMEvt(){
 		$("aside  nav ul li #adminAgregarProfesor").on("click",CargarAjax);
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
-		$("aside ul li #adminListaP").on("click",CargarAjax);
-		$("aside ul li #adminListaM").on("click",CargarAjax);
-		$("article #admin_cont").on("click",CargarAjax);
+		$("aside nav ul li #adminListaP").on("click",CargarAjax);
+		$("aside nav ul li #adminListaM").on("click",CargarAjax);
+		// $("article #admin_cont").on("click",CargarAjax);
 	}
 
 	function CargarAjax(e){
@@ -189,6 +189,16 @@ $(document).ready(function(){
 			});
 		});
 
+
+		$(document).on("click", "#adminListaP", CargarAjax);
+		$(document).on("click", "#adminListaM", CargarAjax);
+		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
+		$(document).on("click", "#adminAgregarMateria", CargarAjax);
+		$(document).on("click", "#login", CargarAjax);
+
+
+
+
 		$('#irregistrar').on('click', function(event){
 			event.preventDefault();
 			$.ajax({
@@ -200,6 +210,13 @@ $(document).ready(function(){
 				error: function () {
 					alert('Error al ir registrar');
 				},
+			});
+		});
+
+		$('.eliminarImagen').click(function(){
+			event.preventDefault();
+			$.post( "index.php?page=eliminarImagen&imgruta",{imgruta: $(this).attr("data-imgruta")}, function(data) {
+				$('#contenido').html(data);
 			});
 		});
 
@@ -232,4 +249,6 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+
 });

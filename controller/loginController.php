@@ -5,19 +5,27 @@
   include_once 'model/usuarioModel.php';
 
   class LoginController extends Controller {
-    private $loginView;
-
+    protected $loginView;
+    
     function __construct() {
       $this->model = new UsuarioModel();
       $this->loginView = new LoginView();
     }
 
+    // function checkLogin(){
+    //   session_start();
+    //   if(!isset($_SESSION['USER'])){
+    //     header("Location: index.php");
+    //     die();
+    //   }
+    // }
+
     function checkLogin(){
       session_start();
       if(!isset($_SESSION['USER'])){
-        header("Location: index.php");
-        die();
+        return false;
       }
+      return true;
     }
 
     function login(){
@@ -28,12 +36,10 @@
         $passwordRegistrada = $usuarioRegistrado["password"];
         if (password_verify($password, $passwordRegistrada)){
           session_start();
-          $_SESSION["id"] = $usuarioRegistrado["id_usuario"];
-          // $_SESSION["user"] = $usuarioRegistrado["nombre"];
-          $_SESSION["email"] = $usuarioRegistrado["email"];
+          $_SESSION["USER"] = $user;
           // $_SESSION["expire"] = time();
           return true;
-        } 
+        }
         else $this->loginView->MostrarError("Usuario o contraseña incorrectos");
       }
       $this->loginView->mostrarLogin();
@@ -52,26 +58,20 @@
     }
 
     function registrar(){
-      print_r('hola');
-      if(isset($_POST['email'])&&($_POST['email'] != '')&&
-        (isset($_POST['password'])&&($_POST['password'] != '')&&
-        (isset($_POST['rol'])&&($_POST['rol'] != '')))){
 
-        $user = $_POST["email"];
-          print_r($user);
-        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-          print_r($password);
-        $rol=$_POST["rol"];
-          print_r($rol);
+        if(isset($_POST['txtUser'])&&($_POST['txtUser'] != '')&&
+        (isset($_POST['txtPass'])&&($_POST['txtPass'] != '')&&
+        (isset($_POST['txtRol'])&&($_POST['txtRol'] != '')))){
+        $user = $_POST["txtUser"];
+        $password = password_hash($_POST["txtPass"], PASSWORD_DEFAULT);
+        $rol=$_POST["txtRol"];
         $usuarioARegistrar = $this->model->getUsuario($user);
-          print_r($usuarioARegistrar);
         if ($usuarioARegistrar) {
           $this->loginView->MostrarError("El usuario ya existe");
         }
         else{
-          echo "llego??";
           $this->model->crearUsuario($user,$password,$rol);
-          $this->loginView->mostrarLogin();
+          $this->loginView->mostrarLogin([]);
         }
       }
       else {
