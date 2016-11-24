@@ -5,13 +5,14 @@
 	// define ("usuario",0);
 
 	class GuiaController extends loginController{
-		// private $usuario;
+		private $usuario;
 		function __construct(){
 			parent::__construct();
 			$this->view = new GuiaView();
+			$this->loginController = new LoginController();
 	// 		$this->usuario['rol_usuario']=usuario;
 	// 		if($loginController->checkLogin()){
-	// 			$this->usuario=$loginController->getUsuario();
+			$this->usuario=$this->loginController->getUsuario();
 	// }
 		}
 
@@ -29,7 +30,7 @@
 
 		function mostrarAdministrador(){
 			if($this->checkLogin()||$this->login())
-				$this->view->mostrarAdministrador();
+				$this->view->mostrarAdministrador($this->usuario);
 		}
 
 	}

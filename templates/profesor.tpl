@@ -34,7 +34,7 @@
 							<td>{$profesor['tipoDeClase']|capitalize}</td>
 						</tr>
 					</tbody>
-				{include file="comentarios.tpl"}
 		</div>
 	</section>
+		{include file="comentarios.tpl"}
 </article>

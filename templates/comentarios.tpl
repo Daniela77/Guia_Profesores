@@ -1,27 +1,44 @@
-  <section>
     <div class="container">
-      {if isset($mensaje)}
-          <div class="alert alert-{$tipoMensaje}" role="alert">{$mensaje}</div>
-        {/if}
-          <button id="refresh" type="button" class="btn btn-default btn-xs pull-right" aria-label="Refresh">
-              <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-           </button>
-          <h1>Comentarios</h1>
-          <div class="row">
-            <div id="listaComentarios">
 
+      <div class="page-header">
+        <h1>Lista de Comentarios</h1>
+      </div>
+      <div class="row">
+
+        <div class="col-md-6">
+          <button id="refresh" type="button" class="btn btn-default btn-xs pull-right " aria-label="Refresh">
+              <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+          </button>
+
+          <label class="control-label" for="nombre">Comentario</label>
+          <ul id="listaComentarios" class="list-group">
+          </ul>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-md-6">
+          {if count($errores) gt 0}
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">Errores</h3>
             </div>
+            <ul>
+              {foreach $errores as $error}
+                <li>{$error}</li>
+              {/foreach}
+            </ul>
           </div>
-          <form id="formComentario" href="api/comentarios" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <input type="hidden" class="form-control" name="id_profesor" value="{$profesor['id_profesor']}">
-            </div>
-            <div class="form-group">
-              <input type="hidden" class="form-control" name="email" value="{$usuario['email']}">
-            </div>
+          {/if}
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col-md-6">
+          <form id="formComentario" href="api/comentario" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="id_profesor" name="id_profesor" value="{$profesor['id_profesor']}">
+            <input type="hidden" id="id_usuario" name="id_usuario" value="{$usuario['id_usuario']}">
             <div class="form-group">
               <label for="comentario">Comentario</label>
-              <textarea class="form-control" id="comentario"  name="comentario"  placeholder="Dejá tu comentario..." required="required"></textarea>
+              <input type="text" class="form-control" id="comentario" name="comentario" value="comentario" placeholder="Deje su comentario">
             </div>
             <div class="form-group">
               <select id="puntaje" name="puntaje" class="custom-select" required="">
@@ -33,7 +50,8 @@
                 <option value="5">5</option>
               </select>
             </div>
-            <button type="submit" name="agregarComentario" id="agregarComentario"class="btn btn-default">Comentar</button>
+            <button id='agregarComentario' name="agregarComentario" type="submit" class="btn btn-info">Enviar</button>
           </form>
+        </div>
+      </div>
     </div>
-  </section>

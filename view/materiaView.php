@@ -3,9 +3,14 @@
 
   class MateriaView extends View{
 
-    function mostrarMaterias($materias){
+    function mostrarListaMaterias($materias){
       $this->smarty->assign('materias', $materias);
       $this->smarty->display('listaMaterias.tpl');
+    }
+
+    function mostrarMaterias($materias){
+      $this->smarty->assign('materias', $materias);
+      $this->smarty->display('materias.tpl');
     }
 
     function mostrarMateria($materia,$profesores){

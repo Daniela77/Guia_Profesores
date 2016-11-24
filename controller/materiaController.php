@@ -10,11 +10,14 @@ class MateriaController extends Controller{
      $this->model = new MateriaModel();
      $this->modelProfesor = new ProfesorModel();
      $this->view = new MateriaView();
-    $this->checkLogin();
    }
 
    function mostrarMaterias(){
      $this->view->mostrarMaterias($this->model->getMaterias());
+   }
+
+   function mostrarListaMaterias(){
+     $this->view->mostrarListaMaterias($this->model->getMaterias());
    }
 
    function mostrarMateria(){

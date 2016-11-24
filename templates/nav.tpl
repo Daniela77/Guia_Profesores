@@ -16,7 +16,7 @@
           <ul class="nav navbar-nav pull-right mainNav">
             <li href="index.php?page=inicio"><a href="#"><strong>Inicio</strong></a></li>
             <li href="index.php?page=listaProfesores"><a href="#"><strong>Profesores</strong></a></li>
-            <li href="index.php?page=materias"><a href="#"><strong>Materias</strong></a></li>
+            <li href="index.php?page=listaMaterias"><a href="#"><strong>Materias</strong></a></li>
             <li href="index.php?page=contacto"><a href="#"><strong>Contacto</strong></a></li>
             <li href="index.php?page=login"><a href="#"><strong>Administrador</strong></a></li>
 

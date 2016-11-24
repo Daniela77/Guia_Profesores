@@ -116,19 +116,15 @@ $(document).ready(function(){
 				ev.preventDefault();
 			});
 		});
-		// $(document).on("click", ".detalles", crearComentarios);
+
 		//ver detalle de profesor
 		$(".detalles").each(function(i,obj){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
 					$("#contenido").html(data);
+					// setInterval(function() {crearComentarios()}, 2000);
 					crearComentarios();
-					agregarComentario();
-
 				});
-				// .fail(function(){
-				// 	alert("Error");
-				// });
 				ev.preventDefault();
 			});
 		});
@@ -183,7 +179,7 @@ $(document).ready(function(){
 			event.preventDefault();
 			$.ajax({
 				method: 'POST',
-				url:'index.php?page=logout',//logout?
+				url:'index.php?page=logout',
 				success: function(data){
 					$("#contenido").html(data);
 				},
@@ -193,16 +189,11 @@ $(document).ready(function(){
 			});
 		});
 
-
 		$(document).on("click", "#adminListaP", CargarAjax);
 		$(document).on("click", "#adminListaM", CargarAjax);
 		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
 		$(document).on("click", "#adminAgregarMateria", CargarAjax);
-		$(document).on("click", "#login", CargarAjax);
-		// $(".detalle").on("click", agregarComentario);
-
-
-
+		$(document).on("click", "#registrar", CargarAjax);
 
 		$('#irregistrar').on('click', function(event){
 			event.preventDefault();
@@ -241,14 +232,13 @@ $(document).ready(function(){
 			function crearComentarios(){
 				$.ajax({
 					method: 'GET',
-					url:'api/comentarios',
+					url:'api/comentario',
 					datatype: 'JSON',
 					success: function(comentario){
 						comentario.forEach(function(comentario){
 						 var html = crearComentarioHTML(comentario);
 						 $('#listaComentarios').append(html);
 					 });
-						console.log(comentario);
 					},
 					error: function () {
 						alert('Error al crear comentario');
@@ -263,32 +253,63 @@ $(document).ready(function(){
 			 }
 			});
 
-			$('#refresh').click(function(event){
-			  console.console.log(refresh);
-			  event.preventDefault();
-			  $.ajax(
-			    {
-			      method:"GET",
-			      dataType: "JSON",
-			      url: "api/comentarios",
-			      success: crearComentarios,
+			function agregarComentario(comentario){
+			  $.ajax({
+			    method: 'POST',
+			    url:'api/comentario',
+			    datatype: 'JSON',
+			    data: comentario,
+			    success: function(idComentario){
+			      comentario.id_comentario=idComentario;
+						console.log(comentario);
+			      var html = crearComentarioHTML(comentario);
+			      $('#listaComentarios').append(html);
+			    },
+			    error: function () {
+			      alert('Error al agregar comentario');
 			    }
-			  )
-			});
+			  });
+			}
 
-// 			$('#agregarComentario').click(function(){
-//   		event.preventDefault();
-//   	$.post( "api/comentarios",$("#formComentario").serialize(), function(data) {
-//     $('#listaComentarios').html(data);
-//     $('#comentario').val('');
-// });
-// });
+			function borrarComentario(idcomentario){
+			  $.ajax({
+			    method: 'DELETE',
+			    url:'api/comentario/' + idcomentario,
+			    datatype: 'JSON',
+			    success: function(){
+			      $('#comentario'+idcomentario).remove();
+			    },
+			    error: function () {
+			      alert('Error');
+			    }
+			  });
+			}
+
+	$('body').on('click','a.borrar', function(event){
+	event.preventDefault();
+	borrarComentario(this.getAttribute('idcomentario'));
+	});
+	// $(document).ready(function(){
+  $('#refresh').on('click', function(event){
+    event.preventDefault();
+    crearComentarios();
+  });
 
 
+  $('body').on('click','#agregarComentario', function(event){
+    event.preventDefault();
+    var comentario= {
+      comentario:$('#comentario').val(),
+			puntaje: $("#puntaje").val(),
+			id_profesor:$("#id_profesor").val()
+    };
+		console.log(comentario);
+    $('#comentario').val('');
+    agregarComentario(comentario);
+  });
 
-
-
-
+	//  crearComentarios();
+	//  });
 
 	}//cierra el cargar eventos
 
@@ -315,34 +336,6 @@ $(document).ready(function(){
 			});
 		}
 	});
-
-
-	function agregarComentario(){
-		$('#formComentario').on("submit", function(event){
-			event.preventDefault();
-			var formData = new FormData(this);
-			console.log(formData);
-			$.ajax({
-				method:'POST',
-				url: "api/comentarios",
-				data: formData,
-				contentType: false,
-				cache: false,
-				processData:false,
-				success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
-					crearComentarioHTML(data);
-					$("#contenido").html(data);
-					crearComentarioHTML(data);
-					$('#email').val('');
-					$('#comentario').val('');
-					$('#puntaje').val('');
-				},
-				error: MostrarError,
-			});
-		});
-	}
-
-
 
 
 });

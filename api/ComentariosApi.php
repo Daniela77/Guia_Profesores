@@ -15,7 +15,7 @@ class ComentariosApi extends Api
     $this->modelProfesor = new ProfesorModel();
   }
 
-  protected function comentarios($argumentos){
+  protected function comentario($argumentos){
     switch ($this->method) {
       case 'GET':
           if(count($argumentos)>0){
@@ -35,6 +35,10 @@ class ComentariosApi extends Api
           }
         break;
         case 'POST':
+        // if(isset($_POST['id_profesor']) && isset($_POST['email']) && isset($_POST['comentario']))
+        //  $id_comentario = $this->model->crearComentario($id_profesor,$usuario,$comentario,$puntaje);
+        //  return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
+        // break;
           if(count($argumentos)==0){
             if(isset($_POST['id_profesor']) && isset($_POST['email']) && isset($_POST['comentario'])) {
 

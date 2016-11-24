@@ -124,7 +124,7 @@ margin: 0;
 
 .menu-vertical ul li a#adminLista.btn.btn-default.btn-lg.active{
  color: #ffffff;
- background-color: #e8356b;
+ background-color: #4BCACA;
  border-color: #e8356b;
 }
 
@@ -164,19 +164,17 @@ section .T_container{
 section .form-control{
   border:1px solid #36aae7;
   border-radius:5px;
-  padding:10px;
+
 }
 
-section .T_container div{
-  width:30%;
-}
+
 
 section ul li{
   border:1px solid #36aae7;
   border-radius:5px;
-  padding:10px;
+  /*padding:10px;
   margin:10px 0px;
   display:flex;
   flex-flow:row wrap;
-  justify-content:flex-start;
+  justify-content:flex-start;*/
 }

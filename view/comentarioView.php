@@ -5,12 +5,8 @@
 
 		function mostrarComentarios(){
 			$this->$smarty->display('comentarios.tpl');
+			// $this->$smarty->assign('error',$errores);
 		}
-
-		// function mostrarComentario(){
-    //   $this->$smarty->assign('comentarioNuevo',$comentarioNuevo);
-  	// 	$this->$smarty->display('comentario_simple.tpl');
-		// }
 
 	}
 

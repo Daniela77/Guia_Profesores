@@ -7,6 +7,7 @@
 	 	public static $PAGE_PROFESORES = 'profesores';
 		public static $PAGE_LISTA_PROFESORES = 'listaProfesores';
 		public static $PAGE_MATERIAS = 'materias';
+		public static $PAGE_LISTA_MATERIAS = 'listaMaterias';
 		public static $PAGE_MATERIA = 'materia';
 		public static $PAGE_CONTACTO = 'contacto';
 		public static $PAGE_ADMIN = 'admin';

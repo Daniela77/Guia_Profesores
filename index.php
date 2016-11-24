@@ -9,7 +9,7 @@
 	include_once('controller/DbController.php');
 
 	$dbController = new DbController();
-	$loginController = new LoginController;
+
 
   	if (!$dbController->dbExists()) {
     	if (isset($_POST["host"]) && isset($_POST['dbName']) &&
@@ -24,6 +24,7 @@
     	}
 	}
 
+	$loginController = new LoginController();
 	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) ||
 		$_REQUEST[ConfigApp::$PAGE] == ConfigApp::$PAGE_DEFAULT){
 
@@ -52,8 +53,12 @@
 			$profesorController = new ProfesorController;
 			$profesorController->mostrarProfesor();
 			break;
+		case ConfigApp::$PAGE_LISTA_MATERIAS:
+		  $materiaController = new MateriaController;
+			$materiaController->mostrarListaMaterias();
+			break;
 		case ConfigApp::$PAGE_MATERIAS:
-		  	$materiaController = new MateriaController;
+		  $materiaController = new MateriaController;
 			$materiaController->mostrarMaterias();
 			break;
 		case ConfigApp::$PAGE_MATERIA:
@@ -62,7 +67,7 @@
 			break;
 		case ConfigApp:: $PAGE_ADMIN:
 			$guiaController = new GuiaController;
-			$guiaController->mostrarAdministrador();
+			$guiaController->mostrarAdministrador($loginController);
 			break;
 		case ConfigApp::$PAGE_ADMIN_PROFESORES:
 			$profesorController = new ProfesorController;

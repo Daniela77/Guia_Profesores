@@ -18,9 +18,9 @@
 			// $this->smarty->assign('usuario',$usuario);
 		}
 
-		function mostrarAdministrador(){
+		function mostrarAdministrador($usuario){
+			$this->smarty->assign('usuario',$usuario);
 			$this->smarty->display('admin.tpl');
-			// $this->smarty->assign('usuario',$usuario);
 		}
 
 	}

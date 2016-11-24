@@ -21,6 +21,11 @@
       return true;
     }
 
+    function getUsuario(){
+      // return $this->model->getUsuario($_SESSION['USER']);
+    }
+
+
     function login(){
       if(isset($_POST["email"]) && isset($_POST["password"])){
         $user = $_POST["email"];
@@ -28,7 +33,7 @@
         $usuarioRegistrado = $this->model->getUsuario($user);
         $passwordRegistrada = $usuarioRegistrado["password"];
         if (password_verify($password, $passwordRegistrada)){
-          session_start();
+          // session_start();
           $_SESSION["USER"] = $user;
           // $_SESSION["expire"] = time();
           return true;
