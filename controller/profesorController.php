@@ -4,15 +4,17 @@
   include_once 'model/profesorModel.php';
   include_once 'model/materiaModel.php';
   include_once 'model/comentarioModel.php';
+  include_once 'controller/loginController.php';
 
   class ProfesorController extends Controller{
-
+      private $loginController;
     function __construct() {
       $this->model = new ProfesorModel();
       $this->view = new ProfesorView();
       $this->modelMaterias = new MateriaModel();
       $this->modelComentarios = new ComentarioModel();
-      // $this->checkLogin();
+      $this->loginController= new LoginController();
+      $this->loginController->checkLogin();
      }
 
      function adminProfesores(){
@@ -56,12 +58,21 @@
       // if (isset($_GET['nro'])) {
       $id_profesor=$_GET['nro'];
       // }
-      $comentarios=$this->modelComentarios->getComentario($id_profesor);
+      // $comentarios=$this->modelComentarios->getComentario($id_profesor);
       $profesor=$this->model->getProfesor($id_profesor);
       $profesor['materia'] =$this->modelMaterias->getMateriaById($profesor['id_materia']);
       $profesor['imagenes'] =$this->model->getImagenes($id_profesor);
-      $this->view->mostrarProfesor($comentarios,$profesor);
+      $this->view->mostrarProfesor($profesor);
+      // $this->view->mostrarComentario($profesor);
     }
+
+    function mostrarComentario () {
+      if (isset($_GET['id_profesor'])) {
+        $id_profesor = $_GET['id_profesor'];
+        $profesor=$this->model->getProfesor($id_profesor);
+        $this->vista->mostrarComentario($profesor);
+      }
+}
 
     function agregarProfesor(){//ver que ande!!!
       if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&

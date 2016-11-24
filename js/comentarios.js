@@ -1,12 +1,6 @@
 $(document).ready(function(){
-  function createComentarios(comentarios){
-      for (var i = 0; i < comentarios.length; i++) {
-        comentarios[i].finalizada = comentarios[i].finalizada ==0 ? false: true;
-      }
-       var rendered = Mustache.render(template,{titulo : "Comentario Extra", paquete:comentarios});
-       $('#listaComenentarios').html(rendered);
 
-  }
+
   var template;
   $.ajax({ url: 'js/templates/comentario.mst',
    success: function(templateReceived) {
@@ -15,30 +9,52 @@ $(document).ready(function(){
  });
 
 $('#refresh').click(function(event){
+  console.console.log(refresh);
   event.preventDefault();
   $.ajax(
     {
       method:"GET",
       dataType: "JSON",
-      url: "api/comentario",
-      success: createcomentarios
+      url: "api/comentarios",
+      success: crearComentarios
     }
   )
 });
-// $('#agregarTareaBtn').click(function(){
-//   event.preventDefault();
-//   $.post( "index.php?action=guardar_tarea",$("#formTarea").serialize(), function(data) {
-//     $('#listaTareas').html(data);
-//     $('#tarea').val('');
-// });
-// });
+
+
+  function agregarComentario(){
+    $('#formComentario').on("submit", function(event){
+      event.preventDefault();
+      var formData = new FormData(this);
+      console.log(formData);
+      $.ajax({
+        method:'POST',
+        url: "api/comentarios",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData:false,
+        success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+          crearComentarios();
+          $("#contenido").html(data);
+          $('#email').val('');
+          $('#comentario').val('');
+          $('#puntaje').val('');
+        },
+        error: MostrarError,
+      });
+    });
+  }
+
+
 
 $('.eliminarComentario').click(function(){
 event.preventDefault();
-$.get( "index.php?page=eliminarComentario",{ id_tarea: $(this).attr("data-idcomentario") }, function(data) {
+$.get( "index.php?page=eliminarComentario",{ id_comentario: $(this).attr("data-idcomentario") }, function(data) {
   $('#listaComentarios').html(data);
   $('#comentario').val('');
 });
-
 });
+
+
 });

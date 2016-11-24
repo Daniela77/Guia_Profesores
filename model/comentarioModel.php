@@ -1,6 +1,5 @@
 <?php
-
-include_once 'model.php';
+require_once "model.php";
 
 class ComentarioModel extends Model{
 
@@ -29,7 +28,7 @@ function eliminarComentario($id_comentario){
 }
 function crearComentario($id_profesor, $id_usuario,$comentario,$puntaje){
   $sentencia = $this->db->prepare("INSERT INTO comentario(fk_id_profesor,fk_id_usuario,comentario,puntaje) values(?,?,?,?)");
-    $sentencia->execute(array($id_profesor, $id_usuario,$comentario,$puntaje));
+  $sentencia->execute(array($id_profesor, $id_usuario,$comentario,$puntaje));
     return $this->db->lastInsertId();
 }
 

@@ -9,11 +9,16 @@ class ProfesorView extends View{
     $this->smarty->display('adminProfesores.tpl');
   }
 
-  function mostrarProfesor($comentarios,$profesor){
-    $this->smarty->assign('comentarios', $comentarios);
+  function mostrarProfesor($profesor){
     $this->smarty->assign('profesor', $profesor);
     $this->smarty->display('profesor.tpl');
   }
+
+  function mostrarComentario ($profesor) {
+      // $this->smarty->assign('usuario',$usuario);
+      $this->smarty->assign('profesor', $profesor);
+      $this->smarty->display('comentario.tpl');
+    }
 
   // function mostrarProfesoresMat($profesores,$mensaje,$materias){
   //   $this->smarty->assign('mensaje', $mensaje);

@@ -28,7 +28,7 @@
 		}
 
 		function mostrarAdministrador(){
-			if($this->login())
+			if($this->checkLogin()||$this->login())
 				$this->view->mostrarAdministrador();
 		}
 

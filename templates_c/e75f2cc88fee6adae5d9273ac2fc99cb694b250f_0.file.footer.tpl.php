@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-23 05:14:51
+/* Smarty version 3.1.30, created on 2016-11-24 09:32:56
   from "C:\xampp\htdocs\Guia_Profesores\templates\footer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_583517bb147a12_95153489',
+  'unifunc' => 'content_5836a5b8eb5269_49144557',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e75f2cc88fee6adae5d9273ac2fc99cb694b250f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Guia_Profesores\\templates\\footer.tpl',
-      1 => 1479872615,
+      1 => 1479914006,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_583517bb147a12_95153489 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5836a5b8eb5269_49144557 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Footer -->
 <footer>
@@ -70,6 +70,9 @@ function content_583517bb147a12_95153489 (Smarty_Internal_Template $_smarty_tpl)
 >
 <?php echo '<script'; ?>
  src="js/dbCredentials.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="js/mustache.js"><?php echo '</script'; ?>
 >
 </body>
 </html>

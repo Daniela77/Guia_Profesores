@@ -11,9 +11,13 @@
         <input type="password" id="inputPassword" name="txtPass" class="form-control" placeholder="Password" required>
       </p>
       <p>
-        <label for="inputRol" class="sr-only">Rol del usuario</label>
-        <input type="rol" id="inputRol" name="txtRol" class="form-control" placeholder="Rol del usuario" required>
-      </p>
+       <label for="inputRol" class="sr-only">Rol</label>
+       <select id="inputRol"  name="txtRol" class="form-control">
+         <option>Seleccione un rol</option>
+         <option>Administrador</option>
+         <option>Usuario</option>
+       </select>
+     </p>
       <button class="btn btn-lg btn-primary btn-block" type="submit" id="registrar" name="registrar" href="#">Registrar</button>
       {if isset($error)}
         <div class="panel panel-filled panel-c-danger">

@@ -34,6 +34,7 @@
 		public static $PAGE_AGREGAR_COMENTARIO ='agregarComentario';
 		public static $PAGE_ELIMINAR_COMENTARIO= 'eliminarComentario';
 		public static $PAGE_LISTAR_COMENTARIOS= 'listarComentarios';
+		public static $PAGE_PROFESOR_COMENTARIO = 'profesorComentario';
 
 
 

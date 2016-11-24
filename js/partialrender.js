@@ -21,6 +21,7 @@ $(document).ready(function(){
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
 		$("aside nav ul li #adminListaP").on("click",CargarAjax);
 		$("aside nav ul li #adminListaM").on("click",CargarAjax);
+
 		// $("article #admin_cont").on("click",CargarAjax);
 	}
 
@@ -115,12 +116,15 @@ $(document).ready(function(){
 				ev.preventDefault();
 			});
 		});
-
+		// $(document).on("click", ".detalles", crearComentarios);
 		//ver detalle de profesor
 		$(".detalles").each(function(i,obj){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
 					$("#contenido").html(data);
+					crearComentarios();
+					agregarComentario();
+
 				});
 				// .fail(function(){
 				// 	alert("Error");
@@ -179,7 +183,7 @@ $(document).ready(function(){
 			event.preventDefault();
 			$.ajax({
 				method: 'POST',
-				url:'index.php?page=login',//logout?
+				url:'index.php?page=logout',//logout?
 				success: function(data){
 					$("#contenido").html(data);
 				},
@@ -195,6 +199,7 @@ $(document).ready(function(){
 		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
 		$(document).on("click", "#adminAgregarMateria", CargarAjax);
 		$(document).on("click", "#login", CargarAjax);
+		// $(".detalle").on("click", agregarComentario);
 
 
 
@@ -223,9 +228,70 @@ $(document).ready(function(){
 		$("#registrar").on("click",function(event){
 			registrar();
 		});
+
+		function crearComentarioHTML(comentario) {
+				$.ajax({ url: 'js/templates/comentario.mst',
+				 success: function(template) {
+					 var rendered = Mustache.render(template,comentario);
+					 $('#listaComentarios').append(rendered);
+				 }
+			 });
+			}
+
+			function crearComentarios(){
+				$.ajax({
+					method: 'GET',
+					url:'api/comentarios',
+					datatype: 'JSON',
+					success: function(comentario){
+						comentario.forEach(function(comentario){
+						 var html = crearComentarioHTML(comentario);
+						 $('#listaComentarios').append(html);
+					 });
+						console.log(comentario);
+					},
+					error: function () {
+						alert('Error al crear comentario');
+					}
+				});
+			}
+
+			var template;
+			$.ajax({ url: 'js/templates/comentario.mst',
+			 success: function(templateReceived) {
+				 template = templateReceived;
+			 }
+			});
+
+			$('#refresh').click(function(event){
+			  console.console.log(refresh);
+			  event.preventDefault();
+			  $.ajax(
+			    {
+			      method:"GET",
+			      dataType: "JSON",
+			      url: "api/comentarios",
+			      success: crearComentarios,
+			    }
+			  )
+			});
+
+// 			$('#agregarComentario').click(function(){
+//   		event.preventDefault();
+//   	$.post( "api/comentarios",$("#formComentario").serialize(), function(data) {
+//     $('#listaComentarios').html(data);
+//     $('#comentario').val('');
+// });
+// });
+
+
+
+
+
+
+
 	}//cierra el cargar eventos
 
-	// $(document).on("click","#registrar",registrar);
 	$(document).on("submit", "#registrarForm", function(){
 		function registrar(){
 			$('#registrarForm').on("submit", function(event){
@@ -249,6 +315,34 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+
+	function agregarComentario(){
+		$('#formComentario').on("submit", function(event){
+			event.preventDefault();
+			var formData = new FormData(this);
+			console.log(formData);
+			$.ajax({
+				method:'POST',
+				url: "api/comentarios",
+				data: formData,
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+					crearComentarioHTML(data);
+					$("#contenido").html(data);
+					crearComentarioHTML(data);
+					$('#email').val('');
+					$('#comentario').val('');
+					$('#puntaje').val('');
+				},
+				error: MostrarError,
+			});
+		});
+	}
+
+
 
 
 });

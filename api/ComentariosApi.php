@@ -35,13 +35,28 @@ class ComentariosApi extends Api
           }
         break;
         case 'POST':
-            if(count($argumentos)==0){
-              $error['Error'] = "El comentario no se creo";
-              //como obtener el id del profesor y del usuario?
-              // $id_profesor=$this->modelProfesor->getProfesor
-              $id_comentario = $this->model->crearComentario($_POST['id_profesor'],$_POST['id_usuario'],$_POST['comentario'],$_POST['puntaje']);
-              return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
+          if(count($argumentos)==0){
+            if(isset($_POST['id_profesor']) && isset($_POST['email']) && isset($_POST['comentario'])) {
+
+              $id_profesor = $_POST['id_profesor'];
+                print_r($id_profesor);
+              $usuario = $_POST['email'];
+                print_r($usuario);
+              $comentario = $_POST['comentario'];
+              print_r($comentario);
+
+                if(isset($_POST['puntaje'])) {
+                  $puntaje = $_POST['puntaje'];
+                }
+                else $puntaje = 0;
+                $error['Error'] = "El comentario no se creo";
+                $id_comentario = $this->modelo->crearComentario($id_profesor,$usuario,$comentario,$puntaje);
+                return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
             }
+          }
+
+
+
           break;
       default:
            return "Only accepts GET";

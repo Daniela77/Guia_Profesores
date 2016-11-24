@@ -129,6 +129,10 @@
 			$profesorController = new ProfesorController;
 			$profesorController->eliminarImagen();
 			break;
+
+		case ConfigApp::$PAGE_PROFESOR_COMENTARIO:
+			$profesorController = new ProfesorController;
+			$profesorController->mostrarComentario();
 		default:
 			echo 'Pagina no encontrada';
 			break;

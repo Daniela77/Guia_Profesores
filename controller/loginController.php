@@ -6,21 +6,14 @@
 
   class LoginController extends Controller {
     protected $loginView;
-    
+
     function __construct() {
       $this->model = new UsuarioModel();
       $this->loginView = new LoginView();
     }
 
-    // function checkLogin(){
-    //   session_start();
-    //   if(!isset($_SESSION['USER'])){
-    //     header("Location: index.php");
-    //     die();
-    //   }
-    // }
-
     function checkLogin(){
+
       session_start();
       if(!isset($_SESSION['USER'])){
         return false;
@@ -48,6 +41,7 @@
 
     function logout(){
       session_start();
+      $_SESSION=array();
       session_destroy();
       header("Location: index.php");
       die();
