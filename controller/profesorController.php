@@ -74,7 +74,7 @@
       }
 }
 
-    function agregarProfesor(){//ver que ande!!!
+    function agregarProfesor(){
       if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
         (isset($_POST['email']) && ($_POST['email'] != ''))&&
         (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&

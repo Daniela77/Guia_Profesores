@@ -1,5 +1,5 @@
 <?php
-require_once "model.php";
+include_once "model/model.php";
 
 class ComentarioModel extends Model{
 

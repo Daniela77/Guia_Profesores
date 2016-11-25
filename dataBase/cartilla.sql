@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2016 a las 16:24:14
+-- Tiempo de generación: 25-11-2016 a las 22:54:12
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -61,8 +61,7 @@ INSERT INTO `imagen` (`id_imagen`, `ruta`, `fk_id_profesor`) VALUES
 (48, 'images/58100f91933ef_google.com_.mx-profesor-jirafales3.jpg', 53),
 (50, 'images/5810d4277a65f_IMAGEN-13992173-0.jpg', 55),
 (51, 'images/5813639c632d9_IMAGEN-13992173-0.jpg', 56),
-(53, 'images/5824bc6201569_2202721.jpg', 58),
-(54, 'images/5824bc62095f0_docbrownchile.jpg', 58);
+(53, 'images/5824bc6201569_2202721.jpg', 58);
 
 -- --------------------------------------------------------
 
@@ -127,7 +126,19 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `rol_usuario`) VALUES
-(1, 'danielacolamai@gmail.com', '$2y$10$ZxjePrSdmsL6cOMhAWKRI.umyXm0tF4FkMKv/34vlSpYlL7/3sdUu', 'administrador');
+(1, 'danielacolamai@gmail.com', '$2y$10$ZxjePrSdmsL6cOMhAWKRI.umyXm0tF4FkMKv/34vlSpYlL7/3sdUu', 'administrador'),
+(2, 'dani@hotmail.com', '$2y$10$P4zyJoFnwrTkzJgibzAzgeEMaI/m0/z85dtEuc9ufwurbLBYp8f/C', 'admin'),
+(3, 'florencia@gmail.com', '$2y$10$oUmxJxq.RSUidCkLTEEtyu8tN1h/WEozKgvLw9buWWGTTR/s50ljG', 'usuario'),
+(4, 'asd@hh', '$2y$10$fTTDYnWBYRZVsJxmhfxWFeqiZqx8o1iM4Uad1CWEWpJcQateGFweG', 'usuario'),
+(5, 'maria@gmail.com', '$2y$10$UlzOaRrmMjyQyIag90Lzk.iK6i.Rd8CgZLwlp0o7X7yJhcdfOSBI.', 'usuario'),
+(6, 'hola@gmail.com', '$2y$10$bWQZE6h8u6uhQg/xUqar5uHLwkR5MAdrwK5ZgD947t6ddiRAI9to6', 'admin'),
+(7, 'pepe@gmail.com', '$2y$10$RM4Lkl1mzjwD5QCX4H6DvevX8HWP/90/4jB.V6XugqdlueB9aLGLq', 'usuario'),
+(8, 'jj@gmail.com', '$2y$10$RPryGYRiiGpJsOq8QJBmV.vUbaNrZew2aBaclI0pTzgHzyNmasgD6', 'admin'),
+(9, 'dani@gmail.com', '$2y$10$Sxh/QqDlvmv/tSm2NDqdDuTgGW7mZGnOyjnToE/YxJuf1aSZRG4cq', 'usuario'),
+(10, 'admin@admin.com', '$2y$10$8CooFCY/52fl0RFtYCGYce.6AD5rLWGgiN6Joz4Bslsnjo7C09BXi', 'Administrador'),
+(11, 'admin23@admin.com', '$2y$10$KXjGUA1FnM/FaXtiVzIT7e3My32fXuCOA4vZQ.XqmaQGs61/wE./G', 'Administrador'),
+(12, 'usuario14@admin.com', '$2y$10$QLHJhT4x2F77/cKpo2juaOK2Ee/8hwEJX0O9aTsdUdXoZmAIOYqV.', 'Usuario'),
+(13, 'usuario4@admin.com', '$2y$10$bw6UHPxKUaaZI/nXMK49n.WKdgX4RpM8uYUvgcFZHKDvktNAeKzJy', 'Usuario');
 
 --
 -- Índices para tablas volcadas
@@ -181,7 +192,7 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
@@ -196,7 +207,7 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Restricciones para tablas volcadas
 --

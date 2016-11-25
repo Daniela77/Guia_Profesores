@@ -70,7 +70,7 @@
         }
         else{
           $this->model->crearUsuario($user,$password,$rol);
-          $this->loginView->mostrarLogin([]);
+          $this->loginView->mostrarLogin();
         }
       }
       else {

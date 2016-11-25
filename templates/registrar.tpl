@@ -1,6 +1,6 @@
 <section>
   <div class="container">
-    <form class="form-signin" id = "registrarForm" method="POST" action="index.php?page=registrar" enctype="multipart/form-data">
+    <form class="form-signin" id ="registrarForm" method="POST" action="index.php?page=registrar" enctype="multipart/form-data">
       <h2 class="form-signin-heading">Registrarse</h2>
       <p>
         <label for="inputEmail" class="sr-only">Email address</label>

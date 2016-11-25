@@ -2,14 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>New Credentials</title>
+    <title>Ingreso a la base de datos</title>
   </head>
   <body>
 
-    <form id="newCredentials">
+    <form class="form-control" id="newCredentials">
+      <h2>Introdusca el host</h2>
       <input type="text" name="host" required="true">
+      <h2>Nombre de la base de datos</h2>
       <input type="text" name="dbName" required="true">
+      <h2>Nombre de usuario</h2>
       <input type="text" name="user" required="true">
+      <h2>Contraseña</h2>
       <input type="text" name="password">
       <input type="submit">
     </form>

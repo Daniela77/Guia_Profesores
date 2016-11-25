@@ -193,7 +193,7 @@ $(document).ready(function(){
 		$(document).on("click", "#adminListaM", CargarAjax);
 		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
 		$(document).on("click", "#adminAgregarMateria", CargarAjax);
-		$(document).on("click", "#registrar", CargarAjax);
+
 
 		$('#irregistrar').on('click', function(event){
 			event.preventDefault();
@@ -327,9 +327,9 @@ $(document).ready(function(){
 					processData:false,
 					success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
 						$("#contenido").html(data);
-						$('#email').val('');
-						$('#password').val('');
-						$('#rol_usuario').val('');
+						$('#inputEmail').val('');
+						$('#inputPassword').val('');
+						$('#inputRol').val('');
 					},
 					error: MostrarError,
 				});
