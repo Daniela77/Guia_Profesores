@@ -38,7 +38,7 @@
             <input type="hidden" id="id_usuario" name="id_usuario" value="{$usuario['id_usuario']}">
             <div class="form-group">
               <label for="comentario">Comentario</label>
-              <input type="text" class="form-control" id="comentario" name="comentario" value="comentario" placeholder="Deje su comentario">
+              <input type="text" class="form-control" id="comentario" name="texto" value="" placeholder="Deje su comentario">
             </div>
             <div class="form-group">
               <select id="puntaje" name="puntaje" class="custom-select" required="">
