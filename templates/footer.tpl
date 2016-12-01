@@ -35,7 +35,6 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/partialrender.js"></script>
-<script src="js/dbCredentials.js"></script>
 <script src="js/mustache.js"></script>
 </body>
 </html>

@@ -6,39 +6,24 @@
       <div class="row">
 
         <div class="col-md-6">
-          <button id="refresh" type="button" class="btn btn-default btn-xs pull-right " aria-label="Refresh">
+          <!-- <button id="refresh" type="button" class="btn btn-default btn-xs pull-right " aria-label="Refresh">
               <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-          </button>
+          </button> -->
 
           <label class="control-label" for="nombre">Comentario</label>
           <ul id="listaComentarios" class="list-group">
           </ul>
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col-md-6">
-          {if count($errores) gt 0}
-          <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h3 class="panel-title">Errores</h3>
-            </div>
-            <ul>
-              {foreach $errores as $error}
-                <li>{$error}</li>
-              {/foreach}
-            </ul>
-          </div>
-          {/if}
-        </div>
-      </div> -->
+
       <div class="row">
         <div class="col-md-6">
-          <form id="formComentario" href="api/comentario" method="POST" enctype="multipart/form-data">
+          <form id="formComentario" method="POST" enctype="multipart/form-data">
             <input type="hidden" id="id_profesor" name="id_profesor" value="{$profesor['id_profesor']}">
-            <input type="hidden" id="id_usuario" name="id_usuario" value="{$usuario['id_usuario']}">
+            <input type="hidden" id="id_usuario" name="id_usuario" value="2">
             <div class="form-group">
-              <label for="comentario">Comentario</label>
-              <input type="text" class="form-control" id="comentario" name="texto" value="" placeholder="Deje su comentario">
+              <label for="texto">Comentario</label>
+              <input type="text" class="form-control" id="texto" name="texto" value="" placeholder="Deje su comentario">
             </div>
             <div class="form-group">
               <select id="puntaje" name="puntaje" class="custom-select" required="">

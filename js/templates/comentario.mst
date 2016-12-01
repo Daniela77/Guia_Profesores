@@ -4,5 +4,5 @@
 <li id="comentario{{id}}" class="list-group-item">
   <span>{{comentario}}</span>
   <span>{{puntaje}}</span>
-  <a class="glyphicon glyphicon-trash borrar" idcomentario='{{id}}' ></a>
+  <a class="glyphicon glyphicon-trash borrar" idcomentario="{{id}}"></a>
 </li>

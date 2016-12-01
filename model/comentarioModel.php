@@ -1,14 +1,7 @@
 <?php
+  include_once "model.php";
 
-
-class ComentarioModel{
-  protected $db;
-
-  function __construct() {
-    $this->db = new PDO('mysql:host=localhost;dbname=cartilla;charset=utf8', 'root', '');
-    // $this->db = (new DbConnector)->getDbConnection();
-    $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  }
+class ComentarioModel extends Model{
 
 
 function getComentarios(){
@@ -23,14 +16,14 @@ function getComentario($id_comentario){
   return $comentario->fetch(PDO::FETCH_ASSOC);
 }
 
-function getComentarioProfesor($id_profesor){
-  $comentario = $this->db->prepare("SELECT * FROM comentario where fk_id_profesor = ?" );
-  $comentario->execute(array($id_profesor));
-  return $comentario->fetch(PDO::FETCH_ASSOC);
+function getComentariosProfesor($id_profesor){
+  $comentarios = $this->db->prepare("SELECT * FROM comentario where fk_id_profesor = ?" );
+  $comentarios->execute(array($id_profesor));
+  return $comentarios->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function eliminarComentario($id_comentario){
-  $sentencia = $this->db->prepare("delete from comentario where id_comentario=?");
+  $sentencia = $this->db->prepare("DELETE from comentario where id_comentario=?");
   $sentencia->execute(array($id_comentario));
   return $sentencia->rowCount();
 }

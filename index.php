@@ -6,23 +6,7 @@
 	include_once 'controller/profesorController.php';
 	include_once 'controller/materiaController.php';
 	include_once 'controller/loginController.php';
-	include_once('controller/DbController.php');
-
-	$dbController = new DbController();
-
-
-  	if (!$dbController->dbExists()) {
-    	if (isset($_POST["host"]) && isset($_POST['dbName']) &&
-    		isset($_POST['user']) && isset($_POST['password'])){
-
-    		$dbController->createDatabase($_POST['host'],$_POST['dbName'],$_POST['user'],$_POST['password']);
-    		die();
-    	}
-    	else {
-        	$dbController->newCredentials();
-        	die();
-    	}
-	}
+	
 
 	$loginController = new LoginController();
 	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) ||
@@ -139,8 +123,11 @@
 			$profesorController = new ProfesorController;
 			$profesorController->mostrarComentario();
 		default:
-			echo 'Pagina no encontrada';
+			$guiaController = new GuiaController();
+			$guiaController->mostrarDefault();
 			break;
+			echo 'Pagina no encontrada';
+
 		}
 	}
 ?>

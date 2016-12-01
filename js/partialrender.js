@@ -122,7 +122,6 @@ $(document).ready(function(){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
 					$("#contenido").html(data);
-					// setInterval(function() {crearComentarios()}, 2000);
 					crearComentarios();
 				});
 				ev.preventDefault();
@@ -193,7 +192,7 @@ $(document).ready(function(){
 		$(document).on("click", "#adminListaM", CargarAjax);
 		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
 		$(document).on("click", "#adminAgregarMateria", CargarAjax);
-
+		// $(document).on("click", "#registrar", registrar);
 
 		$('#irregistrar').on('click', function(event){
 			event.preventDefault();
@@ -220,12 +219,8 @@ $(document).ready(function(){
 			registrar();
 		});
 
-
-
-
 	}//cierra el cargar eventos
 
-	$(document).on("submit", "#registrarForm", function(){
 		function registrar(){
 			$('#registrarForm').on("submit", function(event){
 				event.preventDefault();
@@ -247,7 +242,6 @@ $(document).ready(function(){
 				});
 			});
 		}
-	});
 
 	function crearComentarioHTML(comentario) {
 			$.ajax({ url: 'js/templates/comentario.mst',
@@ -323,17 +317,17 @@ borrarComentario(this.getAttribute('idcomentario'));
 $('#refresh').on('click', function(event){
   event.preventDefault();
   crearComentarios();
+	setInterval(function() {crearComentarios()}, 2000);
 });
-
 
 $('body').on('click','#agregarComentario', function(event){
   event.preventDefault();
   var comentario= {
-    texto:document.getElementById("comentario").value,
+    texto:$("#texto").val(),
 		puntaje: $("#puntaje").val(),
 		id_profesor:$("#id_profesor").val()
   };
-		$('#comentario').val('');
+		$("#texto").val('');
   agregarComentario(comentario);
 });
  // crearComentarios();
