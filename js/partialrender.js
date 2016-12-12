@@ -9,7 +9,6 @@ $(document).ready(function(){
 		$("#contenido").html("SE CAYO LA RED.");
 	}
 
-	//prueba
 	function InicializarEvt() {
 		$("nav ul li").on("click",CargarAjax);
 		$(".simplenav a").on("click",CargarAjax);
@@ -276,18 +275,16 @@ $(document).ready(function(){
 		 }
 		});
 
+
 		function agregarComentario(comentario){
 		  $.ajax({
 		    method: 'POST',
 		    url:'api/comentario',
 		    datatype: 'JSON',
 		    data: comentario,
-		    success: function(idComentario){
-						console.log(idComentario);
-		      comentario.id_comentario=idComentario;
-					console.log(comentario);
-		      var html = crearComentarioHTML(comentario);
-		      $('#listaComentarios').append(html);
+		    success: function(comentario){
+
+					$("#listaComentarios").append(crearComentarioHTML(comentario));
 		    },
 		    error: function () {
 		      alert('Error al agregar comentario');
@@ -295,13 +292,19 @@ $(document).ready(function(){
 		  });
 		}
 
+
+
 		function borrarComentario(idcomentario){
 		  $.ajax({
 		    method: 'DELETE',
-		    url:'api/comentario/' + idcomentario,
+		    url:'api/comentario/'+ idcomentario,
 		    datatype: 'JSON',
-		    success: function(){
-		      $('#comentario'+idcomentario).remove();
+		    success: function(idcomentario){
+					console.log(idcomentario);
+					// $('#contenido').html(data);
+					// $('#comentario ').remove("li .list-group-item ");
+
+		      $('#comentario').remove();
 		    },
 		    error: function () {
 		      alert('Error');
@@ -309,15 +312,17 @@ $(document).ready(function(){
 		  });
 		}
 
+
 $('body').on('click','a.borrar', function(event){
 event.preventDefault();
 borrarComentario(this.getAttribute('idcomentario'));
+console.log(this.getAttribute('idcomentario'));
 });
  // $(document).ready(function(){
-$('#refresh').on('click', function(event){
+ $('#refresh').on('click', function(event){
   event.preventDefault();
   crearComentarios();
-	setInterval(function() {crearComentarios()}, 2000);
+	// setInterval(function() {crearComentarios()}, 2000);
 });
 
 $('body').on('click','#agregarComentario', function(event){
@@ -327,10 +332,12 @@ $('body').on('click','#agregarComentario', function(event){
 		puntaje: $("#puntaje").val(),
 		id_profesor:$("#id_profesor").val()
   };
-		$("#texto").val('');
+	console.log(comentario);
+	$("#texto").val('');
+	$("#puntaje").val('');
   agregarComentario(comentario);
 });
- // crearComentarios();
+  // crearComentarios();
  // });
 
 });

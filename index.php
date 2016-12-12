@@ -1,12 +1,12 @@
 <?php
-
+include_once 'db/config.php';
 	include_once 'config/configApp.php';
 	include_once 'controller/guiaController.php';
 	include_once 'controller/controller.php';
 	include_once 'controller/profesorController.php';
 	include_once 'controller/materiaController.php';
 	include_once 'controller/loginController.php';
-	
+
 
 	$loginController = new LoginController();
 	if(!array_key_exists(ConfigApp::$PAGE, $_REQUEST) ||
@@ -122,6 +122,8 @@
 		case ConfigApp::$PAGE_PROFESOR_COMENTARIO:
 			$profesorController = new ProfesorController;
 			$profesorController->mostrarComentario();
+			break;
+
 		default:
 			$guiaController = new GuiaController();
 			$guiaController->mostrarDefault();

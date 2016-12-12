@@ -1,5 +1,6 @@
 <?php
-  include_once "model.php";
+
+include_once ("../model/model.php");
 
 class ComentarioModel extends Model{
 
@@ -19,6 +20,7 @@ function getComentario($id_comentario){
 function getComentariosProfesor($id_profesor){
   $comentarios = $this->db->prepare("SELECT * FROM comentario where fk_id_profesor = ?" );
   $comentarios->execute(array($id_profesor));
+  print($comentarios);
   return $comentarios->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -27,10 +29,12 @@ function eliminarComentario($id_comentario){
   $sentencia->execute(array($id_comentario));
   return $sentencia->rowCount();
 }
-function crearComentario($id_profesor, $id_usuario,$comentario,$puntaje){
+
+function crearComentario($id_profesor,$id_usuario,$comentario,$puntaje){
   $sentencia = $this->db->prepare("INSERT INTO comentario(fk_id_profesor,fk_id_usuario,comentario,puntaje) values(?,?,?,?)");
-  $sentencia->execute(array($id_profesor, $id_usuario,$comentario,$puntaje));
-    return $this->db->lastInsertId();
+  $sentencia->execute(array($id_profesor,$id_usuario,$comentario,$puntaje));
+  $id_comentario = $this->db->lastInsertId();
+  return $id_comentario;
 }
 
 }

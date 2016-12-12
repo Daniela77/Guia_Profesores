@@ -1,8 +1,8 @@
 
 
-
-<li id="comentario{{id}}" class="list-group-item">
+<li idcomentario="comentario{{id_comentario}}" class="list-group-item">
   <span>{{comentario}}</span>
-  <span>{{puntaje}}</span>
-  <a class="glyphicon glyphicon-trash borrar" idcomentario="{{id}}"></a>
+  <strong>{{puntaje}}<span class="glyphicon glyphicon-star" aria-hidden="true"></span></strong>
+  <span>id:{{id_comentario}}</span>
+  <a class="glyphicon glyphicon-trash borrar" idcomentario="{{id_comentario}}"></a>
 </li>
