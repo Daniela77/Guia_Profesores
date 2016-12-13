@@ -294,17 +294,14 @@ $(document).ready(function(){
 
 
 
-		function borrarComentario(idcomentario){
+		function borrarComentario(idcomentario,comentario){
+
 		  $.ajax({
 		    method: 'DELETE',
 		    url:'api/comentario/'+ idcomentario,
 		    datatype: 'JSON',
-		    success: function(idcomentario){
-					console.log(idcomentario);
-					// $('#contenido').html(data);
-					// $('#comentario ').remove("li .list-group-item ");
-
-		      $('#comentario').remove();
+		    success: function(data){
+					comentario.hide("slow", function(){ comentario.remove(); });
 		    },
 		    error: function () {
 		      alert('Error');
@@ -315,9 +312,10 @@ $(document).ready(function(){
 
 $('body').on('click','a.borrar', function(event){
 event.preventDefault();
-borrarComentario(this.getAttribute('idcomentario'));
-console.log(this.getAttribute('idcomentario'));
+var comentario = $(this).parents(".comentario");
+borrarComentario(this.getAttribute('idcomentario'),comentario);
 });
+
  // $(document).ready(function(){
  $('#refresh').on('click', function(event){
   event.preventDefault();

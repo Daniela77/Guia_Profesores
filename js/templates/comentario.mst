@@ -1,6 +1,6 @@
 
 
-<li idcomentario="comentario{{id_comentario}}" class="list-group-item">
+<li  class="list-group-item comentario">
   <span>{{comentario}}</span>
   <strong>{{puntaje}}<span class="glyphicon glyphicon-star" aria-hidden="true"></span></strong>
   <span>id:{{id_comentario}}</span>
