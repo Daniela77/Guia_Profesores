@@ -11,6 +11,7 @@ function getComentarios(){
   return $comentarios->fetchAll(PDO::FETCH_ASSOC);
 }
 
+
 function getComentario($id_comentario){
   $comentario = $this->db->prepare("SELECT * FROM comentario where id_comentario = ?" );
   $comentario->execute(array($id_comentario));

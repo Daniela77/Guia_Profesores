@@ -3,14 +3,10 @@ require 'api.php';
 
 include_once("../model/comentarioModel.php");
 
-class ComentariosApi extends Api
-{
+class ComentariosApi extends Api{
   private $model;
 
-
-
-  public function __construct($request)
- {
+  public function __construct($request){
     parent::__construct($request);
     $this->model = new ComentarioModel();
   }
@@ -19,10 +15,8 @@ class ComentariosApi extends Api
 
     switch ($this->method) {
       case 'GET':
-        // var_dump($argumentos);
           if(count($argumentos)>0){
             $comentario = $this->model->getComentario($argumentos[0]);
-            // echo "hola.$comentario";
             $error['Error'] = "Ese contacto no existe";
             return ($comentario) ? $comentario : $error;
          }
@@ -54,9 +48,6 @@ class ComentariosApi extends Api
                      return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
 
                    }
-            }
-            else {
-              echo "no hay argumentos";
             }
           break;
       default:

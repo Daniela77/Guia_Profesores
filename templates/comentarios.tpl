@@ -6,10 +6,6 @@
       <div class="row">
 
         <div class="col-md-6">
-          <!-- <button id="refresh" type="button" class="btn btn-default btn-xs pull-right " aria-label="Refresh">
-              <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-          </button> -->
-
           <label class="control-label" for="nombre">Comentario</label>
           <ul id="listaComentarios" class="list-group">
           </ul>
