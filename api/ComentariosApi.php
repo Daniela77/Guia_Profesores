@@ -16,8 +16,8 @@ class ComentariosApi extends Api{
     switch ($this->method) {
       case 'GET':
           if(count($argumentos)>0){
-            $comentario = $this->model->getComentario($argumentos[0]);
-            $error['Error'] = "Ese contacto no existe";
+            $comentario = $this->model->getComentariosProfesor($argumentos[0]);
+            $error['Error'] = "Ese profesor no tiene comentarios";
             return ($comentario) ? $comentario : $error;
          }
             else{
@@ -35,10 +35,10 @@ class ComentariosApi extends Api{
         break;
         case 'POST':
           if(count($argumentos)==0){
-                 if (isset($_POST["texto"]) && ($_POST["texto"] != "")) {
+                 if (isset($_POST["texto"]) && (!empty($_POST["texto"]))) {//falta verificar que todos los campos no esten vacios
 
                    $profesor=$_POST["id_profesor"];
-                    $usuario=2;
+                    $usuario=2;//cambiar por $_POST["email"];
                     $comentario=$_POST["texto"];
                     $puntaje=$_POST["puntaje"];
                     $id_comentario = $this->model->crearComentario($profesor,$usuario,$comentario,$puntaje);

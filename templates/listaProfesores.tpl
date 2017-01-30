@@ -3,9 +3,9 @@
   <div class="fluid_container">
     <div class="row">
         <div class="col-xs-6" >
-          {if isset($mensaje)}
+          <!-- {if isset($mensaje)}
           <div class="alert alert-{$tipoMensaje}" role="alert">{$mensaje}</div>
-          {/if}
+          {/if} -->
           <h2>Lista de profesores</h2>
 
           <div class="table-responsive">

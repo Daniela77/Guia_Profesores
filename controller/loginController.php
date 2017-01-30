@@ -15,15 +15,17 @@
     function checkLogin(){
 
       session_start();
+      print_r($_SESSION);
       if(!isset($_SESSION['USER'])){
         return false;
       }
       return true;
     }
 
-    function getUsuario(){
-      // return $this->model->getUsuario($_SESSION['USER']);
-    }
+     function getUsuario(){
+    //   $user=$_SESSION["USER"];
+    //   return $this->model->getUsuario($user);
+     }
 
 
     function login(){

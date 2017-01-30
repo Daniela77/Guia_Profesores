@@ -121,11 +121,15 @@ $(document).ready(function(){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
 					$("#contenido").html(data);
-					setInterval(crearComentarios,2000);
+					var id_profesor = $("#id_profesor").val();
+					crearComentarios(id_profesor);
+					// var temporizador = setInterval(function() {crearComentarios(id_profesor)}, 2000);
+					// $.ajaxSetup({ cache: false });
 				});
 				ev.preventDefault();
 			});
 		});
+
 
 		$('.eliminarProfesor').click(function(){
 			event.preventDefault();
@@ -191,7 +195,6 @@ $(document).ready(function(){
 		$(document).on("click", "#adminListaM", CargarAjax);
 		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
 		$(document).on("click", "#adminAgregarMateria", CargarAjax);
-		// $(document).on("click", "#registrar", registrar);
 
 		$('#irregistrar').on('click', function(event){
 			event.preventDefault();
@@ -242,6 +245,8 @@ $(document).ready(function(){
 			});
 		}
 
+
+
 	function crearComentarioHTML(comentario) {
 			$.ajax({ url: 'js/templates/comentario.mst',
 			 success: function(template) {
@@ -252,11 +257,10 @@ $(document).ready(function(){
 		}
 
 
-
-		function crearComentarios(){
+		function crearComentarios(id_profesor){
 			$.ajax({
 				method: 'GET',
-				url:'api/comentario',
+				url:'api/comentario/'+id_profesor,//trae id del profesor que pertenece,
 				datatype: 'JSON',
 				success: function(comentario){
 					comentario.forEach(function(comentario){

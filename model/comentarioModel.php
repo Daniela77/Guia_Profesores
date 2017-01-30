@@ -21,7 +21,6 @@ function getComentario($id_comentario){
 function getComentariosProfesor($id_profesor){
   $comentarios = $this->db->prepare("SELECT * FROM comentario where fk_id_profesor = ?" );
   $comentarios->execute(array($id_profesor));
-  print($comentarios);
   return $comentarios->fetchAll(PDO::FETCH_ASSOC);
 }
 

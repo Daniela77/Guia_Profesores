@@ -6,6 +6,7 @@
       <div class="row">
 
         <div class="col-md-6">
+          <h3>Comentarios:</h3>
           <label class="control-label" for="nombre">Comentario</label>
           <ul id="listaComentarios" class="list-group">
           </ul>
