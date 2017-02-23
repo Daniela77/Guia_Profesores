@@ -3,22 +3,26 @@ include_once 'controller/controller.php';
 require_once 'view/materiaView.php';
 include_once 'model/profesorModel.php';
 include_once 'model/materiaModel.php';
+include_once 'controller/loginController.php';
 
 class MateriaController extends Controller{
+  private $loginController;
 
   function __construct() {
      $this->model = new MateriaModel();
      $this->modelProfesor = new ProfesorModel();
      $this->view = new MateriaView();
+     $this->loginController= new LoginController();
    }
 
    function mostrarMaterias(){
-     $this->view->mostrarMaterias($this->model->getMaterias());
+     $usuarioLogueado=$this->loginController->usuarioLogueado();
+     $this->view->mostrarMaterias($this->model->getMaterias(),$usuarioLogueado);
    }
 
-   function mostrarListaMaterias(){
-     $this->view->mostrarListaMaterias($this->model->getMaterias());
-   }
+  //  function mostrarListaMaterias(){
+  //    $this->view->mostrarListaMaterias($this->model->getMaterias());
+  //  }
 
    function mostrarMateria(){
       $id_materia=$_GET['nro'];

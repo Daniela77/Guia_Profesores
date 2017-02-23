@@ -25,10 +25,6 @@ include_once 'db/config.php';
 			$guiaController = new GuiaController;
 			$guiaController->mostrarContacto();
 			break;
-		case ConfigApp::$PAGE_LISTA_PROFESORES:
-			$profesorController = new ProfesorController;
-			$profesorController->mostrarListaProfesores();
-			break;
 		case ConfigApp::$PAGE_PROFESORES:
 			$profesorController = new ProfesorController;
 			$profesorController->mostrarProfesores();
@@ -36,10 +32,6 @@ include_once 'db/config.php';
 		case ConfigApp::$PAGE_PROFESOR:
 			$profesorController = new ProfesorController;
 			$profesorController->mostrarProfesor();
-			break;
-		case ConfigApp::$PAGE_LISTA_MATERIAS:
-		  $materiaController = new MateriaController;
-			$materiaController->mostrarListaMaterias();
 			break;
 		case ConfigApp::$PAGE_MATERIAS:
 		  $materiaController = new MateriaController;
@@ -49,7 +41,7 @@ include_once 'db/config.php';
 		  	$materiaController = new MateriaController;
 			$materiaController->mostrarMateria();
 			break;
-		case ConfigApp:: $PAGE_ADMIN:
+		case ConfigApp::$PAGE_ADMIN:
 			$guiaController = new GuiaController;
 			$guiaController->mostrarAdministrador($loginController);
 			break;
@@ -61,6 +53,7 @@ include_once 'db/config.php';
 			$materiaController = new MateriaController;
 			$materiaController->adminMaterias();
 			break;
+			//ver para optimizar las listas
 		case ConfigApp::$PAGE_ADMIN_LISTA_PROFESORES:
 			$profesorController = new ProfesorController;
 			$profesorController->mostrarProfesores();
@@ -118,12 +111,6 @@ include_once 'db/config.php';
 			$profesorController = new ProfesorController;
 			$profesorController->eliminarImagen();
 			break;
-
-		case ConfigApp::$PAGE_PROFESOR_COMENTARIO:
-			$profesorController = new ProfesorController;
-			$profesorController->mostrarComentario();
-			break;
-
 		default:
 			$guiaController = new GuiaController();
 			$guiaController->mostrarDefault();

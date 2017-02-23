@@ -1,6 +1,8 @@
 <?php
-  include_once 'view/view.php';
-  include_once 'libs/Smarty.class.php';
+  // include_once 'view/view.php';
+  // include_once 'libs/Smarty.class.php';
+  include_once(dirname(__DIR__).'/view/view.php');
+  include_once(dirname(__DIR__).'/libs/Smarty.class.php');
 
   class View{
       protected $smarty;

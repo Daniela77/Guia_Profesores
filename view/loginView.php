@@ -1,5 +1,6 @@
 <?php
-include_once 'view/View.php';
+// include_once 'view/View.php';
+include_once(dirname(__DIR__).'/view/view.php');
 
 class LoginView extends View{
 

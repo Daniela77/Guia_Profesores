@@ -3,6 +3,7 @@
 <li  class="list-group-item comentario">
   <span>{{comentario}}</span>
   <strong>{{puntaje}}<span class="glyphicon glyphicon-star" aria-hidden="true"></span></strong>
-  <span>id:{{id_comentario}}</span>
-  <a class="glyphicon glyphicon-trash borrar" idcomentario="{{id_comentario}}"></a>
+  {{#admin}}
+    <a class="glyphicon glyphicon-trash borrar" idcomentario="{{id_comentario}}"></a>
+  {{/admin}}
 </li>

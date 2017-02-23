@@ -28,7 +28,9 @@
                     <div class="slides">
                     {foreach from=$profesor['imagenes'] key=index item=imagen}
                       <img src="{$imagen['ruta']}" alt=""  class="img-thumbnail">
-                      <button class="btn btn-danger btn-xs eliminarImagen" type="button" data-imgruta="{$imagen['ruta']}">Eliminar</button>
+                      {if $admin=='Administrador'}
+                        <button class="btn btn-danger btn-xs eliminarImagen" type="button" data-imgruta="{$imagen['ruta']}">Eliminar</button>
+                      {/if}
                     {/foreach}
                     </div>
                   </td>
@@ -38,8 +40,10 @@
                   <td>{$profesor['materia']['nombre']}</td>
                   <td>${$profesor['precio']}</td>
                   <td>{$profesor['tipoDeClase']}</td>
-                  <td><a class="eliminarProfesor" href="index.php?page=adminEliminarProfesor&id_profesor={$profesor['id_profesor']}" data-idprofesor="{$profesor['id_profesor']}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-                  <td><a class="modificarProfesor" data-nombreCompleto="{$profesor['nombreCompleto']}" data-idprofesor="{$profesor['id_profesor']}" data-email="{$profesor['email']}"data-telefono="{$profesor['telefono']}" data-idmateria="{$profesor['id_materia']}" data-precio="{$profesor['precio']}"  data-tipoDeClase="{$profesor['tipoDeClase']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                  {if $admin=='Administrador'}
+                      <td><a class="eliminarProfesor" href="index.php?page=adminEliminarProfesor&id_profesor={$profesor['id_profesor']}" data-idprofesor="{$profesor['id_profesor']}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                      <td><a class="modificarProfesor" data-nombreCompleto="{$profesor['nombreCompleto']}" data-idprofesor="{$profesor['id_profesor']}" data-email="{$profesor['email']}"data-telefono="{$profesor['telefono']}" data-idmateria="{$profesor['id_materia']}" data-precio="{$profesor['precio']}"  data-tipoDeClase="{$profesor['tipoDeClase']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                  {/if}
                   <td><a href="index.php?page=profesor" data-idprofesor="{$profesor['id_profesor']}"class="detalles" id="profesor"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
       			  {/foreach}
               </tbody>

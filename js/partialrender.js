@@ -327,7 +327,8 @@ $('body').on('click','#agregarComentario', function(event){
   var comentario= {
     texto:$("#texto").val(),
 		puntaje: $("#puntaje").val(),
-		id_profesor:$("#id_profesor").val()
+		id_profesor:$("#id_profesor").val(),
+		id_usuario:$("#id_usuario").val()
   };
 	console.log(comentario);
 	$("#texto").val('');

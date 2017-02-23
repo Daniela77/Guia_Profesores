@@ -1,31 +1,59 @@
 <?php
-  include_once 'controller/controller.php';
-  include_once 'controller/guiaController.php';
-  include_once 'view/loginView.php';
-  include_once 'model/usuarioModel.php';
+  // include_once 'controller/controller.php';
+  // include_once 'controller/guiaController.php';
+  // include_once 'view/loginView.php';
+  // include_once 'model/usuarioModel.php';
+  include_once(dirname(__DIR__).'/model/usuarioModel.php');
+  include_once(dirname(__DIR__).'/controller/controller.php');
+  include_once(dirname(__DIR__).'/controller/guiaController.php');
+  include_once(dirname(__DIR__).'/view/loginView.php');
 
   class LoginController extends Controller {
     protected $loginView;
+    protected $Autenticacion;
 
     function __construct() {
       $this->model = new UsuarioModel();
       $this->loginView = new LoginView();
+      error_reporting(E_ALL ^ E_NOTICE);
     }
 
     function checkLogin(){
 
       session_start();
-      print_r($_SESSION);
+      //  print_r($_SESSION);
       if(!isset($_SESSION['USER'])){
         return false;
       }
       return true;
     }
 
-     function getUsuario(){
-    //   $user=$_SESSION["USER"];
-    //   return $this->model->getUsuario($user);
-     }
+//     public function checkLogin(){
+//   session_start();
+//     print_r($_SESSION);
+//   if(!isset($_SESSION['USER'])){
+//     header("Location: index.php");
+//     die();
+//   }
+//   else{
+//     if($_SESSION['ADMIN']){
+//       $this->Autenticacion=ADMIN;
+//       return $this->Autenticacion;
+//     }
+//     else{
+//       $this->Autenticacion=USER;
+//       return $this->Autenticacion;}
+//   }
+// }
+
+     function usuarioLogueado(){
+      session_start();
+      if(isset($_SESSION['USER'])) {
+        $usuario = $this->model->getUsuario($_SESSION['USER']);
+      // print($usuario);
+            return $usuario;
+        }
+      }
 
 
     function login(){
@@ -37,7 +65,7 @@
         if (password_verify($password, $passwordRegistrada)){
           // session_start();
           $_SESSION["USER"] = $user;
-          // $_SESSION["expire"] = time();
+          $_SESSION['ADMIN'] = $usuarioRegistrado["rol_usuario"];
           return true;
         }
         else $this->loginView->MostrarError("Usuario o contraseña incorrectos");
@@ -48,7 +76,7 @@
 
     function logout(){
       session_start();
-      $_SESSION=array();
+      // $_SESSION=array();
       session_destroy();
       header("Location: index.php");
       die();
@@ -79,5 +107,24 @@
         $this->loginView->MostrarError("Campos incompletos¡¡¡¡");
       }
     }
+
+   function getRol(){
+        session_start();
+        if(!isset($_SESSION['USER']) && !empty($_SESSION['USER'])){
+          var_dump($_SESSION['USER']);
+          return "visitante";
+        }
+
+        if($_SESSION['ADMIN']==Administrador){
+          $this->Autenticacion=ADMIN;
+          return $this->Autenticacion;
+        }
+        else {
+          $this->Autenticacion=USER;
+          return $this->Autenticacion;
+        }
+
+      }
+
   }
 ?>

@@ -7,8 +7,8 @@
         <div class="panel-body">
           <p class="simplenav">
             <a href="index.php?page=inicio">Inicio</a>|
-            <a href="index.php?page=listaProfesores">Profesores</a>|
-            <a href="index.php?page=listaMaterias">Materias</a>|
+            <a href="index.php?page=profesores">Profesores</a>|
+            <a href="index.php?page=materias">Materias</a>|
             <a href="index.php?page=contacto">Contacto</a>|
             <a href="index.php?page=admin">Administrador</a>
           </p>

@@ -3,13 +3,10 @@
 
   class MateriaView extends View{
 
-    function mostrarListaMaterias($materias){
+    function mostrarMaterias($materias,$usuarioLogueado){
       $this->smarty->assign('materias', $materias);
-      $this->smarty->display('listaMaterias.tpl');
-    }
-
-    function mostrarMaterias($materias){
-      $this->smarty->assign('materias', $materias);
+      $this->smarty->assign('usuario',$usuarioLogueado);
+      $this->smarty->assign('admin',$usuarioLogueado['rol_usuario']);
       $this->smarty->display('materias.tpl');
     }
 
@@ -17,12 +14,6 @@
       $this->smarty->assign('profesores', $profesores);
       $this->smarty->assign('materia', $materia);
       $this->smarty->display('materia.tpl');
-    }
-
-
-    function getmateriasLista($materias){//ver que funcione ,sino cambiar tpl a mostrar
-      $this->smarty->assign('materias',$materias);
-      $this->smarty->display('admin.tpl');
     }
 
     function mostrarAdminMaterias(){

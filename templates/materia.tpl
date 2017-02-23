@@ -3,9 +3,10 @@
     <div class="fluid_container">
       <div class="row">
         <div class="col-xs-6" >
-          <h2>Materia</h2>
-          <ul>
-            <li>{$materia['nombre']}</li>
+          <h2>Profesores que dictan la materia:</h2>
+
+          <ul class="list-group">
+            <li class="list-group-item active-custom"><strong class="color-white">{$materia['nombre']}</strong></li>
           </ul>
           <div class="profesoresPorMateria">
             <h2>Lista de profesores</h2>

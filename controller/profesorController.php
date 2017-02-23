@@ -7,152 +7,139 @@
 
   class ProfesorController extends Controller{
       private $loginController;
-    function __construct() {
-      $this->model = new ProfesorModel();
-      $this->view = new ProfesorView();
-      $this->modelMaterias = new MateriaModel();
-      $this->loginController= new LoginController();
-      $this->loginController->checkLogin();
-     }
 
-     function adminProfesores(){
-       $this->view->mostrarAdminProfesores($this->modelMaterias->getMaterias(),$this->model->getProfesores());
-     }
-
-     function buscarProfesoresMat(){
-       $id_materia = $_POST['id_materia'];
-       $profesores = $this->model->buscarProfesoresMat($id_materia);
-      //  $materias = $this->modelMaterias->getMaterias();
-       if (count($profesores)>0) {
-         $mensaje = "Su busqueda fue exitosa!";
-       }else {
-         $mensaje = "No hay profesores para esa materia";
+      function __construct() {
+        $this->model = new ProfesorModel();
+        $this->view = new ProfesorView();
+        $this->modelMaterias = new MateriaModel();
+        $this->loginController= new LoginController();
+        $this->loginController->checkLogin();
        }
 
-       $this->view->mostrarProfesores($profesores,$mensaje);
-     }
+       function adminProfesores(){
+         $this->view->mostrarAdminProfesores($this->modelMaterias->getMaterias(),$this->model->getProfesores());
+       }
 
-    function mostrarProfesores(){
-      $profesores=$this->model->getProfesores();
-      $materias=$this->modelMaterias->getMaterias();
-      foreach  ($profesores as $key => $profesor){
-        $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
-        $profesores[$key] = $profesor;
+
+      function mostrarProfesores(){
+        $profesores=$this->model->getProfesores();
+        $materias=$this->modelMaterias->getMaterias();
+        $usuarioLogueado=$this->loginController->usuarioLogueado();
+        // var_dump($usuarioLogueado['rol_usuario']);
+        foreach  ($profesores as $key => $profesor){
+          $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
+          $profesores[$key] = $profesor;
+        }
+        $this->view->mostrarProfesores($profesores,$materias,$usuarioLogueado);
       }
-      $this->view->mostrarProfesores($profesores,$materias);
-    }
 
-    function mostrarListaProfesores(){
-      $profesores=$this->model->getProfesores();
-      $materias=$this->modelMaterias->getMaterias();
-      foreach  ($profesores as $key => $profesor){
-        $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
-        $profesores[$key] = $profesor;
-      }
-      $this->view->mostrarListaProfesores($profesores,$materias);
-    }
-
-    function mostrarProfesor(){
-      // if (isset($_GET['nro'])) {
-      $id_profesor=$_GET['nro'];
-      // }
-
-      $profesor=$this->model->getProfesor($id_profesor);
-      $profesor['materia'] =$this->modelMaterias->getMateriaById($profesor['id_materia']);
-      $profesor['imagenes'] =$this->model->getImagenes($id_profesor);
-      $this->view->mostrarProfesor($profesor);
-    }
-
-    function mostrarComentario () {
-      if (isset($_GET['id_profesor'])) {
-        $id_profesor = $_GET['id_profesor'];
+      function mostrarProfesor(){
+        // if (isset($_GET['nro'])) {
+        $id_profesor=$_GET['nro'];
+        // }
         $profesor=$this->model->getProfesor($id_profesor);
-        $this->vista->mostrarComentario($profesor);
+        $profesor['materia'] =$this->modelMaterias->getMateriaById($profesor['id_materia']);
+        $profesor['imagenes'] =$this->model->getImagenes($id_profesor);
+        $usuarioLogueado=$this->loginController->usuarioLogueado();
+        $this->view->mostrarProfesor($profesor,$usuarioLogueado);
       }
-}
 
-    function agregarProfesor(){
-      if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
-        (isset($_POST['email']) && ($_POST['email'] != ''))&&
-        (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
-        (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
-        (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
-        (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
-        $nombreCompleto= $_POST['nombreCompleto'];
-        $email= $_POST['email'];
-        $telefono= $_POST['telefono'];
-        $materia= $_POST['materia'];
-        $precio= $_POST['precio'];
-        $tipoDeClase= $_POST['tipoDeClase'];
-          if(isset($_FILES['imagenes'])){
-            $imagenesVerificadas = $this->getImagenesVerificadas($_FILES['imagenes']);
-            if(count($imagenesVerificadas)>0){
+      function agregarProfesor(){
+        if(isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
+          (isset($_POST['email']) && ($_POST['email'] != ''))&&
+          (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
+          (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
+          (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
+          (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != ''))){
+          $nombreCompleto= $_POST['nombreCompleto'];
+          $email= $_POST['email'];
+          $telefono= $_POST['telefono'];
+          $materia= $_POST['materia'];
+          $precio= $_POST['precio'];
+          $tipoDeClase= $_POST['tipoDeClase'];
+            if(isset($_FILES['imagenes'])){
+              $imagenesVerificadas = $this->getImagenesVerificadas($_FILES['imagenes']);
+              if(count($imagenesVerificadas)>0){
 
-              $this->model->crearProfesor($nombreCompleto, $email, $telefono, $materia, $precio, $tipoDeClase,$imagenesVerificadas);
-              $this->view->mostrarMensaje("La tarea se creo con imagen y todo!", "success");
+                $this->model->crearProfesor($nombreCompleto, $email, $telefono, $materia, $precio, $tipoDeClase,$imagenesVerificadas);
+                $this->view->mostrarMensaje("El profesor se creo con imagen y todo!", "success");
+              }
+              else{
+                $this->view->mostrarMensaje("Error con las imagenes", "danger");
+              }
             }
             else{
-              $this->view->mostrarMensaje("Error con las imagenes", "danger");
+                $this->view->mostrarMensaje("La imagen es requerida","danger");
             }
-          }
-          else{
-              $this->view->mostrarMensaje("La imagen es requerida","danger");
-          }
-         }
-      $this->mostrarProfesores();
-      }
-
-    function eliminarProfesor(){
-        $key = $_GET['id_profesor'];
-        $this->model->eliminarProfesor($key);
-        $profesores = $this->model->getProfesores();
+           }
         $this->mostrarProfesores();
+        }
+
+      function eliminarProfesor(){
+          $key = $_GET['id_profesor'];
+          $this->model->eliminarProfesor($key);
+          $profesores = $this->model->getProfesores();
+          $this->mostrarProfesores();
+        }
+
+      function getImagenesVerificadas($imagenes){
+        $imagenesVerificadas = [];
+        for ($i=0; $i < count($imagenes['size']); $i++) {
+          if($imagenes['size'][$i]>0 && $imagenes['type'][$i]=="image/jpeg"){
+              $imagen_aux = [];
+              $imagen_aux['tmp_name']=$imagenes['tmp_name'][$i];
+              $imagen_aux['name']=$imagenes['name'][$i];
+              $imagenesVerificadas[]=$imagen_aux;
+          }
+        }
+        return $imagenesVerificadas;
       }
 
-    function getImagenesVerificadas($imagenes){
-      $imagenesVerificadas = [];
-      for ($i=0; $i < count($imagenes['size']); $i++) {
-        if($imagenes['size'][$i]>0 && $imagenes['type'][$i]=="image/jpeg"){
-            $imagen_aux = [];
-            $imagen_aux['tmp_name']=$imagenes['tmp_name'][$i];
-            $imagen_aux['name']=$imagenes['name'][$i];
-            $imagenesVerificadas[]=$imagen_aux;
+
+      function eliminarImagen() {
+        if(isset($_POST['imgruta'])) {
+          $this->model->eliminarImagen($_POST['imgruta']);
+          $this->mostrarProfesores();
         }
       }
-      return $imagenesVerificadas;
-    }
 
-
-    function eliminarImagen() {
-      if(isset($_POST['imgruta'])) {
-        $this->model->eliminarImagen($_POST['imgruta']);
-        $this->mostrarProfesores();
-      }
-    }
-
-    function editarProfesor(){
-       if(isset($_POST['id_profesor']) && ($_POST['id_profesor'] != '')&&
-         (isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
-         (isset($_POST['email']) && ($_POST['email'] != ''))&&
-         (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
-         (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
-         (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
-         (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != '')))){
-         $this->modificarProfesor();
+      function editarProfesor(){
+         if(isset($_POST['id_profesor']) && ($_POST['id_profesor'] != '')&&
+           (isset($_POST['nombreCompleto'])&&($_POST['nombreCompleto'] != '')&&
+           (isset($_POST['email']) && ($_POST['email'] != ''))&&
+           (isset($_POST['telefono']) && ($_POST['telefono'] != ''))&&
+           (isset($_POST['materia']) && ($_POST['materia'] != ''))&&
+           (isset($_POST['precio'])&&($_POST['precio'] != ''))&&
+           (isset($_POST['tipoDeClase'])&&($_POST['tipoDeClase'] != '')))){
+           $this->modificarProfesor();
+         }
        }
-     }
 
-   function modificarProfesor(){
-       $id_profesor = $_POST['id_profesor'];
-       $nombreCompleto= $_POST['nombreCompleto'];
-       $email= $_POST['email'];
-       $telefono= $_POST['telefono'];
-       $materia= $_POST['materia'];
-       $precio= $_POST['precio'];
-       $tipoDeClase= $_POST['tipoDeClase'];
-       //FALTA IMAGENES
-       $this->model->actualizarProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase);
-       $this->mostrarProfesores();
-     }
+     function modificarProfesor(){
+         $id_profesor = $_POST['id_profesor'];
+         $nombreCompleto= $_POST['nombreCompleto'];
+         $email= $_POST['email'];
+         $telefono= $_POST['telefono'];
+         $materia= $_POST['materia'];
+         $precio= $_POST['precio'];
+         $tipoDeClase= $_POST['tipoDeClase'];
+         //FALTA IMAGENES
+         if(isset($_FILES['imagenes'])){
+           $imagenesVerificadas = $this->getImagenesVerificadas($_FILES['imagenes']);
+           if(count($imagenesVerificadas)>0){
+             $this->model->actualizarProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase,$imagenesVerificadas);
+            //  $this->model->crearProfesor($nombreCompleto, $email, $telefono, $materia, $precio, $tipoDeClase,$imagenesVerificadas);
+             $this->view->mostrarMensaje("El profesor se modifico con imagen y todo!", "success");
+           }
+           else{
+             $this->view->mostrarMensaje("Error con las imagenes", "danger");
+           }
+         }
+         else{
+             $this->view->mostrarMensaje("La imagen es requerida","danger");
+         }
+        //  $this->model->actualizarProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase);
+         $this->mostrarProfesores();
+       }
   }
 ?>

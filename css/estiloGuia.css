@@ -1,15 +1,7 @@
 
-/*body{
-   font-family:"Florence-Regular", Helvetica, Arial, sans-serif;
-}*/
-
 div #mostrarForm{
   display:none;
 }
-/*
-h1,h2,h3 {
-  font-family: "HappyTime";
-}*/
 
 td,th {
     display: table-cell;
@@ -75,15 +67,9 @@ width: 830px;
  padding-bottom: 20px;
 }
 
-.SohpV2 video.sohpVid, .SohpV2 .sohpImage {
-   /* border-bottom: 5px solid #f07d00; */
-   bottom: 0;
-   left: 0;
-   min-height: 100%;
-   /* min-width: 980px; */
-   /* position: absolute; */
-   width: 100%;
-}
+/*li{
+  list-style: none;
+}*/
 
 .container-form{
  width: 50%;
