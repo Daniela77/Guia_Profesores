@@ -1,9 +1,12 @@
 
 
-<li  class="list-group-item comentario">
+<li class="list-group-item comentario">
   <span>{{comentario}}</span>
   <strong>{{puntaje}}<span class="glyphicon glyphicon-star" aria-hidden="true"></span></strong>
-  {{#admin}}
+{{#admin}}
     <a class="glyphicon glyphicon-trash borrar" idcomentario="{{id_comentario}}"></a>
+
+    <a class="glyphicon glyphicon-pencil modificarComentario" data-comentario="{{comentario}}" data-idcomentario="{{id_comentario}}"><span aria-hidden="true"></span></a>
   {{/admin}}
+
 </li>

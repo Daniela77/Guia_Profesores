@@ -10,11 +10,12 @@
           </ul>
         </div>
       </div>
-      <div class="row">
+      <div class="row coment">
         <div class="col-md-6">
           <form id="formComentario" method="POST" enctype="multipart/form-data">
             <input type="hidden" id="id_profesor" name="id_profesor" value="{$profesor['id_profesor']}">
             <input type="hidden" id="id_usuario" name="id_usuario" value="{$usuario['id_usuario']}">
+            <input type="hidden" id="id_comentario" name="id_comentario" value="{$comentario['id_comentario']}">
             <div class="form-group">
               <label for="texto">Comentario</label>
               <input type="text" class="form-control" id="texto" name="texto" value="" placeholder="Deje su comentario">

@@ -63,5 +63,11 @@ function crearComentario($id_profesor,$id_usuario,$comentario,$puntaje){
   return $id_comentario;
 }
 
+// function editarComentario($id_comentario,$comentario){
+//      $sentencia = $this->db->prepare("UPDATE comentario set comentario  =? where id_comentario=?");
+//      $sentencia->execute(array($comentario,$id_comentario));
+//      return $sentencia->rowCount();
+// }
+
 }
 ?>

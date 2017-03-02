@@ -26,7 +26,7 @@ include_once 'db/config.php';
 			$guiaController->mostrarContacto();
 			break;
 		case ConfigApp::$PAGE_PROFESORES:
-			$profesorController = new ProfesorController;
+			$profesorController = new ProfesorController();
 			$profesorController->mostrarProfesores();
 			break;
 		case ConfigApp::$PAGE_PROFESOR:

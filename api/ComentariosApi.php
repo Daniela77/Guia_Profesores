@@ -27,9 +27,9 @@ class ComentariosApi extends Api{
     switch ($this->method) {
       case 'GET':
           if(count($argumentos)>0){
-          // var_dump($this->loginController->getRol());
-            //  $comentario = $this->model->getComentariosProfesor($argumentos[0],$this->loginController->getRol());
-            $comentario = $this->model->getComentariosProfesor($argumentos[0]);
+
+            $comentario = $this->model->getComentariosProfesor($argumentos[0],$this->loginController->getRol());
+            // $comentario = $this->model->getComentariosProfesor($argumentos[0]);
             $error['Error'] = "Ese profesor no tiene comentarios";
             return ($comentario) ? $comentario : $error;
          }
@@ -48,14 +48,16 @@ class ComentariosApi extends Api{
         break;
 
         case 'POST':
-          // if(in_array($this->loginController->checkLogin(),$this->Autenticacion) && count($argumentos)==0){
-          if(count($argumentos)==0){
+          // var_dump($this->loginController->checkLogin());
+          //    var_dump($this->Autenticacion);
+          if(in_array($this->loginController->checkLogin(),$this->Autenticacion) && count($argumentos)==0){
+          // if(count($argumentos)==0){
                  if (isset($_POST["texto"]) && (!empty($_POST["texto"]))
                  && isset($_POST["id_profesor"]) && (!empty($_POST["id_profesor"]))
-                //  && isset($_POST["id_usuario"]) && (!empty($_POST["id_usuario"]))
+                 && isset($_POST["id_usuario"]) && (!empty($_POST["id_usuario"]))
                  && isset($_POST["puntaje"]) && (!empty($_POST["puntaje"]))) {
 
-                   $profesor=$_POST["id_profesor"];
+                    $profesor=$_POST["id_profesor"];
                     $usuario=$_POST["id_usuario"];
                     $comentario=$_POST["texto"];
                     $puntaje=$_POST["puntaje"];
@@ -67,6 +69,7 @@ class ComentariosApi extends Api{
 
                    }
             }
+              return ERROR;
           // }
           break;
 

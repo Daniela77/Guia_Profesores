@@ -20,7 +20,6 @@ $(document).ready(function(){
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
 		$("aside nav ul li #adminListaP").on("click",CargarAjax);
 		$("aside nav ul li #adminListaM").on("click",CargarAjax);
-
 		// $("article #admin_cont").on("click",CargarAjax);
 	}
 
@@ -221,7 +220,17 @@ $(document).ready(function(){
 			registrar();
 		});
 
+		// $('body').off().on('click','.modificarComentario').click(function(){
+		// 	$(".coment").toggle('slow');
+		// 	event.preventDefault();
+		// 	$('#id_comentario').val($(this).attr("data-idcomentario"));
+		// 	$('#comentario').val($(this).attr("data-comentario"));
+		// 	// $('#puntaje').val($(this).attr("data-puntaje"));
+		// });
+
+
 	}//cierra el cargar eventos
+
 
 		function registrar(){
 			$('#registrarForm').on("submit", function(event){
@@ -313,7 +322,6 @@ $(document).ready(function(){
 		    }
 		  });
 		}
-
 
 $('body').on('click','a.borrar', function(event){
 event.preventDefault();

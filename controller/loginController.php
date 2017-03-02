@@ -18,33 +18,33 @@
       error_reporting(E_ALL ^ E_NOTICE);
     }
 
-    function checkLogin(){
+    // function checkLogin(){
+    //
+    //   session_start();
+    //   //  print_r($_SESSION);
+    //   if(!isset($_SESSION['USER'])){
+    //     return false;
+    //   }
+    //   return true;
+    // }
 
-      session_start();
-      //  print_r($_SESSION);
-      if(!isset($_SESSION['USER'])){
-        return false;
+    public function checkLogin(){
+        session_start();
+        print_r($_SESSION);
+        if(!isset($_SESSION['USER'])){
+          return false;
+          //VER UN USUARIO POR DEFECTO
+        }
+        else{
+          if($_SESSION['ADMIN']){
+            $this->Autenticacion=ADMIN;
+            return $this->Autenticacion;
+          }
+          else{
+            $this->Autenticacion=USER;
+            return $this->Autenticacion;}
+        }
       }
-      return true;
-    }
-
-//     public function checkLogin(){
-//   session_start();
-//     print_r($_SESSION);
-//   if(!isset($_SESSION['USER'])){
-//     header("Location: index.php");
-//     die();
-//   }
-//   else{
-//     if($_SESSION['ADMIN']){
-//       $this->Autenticacion=ADMIN;
-//       return $this->Autenticacion;
-//     }
-//     else{
-//       $this->Autenticacion=USER;
-//       return $this->Autenticacion;}
-//   }
-// }
 
      function usuarioLogueado(){
       session_start();

@@ -3,6 +3,10 @@ div #mostrarForm{
   display:none;
 }
 
+/*div .coment{
+  display:none;
+}*/
+
 td,th {
     display: table-cell;
 }
