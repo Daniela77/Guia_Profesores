@@ -126,5 +126,27 @@
 
       }
 
+      function administrarUsuarios(){
+        if(isset($_POST['admin'])&& !empty($_POST['admin'])){
+          $adminsUI=$_POST['admin'];
+          $arrAdminsDB= $this->model->getAdministradores();
+          foreach ($adminsUI as $adminUI){
+            if(!in_array($adminUI,$arrAdminsDB))
+              $this->model->editarUsuario($adminUI);
+          }
+          foreach ($arrAdminsDB as $adminDB){
+            if(!in_array($adminDB,$adminsUI))
+              $this->model->editarUsuario($adminDB);
+          }
+        }
+      }
+
+
+      function IrAdminConfig(){
+        $usuarios = $this->model->getUsuarios();
+        $admin = $this->model->getAdministradores();
+        $this->loginView->IrAdminConfig($usuarios,$admin);
+      }
+
   }
 ?>

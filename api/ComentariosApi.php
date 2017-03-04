@@ -53,34 +53,28 @@ class ComentariosApi extends Api{
           if(in_array($this->loginController->checkLogin(),$this->Autenticacion) && count($argumentos)==0){
           // if(count($argumentos)==0){
                  if (isset($_POST["texto"]) && (!empty($_POST["texto"]))
-                 && isset($_POST["id_profesor"]) && (!empty($_POST["id_profesor"]))
-                 && isset($_POST["id_usuario"]) && (!empty($_POST["id_usuario"]))
-                 && isset($_POST["puntaje"]) && (!empty($_POST["puntaje"]))) {
+                     && isset($_POST["id_profesor"]) && (!empty($_POST["id_profesor"]))
+                     && isset($_POST["id_usuario"]) && (!empty($_POST["id_usuario"]))
+                     && isset($_POST["puntaje"]) && (!empty($_POST["puntaje"]))) {
 
-                    $profesor=$_POST["id_profesor"];
-                    $usuario=$_POST["id_usuario"];
-                    $comentario=$_POST["texto"];
-                    $puntaje=$_POST["puntaje"];
-                    $id_comentario = $this->model->crearComentario($profesor,$usuario,$comentario,$puntaje);
-                    $error['Error'] = "El comentario no se creo";
-                      // $success['Success'] = "El comentario se creo";
-                      // return($id_comentario==1) ? $success : $error;
-                     return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
-
+                      $profesor=$_POST["id_profesor"];
+                      $usuario=$_POST["id_usuario"];
+                      $comentario=$_POST["texto"];
+                      $puntaje=$_POST["puntaje"];
+                      $id_comentario = $this->model->crearComentario($profesor,$usuario,$comentario,$puntaje);
+                      $error['Error'] = "El comentario no se creo";
+                        // $success['Success'] = "El comentario se creo";
+                        // return($id_comentario==1) ? $success : $error;
+                       return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
                    }
-            }
-              return ERROR;
+            }return ERROR;
           // }
           break;
-
       default:
            return "Verbo no soportado";
         break;
     }
    }
-
-
-
 }
 
 

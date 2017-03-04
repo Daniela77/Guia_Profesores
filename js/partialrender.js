@@ -20,6 +20,8 @@ $(document).ready(function(){
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
 		$("aside nav ul li #adminListaP").on("click",CargarAjax);
 		$("aside nav ul li #adminListaM").on("click",CargarAjax);
+		// $("aside nav ul li #adminListaU").on("click",CargarAjax);
+
 		// $("article #admin_cont").on("click",CargarAjax);
 	}
 
@@ -194,6 +196,8 @@ $(document).ready(function(){
 		$(document).on("click", "#adminListaM", CargarAjax);
 		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
 		$(document).on("click", "#adminAgregarMateria", CargarAjax);
+		// $(document).on("click", "#adminListaU", CargarAjax);
+
 
 		$('#irregistrar').on('click', function(event){
 			event.preventDefault();
@@ -220,13 +224,59 @@ $(document).ready(function(){
 			registrar();
 		});
 
-		// $('body').off().on('click','.modificarComentario').click(function(){
-		// 	$(".coment").toggle('slow');
-		// 	event.preventDefault();
-		// 	$('#id_comentario').val($(this).attr("data-idcomentario"));
-		// 	$('#comentario').val($(this).attr("data-comentario"));
-		// 	// $('#puntaje').val($(this).attr("data-puntaje"));
-		// });
+		// $(document).on('click','#adminListaU',function(e){
+    //     e.preventDefault();
+    //     $.get( "index.php?page=irAdminConfig", function(data) {
+    //         $('#contenido').html(data);
+    //     });
+    // });
+
+
+// 		$(document).on('submit','.adminUsuarios',(function(e) {
+// 		e.preventDefault();
+// 		var formData = new FormData(this);
+// 		$.ajax({
+// 				type:'POST',
+// 				url: $(this).attr('page'),
+// 				data:formData,
+// 				cache:false,
+// 				contentType: false,
+// 				processData: false,
+// 				success:function(data){
+// 						$('#contenido').html(data);
+// 				},
+// 				error: function(data){
+// 					 alert("error");
+// 						console.log(data);
+// 				}
+// 		});
+// }));
+
+
+// $(document).on('submit', '.AdmOrUser', function (e) {
+//         e.preventDefault();
+//         var formData = new FormData(this);
+//         $.ajax({
+//             type: 'POST',
+//             url: $(this).attr('page'),
+//             data: formData,
+//             cache: false,
+//             contentType: false,
+//             processData: false,
+//             success: function (data) {
+//                 $('.AdmOrUser').html(data);
+//                 not(':button, :submit, :reset, :hidden')
+//                     .val('');
+//                 $("input[type=checkbox]").each(function () {
+//                     this.checked = false;
+//                 });
+//             },
+//             error: function (data) {
+//                 alert("error");
+//                 console.log(data);
+//             }
+//         });
+//     });
 
 
 	}//cierra el cargar eventos

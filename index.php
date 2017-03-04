@@ -111,6 +111,14 @@ include_once 'db/config.php';
 			$profesorController = new ProfesorController;
 			$profesorController->eliminarImagen();
 			break;
+		// case ConfigApp::$PAGE_ADMI_USUARIOS:
+		// 	$loginController = new LoginController;
+		// 	$loginController->administrarUsuarios();;
+		// 	break;
+		// case ConfigApp::$PAGE_IR_ADMIN_CONFIG:
+		// 	$loginController = new LoginController;
+		// 	$loginController->IrAdminConfig();
+		// 	break;
 		default:
 			$guiaController = new GuiaController();
 			$guiaController->mostrarDefault();
