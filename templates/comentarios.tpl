@@ -10,6 +10,7 @@
           </ul>
         </div>
       </div>
+        {if $usuario['rol_usuario']=='Administrador'}
       <div class="row coment">
         <div class="col-md-6">
           <form id="formComentario" method="POST" enctype="multipart/form-data">
@@ -33,4 +34,5 @@
           </form>
         </div>
       </div>
+    {/if}
     </div>

@@ -1,5 +1,5 @@
-
-  <div class="container">
+<section>
+    <div class="container">
     <form class="form-signin" id = "loginForm" method="POST" action="index.php?page=login" enctype="multipart/form-data">
       <h2 class="form-signin-heading text-center" >Acceder</h2>
         <label for="inputEmail" class="sr-only">direccion de email</label>
@@ -11,7 +11,6 @@
         <p class="text-center">Todavia no tienes una cuenta?</p>
         <a class="btn btn-success btn-block" href="index.php?page=mostrarRegistrar" id="irregistrar" name="irregistrar">Registrese</a>
       </div>
-
         {if isset($error)}
           <div class="panel panel-filled panel-c-danger">
               <div class="panel-heading">{$error}</div>
@@ -19,3 +18,4 @@
         {/if}
     </form>
   </div> <!-- /container -->
+</section>

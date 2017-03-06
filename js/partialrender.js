@@ -20,9 +20,7 @@ $(document).ready(function(){
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
 		$("aside nav ul li #adminListaP").on("click",CargarAjax);
 		$("aside nav ul li #adminListaM").on("click",CargarAjax);
-		// $("aside nav ul li #adminListaU").on("click",CargarAjax);
-
-		// $("article #admin_cont").on("click",CargarAjax);
+	 	$("aside nav ul li #adminListaU").on("click",CargarAjax);
 	}
 
 	function CargarAjax(e){
@@ -36,7 +34,7 @@ $(document).ready(function(){
 		    success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
 		        $("#contenido").html(data);
 		        InicializarABMEvt();
-				InicializarEvt();
+						InicializarEvt();
 		    },
 		    error: MostrarError,
 		});
@@ -51,13 +49,12 @@ $(document).ready(function(){
 
 
 	function cargarEventos(){
+
 		$('#agregarMateria').off().click(function(){
 			event.preventDefault();
-			$.post("index.php?page=adminAgregarMateria",$("#formMateria").serialize(), function(data) {
-				$('#contenido').html(data);
-				$('#nombre').val('');
-			});
-		});
+			agregarMateria();
+		 });
+
 
 		$('.eliminarMateria').click(function(){
 			event.preventDefault();
@@ -139,6 +136,7 @@ $(document).ready(function(){
 			});
 		});
 
+
 		$('.modificarProfesor').off().click(function(){
 			$("#mostrarForm").toggle('slow');
 			event.preventDefault();
@@ -151,52 +149,28 @@ $(document).ready(function(){
 			$('#tipoDeClase').val($(this).attr("data-tipoDeClase"));
 		});
 
+
 		$('#buscarProfesores').click(function(){
 			event.preventDefault();
-			$.get( "index.php?page=buscarProfesoresMat&id_materia",{ id_materia: $(this).attr("data-idmateria") }, function(data)  {
-				$('#contenido').html(data);
-				$('#materia').val('');
-			});
+			BuscarProfesorPorMateria();
 		});
 
 		$("#iniciarSesion").click(function(){
-			var data = {'email':$('#inputEmail').val(),'password':$('#inputPassword').val()};
-			$('#inputEmail').val('');
-			$('#inputPassword').val('');
-			$.ajax({
-				type:"POST",
-				datatype: "JSON",
-				url:"index.php?page=admin",
-				data: data,
-				success:function(data){
-					$("#contenido").html(data);
-				},
-				error: function(){
-					alert("error al iniciar sesion");
-				},
-			});
+			loguearse();
 			event.preventDefault();
-		});
+		 });
 
-		$('#cerrarSesion').on('click', function(event){
-			event.preventDefault();
-			$.ajax({
-				method: 'POST',
-				url:'index.php?page=logout',
-				success: function(data){
-					$("#contenido").html(data);
-				},
-				error: function () {
-					alert('Error al cerrar sesion');
-				},
-			});
-		});
 
-		$(document).on("click", "#adminListaP", CargarAjax);
-		$(document).on("click", "#adminListaM", CargarAjax);
-		$(document).on("click", "#adminAgregarProfesor", CargarAjax);
-		$(document).on("click", "#adminAgregarMateria", CargarAjax);
-		// $(document).on("click", "#adminListaU", CargarAjax);
+		 $('#cerrarSesion').on('click', function(event){
+		 	event.preventDefault();
+			cerrarSesion() ;
+			 });
+
+		// $(document).on("click", "#adminListaP", CargarAjax);
+		// $(document).on("click", "#adminListaM", CargarAjax);
+		// $(document).on("click", "#adminAgregarProfesor", CargarAjax);
+		// $(document).on("click", "#adminAgregarMateria", CargarAjax);
+		// 	$(document).on("click", "#adminListaU", CargarAjax);
 
 
 		$('#irregistrar').on('click', function(event){
@@ -220,91 +194,123 @@ $(document).ready(function(){
 			});
 		});
 
-		$("#registrar").on("click",function(event){
-			registrar();
-		});
 
-		// $(document).on('click','#adminListaU',function(e){
-    //     e.preventDefault();
-    //     $.get( "index.php?page=irAdminConfig", function(data) {
-    //         $('#contenido').html(data);
-    //     });
-    // });
+		$(document).off().on("click",'#registrar', function(){
+				registrar();
+			});
 
 
-// 		$(document).on('submit','.adminUsuarios',(function(e) {
-// 		e.preventDefault();
-// 		var formData = new FormData(this);
-// 		$.ajax({
-// 				type:'POST',
-// 				url: $(this).attr('page'),
-// 				data:formData,
-// 				cache:false,
-// 				contentType: false,
-// 				processData: false,
-// 				success:function(data){
-// 						$('#contenido').html(data);
-// 				},
-// 				error: function(data){
-// 					 alert("error");
-// 						console.log(data);
-// 				}
-// 		});
-// }));
-
-
-// $(document).on('submit', '.AdmOrUser', function (e) {
-//         e.preventDefault();
-//         var formData = new FormData(this);
-//         $.ajax({
-//             type: 'POST',
-//             url: $(this).attr('page'),
-//             data: formData,
-//             cache: false,
-//             contentType: false,
-//             processData: false,
-//             success: function (data) {
-//                 $('.AdmOrUser').html(data);
-//                 not(':button, :submit, :reset, :hidden')
-//                     .val('');
-//                 $("input[type=checkbox]").each(function () {
-//                     this.checked = false;
-//                 });
-//             },
-//             error: function (data) {
-//                 alert("error");
-//                 console.log(data);
-//             }
-//         });
-//     });
+		// $("#registrar").on("click",function(event){
+		// 	  event.preventDefault();
+		// 	registrar();
+		// });
 
 
 	}//cierra el cargar eventos
 
+	////////////////////////////////////Agregar Materia /////////////////////////////////
 
-		function registrar(){
-			$('#registrarForm').on("submit", function(event){
-				event.preventDefault();
-				var formData = new FormData(this);
-				$.ajax({
-					method:'POST',
-					url: "index.php?page=mostrarRegistrar",
-					data: formData,
-					contentType: false,
-					cache: false,
-					processData:false,
-					success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
-						$("#contenido").html(data);
-						$('#inputEmail').val('');
-						$('#inputPassword').val('');
-						$('#inputRol').val('');
-					},
-					error: MostrarError,
-				});
+
+	function agregarMateria() {
+		$.post("index.php?page=adminAgregarMateria",$("#formMateria").serialize(), function(data) {
+			$('#contenido').html(data);
+			$('#nombre').val('');
+		});
+	}
+
+	//////////////////////////////Filtra profesores segun materia ////////////////////////
+
+
+	function BuscarProfesorPorMateria() {
+		$.get( "index.php?page=buscarProfesoresMat&id_materia",{ id_materia: $(this).attr("data-idmateria") }, function(data)  {
+			$('#contenido').html(data);
+			$('#materia').val('');
+		});
+	}
+
+////////////////////////////////////////////Logout//////////////////////////////////
+
+
+	function cerrarSesion() {
+		$.ajax({
+			method: 'POST',
+			url:'index.php?page=logout',
+			success: function(data){
+				$("#contenido").html(data);
+			},
+			error: function () {
+				alert('Error al cerrar sesion');
+			},
+		});
+	}
+////////////////////////////////////////Login /////////////////////////////////////
+
+	function loguearse(){
+		var data = {'email':$('#inputEmail').val(),'password':$('#inputPassword').val()};
+		$('#inputEmail').val('');
+		$('#inputPassword').val('');
+		$.ajax({
+			type:"POST",
+			datatype: "JSON",
+			url:"index.php?page=admin",
+			data: data,
+			success:function(data){
+				$("#contenido").html(data);
+			},
+			error: function(){
+				alert("error al iniciar sesion");
+			},
+		});
+	}
+
+//////////////////////////////Modifica el rol del usuario /////////////////////////////////
+
+	$(document).on("click",'.modificarRol', function(){
+		event.preventDefault();
+		var id_usuario = $(this).attr("data-idusuario");
+		console.log(id_usuario);
+		var rol=$(this).attr("data-rol");
+				console.log(rol);
+			$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function(data) {
+			$('#contenido').html(data);
 			});
-		}
+		});
 
+//////////////////////////Lista los usuarios///////////////////////////////////////////////
 
+	$(document).on('click','#adminListaU',function(e){
+		e.preventDefault();
+		console.log('hola');
+		$.get( "index.php?page=adminUsuarios", function(data) {
+				$('#contenido').html(data);
+		});
+	});
+
+//////////////////////////Registra usuarios nuevos//////////////////////////////////////////////
+
+	function registrar(){
+		$('#registrarForm').on("submit", function(event){
+			event.preventDefault();
+			var formData = new FormData(this);
+			$.ajax({
+				method:'POST',
+				url: "index.php?page=registrar",
+				data: formData,
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
+					$("#contenido").html(data);
+					$('#inputEmail').val('');
+					$('#inputPassword').val('');
+					$('#inputRol').val('');
+				},
+				error: MostrarError,
+			});
+		});
+	}
+
+///////////Crea la porcion htm del comentario para luego ser mostrada//////////////////////
 
 	function crearComentarioHTML(comentario) {
 			$.ajax({ url: 'js/templates/comentario.mst',
@@ -315,6 +321,7 @@ $(document).ready(function(){
 		 });
 		}
 
+//////////////////////////////Genera todos los comentarios ////////////////////////////////
 
 		function crearComentarios(id_profesor){
 			$.ajax({
@@ -341,6 +348,7 @@ $(document).ready(function(){
 		 }
 		});
 
+//////////////////////////////Agrega el nuevo comentario ////////////////////////////////
 
 		function agregarComentario(comentario){
 		  $.ajax({
@@ -357,9 +365,9 @@ $(document).ready(function(){
 		  });
 		}
 
+//////////////////////////////Borra un comentario dado ////////////////////////////////////
 
 		function borrarComentario(idcomentario,comentario){
-
 		  $.ajax({
 		    method: 'DELETE',
 		    url:'api/comentario/'+ idcomentario,
@@ -373,12 +381,12 @@ $(document).ready(function(){
 		  });
 		}
 
+
 $('body').on('click','a.borrar', function(event){
 event.preventDefault();
 var comentario = $(this).parents(".comentario");
 borrarComentario(this.getAttribute('idcomentario'),comentario);
 });
-
 
 $('body').on('click','#agregarComentario', function(event){
   event.preventDefault();

@@ -7,14 +7,18 @@
 				<a href="index.php?page=logout" id="cerrarSesion" name="cerrarSesion" class="btn btn-info btn-md">Salir!</a>
 			{/if}
 		</div>
-		{if $admin=='Administrador'}
-		<p><h2>Administrador</h2></p>
-	</section>
+		</section>
+		<div class="">
+			{if $usuario['rol_usuario']=='Administrador'}
+			<p><h2>Administrador</h2></p>
 
 
-		{include file="opciones.tpl"}
 
-	 {else}
-	 <h1>BIENVENIDO A PARTICULARTE!</h1>
-	  {/if}
+			{include file="opciones.tpl"}
+
+		 {else}
+		 <h1>BIENVENIDO A PARTICULARTE!</h1>
+		  {/if}
+		</div>
+
 </article>

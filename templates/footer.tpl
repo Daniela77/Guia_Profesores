@@ -10,7 +10,11 @@
             <a href="index.php?page=profesores">Profesores</a>|
             <a href="index.php?page=materias">Materias</a>|
             <a href="index.php?page=contacto">Contacto</a>|
+            {if $usuario['rol_usuario']=="Administrador"}
             <a href="index.php?page=admin">Administrador</a>
+            {else}
+            <a href="index.php?page=admin">Acceder</a>
+            {/if}
           </p>
         </div>
       </div>

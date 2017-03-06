@@ -16,11 +16,12 @@ class LoginView extends View{
     $this->smarty->assign("error", $error);
   }
 
-  // function IrAdminConfig($usuarios,$admin){  //Nos lleva a la plantilla de editar Usuarios.
-  //   $this->smarty->assign('usuarios', $usuarios);
-  //   $this->smarty->assign('admin', $admin);
-  //   $this->smarty->display('adminConfig.tpl');
-  // }
+  function mostrarUsuarios($usuarios,$usuarioLogueado){  //Nos lleva a la plantilla de editar Usuarios.
+    $this->smarty->assign('usuarios', $usuarios);
+    $this->smarty->assign('usuario',$usuarioLogueado);
+    $this->smarty->assign('admin',$usuarioLogueado['rol_usuario']);
+    $this->smarty->display('adminConfig.tpl');
+  }
 
 }
 

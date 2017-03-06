@@ -27,7 +27,6 @@ class ComentariosApi extends Api{
     switch ($this->method) {
       case 'GET':
           if(count($argumentos)>0){
-
             $comentario = $this->model->getComentariosProfesor($argumentos[0],$this->loginController->getRol());
             // $comentario = $this->model->getComentariosProfesor($argumentos[0]);
             $error['Error'] = "Ese profesor no tiene comentarios";

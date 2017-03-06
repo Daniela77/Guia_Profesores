@@ -18,33 +18,22 @@
       error_reporting(E_ALL ^ E_NOTICE);
     }
 
-    // function checkLogin(){
-    //
-    //   session_start();
-    //   //  print_r($_SESSION);
-    //   if(!isset($_SESSION['USER'])){
-    //     return false;
-    //   }
-    //   return true;
-    // }
-
     public function checkLogin(){
-        session_start();
-        print_r($_SESSION);
-        if(!isset($_SESSION['USER'])){
-          return false;
-          //VER UN USUARIO POR DEFECTO
+      session_start();
+      print_r($_SESSION);
+      if(!isset($_SESSION['USER'])){
+        return false;
+      }
+      else{
+        if($_SESSION['ADMIN']){
+          $this->Autenticacion=ADMIN;
+          return $this->Autenticacion;
         }
         else{
-          if($_SESSION['ADMIN']){
-            $this->Autenticacion=ADMIN;
-            return $this->Autenticacion;
-          }
-          else{
-            $this->Autenticacion=USER;
-            return $this->Autenticacion;}
-        }
+          $this->Autenticacion=USER;
+          return $this->Autenticacion;}
       }
+    }
 
      function usuarioLogueado(){
       session_start();
@@ -100,7 +89,8 @@
         }
         else{
           $this->model->crearUsuario($user,$password,$rol);
-          $this->loginView->mostrarLogin();
+          $this->Login();
+
         }
       }
       else {
@@ -109,44 +99,36 @@
     }
 
    function getRol(){
-        session_start();
-        if(!isset($_SESSION['USER']) && !empty($_SESSION['USER'])){
-          var_dump($_SESSION['USER']);
-          return "visitante";
-        }
-
-        if($_SESSION['ADMIN']==Administrador){
-          $this->Autenticacion=ADMIN;
-          return $this->Autenticacion;
-        }
-        else {
-          $this->Autenticacion=USER;
-          return $this->Autenticacion;
-        }
-
+      session_start();
+      if(!isset($_SESSION['USER']) && !empty($_SESSION['USER'])){
+        return "visitante";
       }
-
-      function administrarUsuarios(){
-        if(isset($_POST['admin'])&& !empty($_POST['admin'])){
-          $adminsUI=$_POST['admin'];
-          $arrAdminsDB= $this->model->getAdministradores();
-          foreach ($adminsUI as $adminUI){
-            if(!in_array($adminUI,$arrAdminsDB))
-              $this->model->editarUsuario($adminUI);
-          }
-          foreach ($arrAdminsDB as $adminDB){
-            if(!in_array($adminDB,$adminsUI))
-              $this->model->editarUsuario($adminDB);
-          }
-        }
+      if($_SESSION['ADMIN']==Administrador){
+        $this->Autenticacion=ADMIN;
+        return $this->Autenticacion;
       }
-
-
-      function IrAdminConfig(){
-        $usuarios = $this->model->getUsuarios();
-        $admin = $this->model->getAdministradores();
-        $this->loginView->IrAdminConfig($usuarios,$admin);
+      else {
+        $this->Autenticacion=USER;
+        return $this->Autenticacion;
       }
+    }
 
+    function administrarUsuarios(){
+      $usuarios = $this->model->getUsuarios();
+      $usuarioLogueado=$this->usuarioLogueado();
+      $this->loginView->mostrarUsuarios($usuarios,$usuarioLogueado);
+    }
+
+    function modificarRol(){
+      $id_usuario = $_POST['id_usuario'];
+      $this->model->actualizarUsuario($id_usuario);
+      $this->mostrarUsuarios();
+    }
+
+    function mostrarUsuarios () {
+      $usuarios = $this->model->getUsuarios();
+      $usuarioLogueado=$this->usuarioLogueado();
+      $this->loginView->mostrarUsuarios($usuarios,$usuarioLogueado);
+    }
   }
 ?>

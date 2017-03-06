@@ -30,8 +30,8 @@
 		public static $PAGE_REGISTRAR = 'registrar';
 		public static $PAGE_MOSTRAR_REGISTRAR = 'mostrarRegistrar';
 
-		// 	public static $PAGE_IR_ADMIN_CONFIG = 'irAdminConfig';//
-  	// public static $PAGE_ADMI_USUARIOS = 'adminUsuarios';
+	  public static $PAGE_MODIFICAR_ROL = 'modificarRol';
+  	public static $PAGE_ADMIN_USUARIOS = 'adminUsuarios';
 
 	}
 
