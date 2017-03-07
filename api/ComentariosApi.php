@@ -31,8 +31,8 @@ class ComentariosApi extends Api{
             // $comentario = $this->model->getComentariosProfesor($argumentos[0]);
             $error['Error'] = "Ese profesor no tiene comentarios";
             return ($comentario) ? $comentario : $error;
-         }
-            else{
+          }
+          else{
             return $this->model->getComentarios();
           }
         break;
@@ -47,8 +47,6 @@ class ComentariosApi extends Api{
         break;
 
         case 'POST':
-          // var_dump($this->loginController->checkLogin());
-          //    var_dump($this->Autenticacion);
           if(in_array($this->loginController->checkLogin(),$this->Autenticacion) && count($argumentos)==0){
           // if(count($argumentos)==0){
                  if (isset($_POST["texto"]) && (!empty($_POST["texto"]))

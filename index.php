@@ -53,7 +53,6 @@ include_once 'db/config.php';
 			$materiaController = new MateriaController;
 			$materiaController->adminMaterias();
 			break;
-			//ver para optimizar las listas
 		case ConfigApp::$PAGE_ADMIN_LISTA_PROFESORES:
 			$profesorController = new ProfesorController;
 			$profesorController->mostrarProfesores();
@@ -107,7 +106,6 @@ include_once 'db/config.php';
 			$loginController->mostrarRegistrar();
 			break;
 		case ConfigApp::$PAGE_ELIMINAR_IMAGEN:
-			// $adminController = new AdminController($usuariosController);
 			$profesorController = new ProfesorController;
 			$profesorController->eliminarImagen();
 			break;

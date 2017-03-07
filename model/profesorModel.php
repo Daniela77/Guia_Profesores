@@ -67,9 +67,14 @@
         foreach ($imagenes as $key => $imagen) {
           $ruta="images/".uniqid()."_".$imagen["name"];
           move_uploaded_file($imagen["tmp_name"], $ruta);
-          $insertarImagen = $this->db->prepare("INSERT INTO imagen(ruta,fk_id_profesor) VALUES(?,?)");
-          // $insertarImagen = $this->db->prepare("UPDATE imagen set ruta=? where fk_id_profesor=?");
-           $insertarImagen->execute(array($ruta,$id_profesor));
+          if($imagenes!=''){
+             $actualizarImagen = $this->db->prepare("INSERT INTO imagen(ruta,fk_id_profesor) VALUES(?,?)");
+             $actualizarImagen->execute(array($ruta,$id_profesor));
+          }else{
+            $actualizarImagen = $this->db->prepare("UPDATE imagen set ruta=? where fk_id_profesor=?");
+            $actualizarImagen->execute(array($ruta,$id_profesor));
+          }
+
         }
         if($consulta->rowCount() > 0){
           return 'Profesor actualizado con exito';

@@ -13,7 +13,7 @@
                         <button type="button" class="btn btn-default"><a class="eliminarMateria" href="index.php?page=adminEliminarMateria&id_materia={$materia['id_materia']}" data-idmateria="{$materia['id_materia']}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></button>
                         <button type="button" class="btn btn-default"><a class="modificarMateria" data-nombre="{$materia['nombre']}" data-idmateria="{$materia['id_materia']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></button>
                       {/if}
-                      <button type="button" class="btn btn-default"><a href="index.php?page=materia" data-idMateria="{$materia['id_materia']}" class="detallesMateria" id="{$materia['id_materia']}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></button>
+                      <button type="button" class="btn btn-default"><a href="index.php?page=materia" data-idmateria="{$materia['id_materia']}" class="detallesMateria" id="{$materia['id_materia']}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></button>
                     </li>
                   </ul>
                 </div>

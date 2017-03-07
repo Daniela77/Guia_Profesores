@@ -20,7 +20,8 @@ $(document).ready(function(){
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
 		$("aside nav ul li #adminListaP").on("click",CargarAjax);
 		$("aside nav ul li #adminListaM").on("click",CargarAjax);
-	 	$("aside nav ul li #adminListaU").on("click",CargarAjax);
+		// 	$("aside nav ul li #adminListaU").on("click",CargarAjax);
+		 cargarEventos();
 	}
 
 	function CargarAjax(e){
@@ -50,24 +51,34 @@ $(document).ready(function(){
 
 	function cargarEventos(){
 
-		$('#agregarMateria').off().click(function(){
+		// $(document).on("click", "#adminListaP", CargarAjax);
+		// $(document).on("click", "#adminListaM", CargarAjax);
+		// $(document).on("click", "#adminAgregarProfesor", CargarAjax);
+		// $(document).on("click", "#adminAgregarMateria", CargarAjax);
+		// 	$(document).on("click", "#adminListaU", CargarAjax);
+
+		$('#agregarMateria').off().click(function(event){
 			event.preventDefault();
 			agregarMateria();
+			cargarEventos();
 		 });
 
 
-		$('.eliminarMateria').click(function(){
+		$('.eliminarMateria').click(function(event){
 			event.preventDefault();
 			$.get( "index.php?page=adminEliminarMateria",{ id_materia: $(this).attr("data-idmateria") }, function(data) {
 			$('#contenido').html(data);
+			cargarEventos();
 			});
+
 		});
 
-		$('.modificarMateria').click(function(){
+		$('.modificarMateria').click(function(event){
 			$("#mostrarForm").toggle('slow');
 			event.preventDefault();
 			$('#id_materia').val($(this).attr("data-idmateria"));
 			$('#nombre').val($(this).attr("data-nombre"));
+			cargarEventos();
 		});
 
 
@@ -89,6 +100,7 @@ $(document).ready(function(){
 				processData:false,
 				success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
 					$("#contenido").html(data);
+					cargarEventos();
 					$("#id_profesor").val('');
 					$('#nombreCompleto').val('');
 					$('#email').val('');
@@ -112,6 +124,7 @@ $(document).ready(function(){
 				// });
 				ev.preventDefault();
 			});
+
 		});
 
 		//ver detalle de profesor
@@ -137,7 +150,7 @@ $(document).ready(function(){
 		});
 
 
-		$('.modificarProfesor').off().click(function(){
+		$('.modificarProfesor').click(function(event){
 			$("#mostrarForm").toggle('slow');
 			event.preventDefault();
 			$('#id_profesor').val($(this).attr("data-idprofesor"));
@@ -147,39 +160,37 @@ $(document).ready(function(){
 			$('#materia').val($(this).attr("data-idmateria")).change();
 			$('#precio').val($(this).attr("data-precio"));
 			$('#tipoDeClase').val($(this).attr("data-tipoDeClase"));
+			cargarEventos();
 		});
 
 
 		$('#buscarProfesores').click(function(){
 			event.preventDefault();
 			BuscarProfesorPorMateria();
+			cargarEventos();
 		});
 
 		$("#iniciarSesion").click(function(){
 			loguearse();
 			event.preventDefault();
+			cargarEventos();
 		 });
 
 
-		 $('#cerrarSesion').on('click', function(event){
+		 $('#cerrarSesion').on('click', function(){
 		 	event.preventDefault();
 			cerrarSesion() ;
+			// cargarEventos();
 			 });
 
-		// $(document).on("click", "#adminListaP", CargarAjax);
-		// $(document).on("click", "#adminListaM", CargarAjax);
-		// $(document).on("click", "#adminAgregarProfesor", CargarAjax);
-		// $(document).on("click", "#adminAgregarMateria", CargarAjax);
-		// 	$(document).on("click", "#adminListaU", CargarAjax);
-
-
-		$('#irregistrar').on('click', function(event){
+			$('#irregistrar').on('click', function(event){
 			event.preventDefault();
 			$.ajax({
 				method: 'POST',
 				url:'index.php?page=mostrarRegistrar',
 				success: function(data){
 					$("#contenido").html(data);
+					cargarEventos();
 				},
 				error: function () {
 					alert('Error al ir registrar');
@@ -191,12 +202,26 @@ $(document).ready(function(){
 			event.preventDefault();
 			$.post( "index.php?page=eliminarImagen&imgruta",{imgruta: $(this).attr("data-imgruta")}, function(data) {
 				$('#contenido').html(data);
+				cargarEventos();
 			});
 		});
+
+		// $(document).on("click",'.modificarRol', function(){
+		// 	event.preventDefault();
+		// 	var id_usuario = $(this).attr("data-idusuario");
+		// 	console.log(id_usuario);
+		// 	var rol=$(this).attr("data-rol");
+		// 			console.log(rol);
+		// 		$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function(data) {
+		// 		$('#contenido').html(data);
+		// 		 cargarEventos();
+		// 		});
+		// 	});
 
 
 		$(document).off().on("click",'#registrar', function(){
 				registrar();
+				// cargarEventos();
 			});
 
 
@@ -205,44 +230,68 @@ $(document).ready(function(){
 		// 	registrar();
 		// });
 
+	//
+	// 		$("#adminListaU").click(function(e){
+	// 			e.preventDefault();
+	// 			console.log('llega?');
+	// cargarEventos();
+	//
+	// 			$.get( "index.php?page=adminUsuarios", function(data) {
+	// 					$('#contenido').html(data);
+	//
+	//
+	// 			});
+	// 		});
+
+
+
+			$("#adminListaU").click(function(e){
+				 e.preventDefault();
+				//  cargarEventos();
+				listarUsuarios();
+				 });
+
 
 	}//cierra el cargar eventos
 
-	////////////////////////////////////Agregar Materia /////////////////////////////////
 
+
+	////////////////////////////////////Agregar Materia /////////////////////////////////
 
 	function agregarMateria() {
 		$.post("index.php?page=adminAgregarMateria",$("#formMateria").serialize(), function(data) {
 			$('#contenido').html(data);
+			cargarEventos();
 			$('#nombre').val('');
 		});
 	}
 
 	//////////////////////////////Filtra profesores segun materia ////////////////////////
 
-
 	function BuscarProfesorPorMateria() {
 		$.get( "index.php?page=buscarProfesoresMat&id_materia",{ id_materia: $(this).attr("data-idmateria") }, function(data)  {
 			$('#contenido').html(data);
+			cargarEventos();
 			$('#materia').val('');
 		});
 	}
 
 ////////////////////////////////////////////Logout//////////////////////////////////
 
-
 	function cerrarSesion() {
 		$.ajax({
 			method: 'POST',
 			url:'index.php?page=logout',
 			success: function(data){
-				$("#contenido").html(data);
+			 $("body").html(data);
+				cargarEventos();
 			},
 			error: function () {
 				alert('Error al cerrar sesion');
 			},
 		});
 	}
+
 ////////////////////////////////////////Login /////////////////////////////////////
 
 	function loguearse(){
@@ -256,6 +305,7 @@ $(document).ready(function(){
 			data: data,
 			success:function(data){
 				$("#contenido").html(data);
+				cargarEventos();
 			},
 			error: function(){
 				alert("error al iniciar sesion");
@@ -265,26 +315,24 @@ $(document).ready(function(){
 
 //////////////////////////////Modifica el rol del usuario /////////////////////////////////
 
-	$(document).on("click",'.modificarRol', function(){
+	$(document).off().on("click",'.modifRol', function(event){
 		event.preventDefault();
-		var id_usuario = $(this).attr("data-idusuario");
-		console.log(id_usuario);
 		var rol=$(this).attr("data-rol");
 				console.log(rol);
 			$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function(data) {
 			$('#contenido').html(data);
+			cargarEventos();
 			});
 		});
 
 //////////////////////////Lista los usuarios///////////////////////////////////////////////
 
-	$(document).on('click','#adminListaU',function(e){
-		e.preventDefault();
-		console.log('hola');
-		$.get( "index.php?page=adminUsuarios", function(data) {
-				$('#contenido').html(data);
-		});
-	});
+		function listarUsuarios(){
+		 $.get( "index.php?page=adminUsuarios", function(data) {
+				 $('#contenido').html(data);
+					cargarEventos();
+		 });
+		}
 
 //////////////////////////Registra usuarios nuevos//////////////////////////////////////////////
 
@@ -301,6 +349,7 @@ $(document).ready(function(){
 				processData:false,
 				success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
 					$("#contenido").html(data);
+					cargarEventos();
 					$('#inputEmail').val('');
 					$('#inputPassword').val('');
 					$('#inputRol').val('');
@@ -333,6 +382,7 @@ $(document).ready(function(){
 				  var html = crearComentarioHTML(comentario);
 				  });
 					$('#listaComentarios').html('');
+					cargarEventos();
 				},
 				error: function () {
 					alert('Error al crear comentario');

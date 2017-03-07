@@ -12,8 +12,6 @@
 			{if $usuario['rol_usuario']=='Administrador'}
 			<p><h2>Administrador</h2></p>
 
-
-
 			{include file="opciones.tpl"}
 
 		 {else}

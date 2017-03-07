@@ -37,7 +37,7 @@
                         <td>{$profesor['telefono']}</td>
                         <td>${$profesor['precio']}</td>
                         <td>{$profesor['tipoDeClase']}</td>
-                        <td><a href="index.php?page=profesor" data-idprofesor="{$profesor['id_profesor']}"class="detalles" id="profesor"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
+                        <td><a href="index.php?page=profesor" data-idprofesor="{$profesor['id_profesor']}" class="detalles" id="profesor"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
                       </tr>
                     {/foreach}
                   </tbody>
