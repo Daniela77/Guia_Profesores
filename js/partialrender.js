@@ -212,22 +212,22 @@ $(document).ready(function(){
 		$("#registrar").on("click",function(event){
 		registrar();
 	});
-
-
-		$(document).on("click",'.modifRol', function(event){
+	
+	$('.modifRol').click(function(event){
 			event.preventDefault();
-			var rol=$(this).attr("data-rol");
-					console.log(rol);
-				$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function(data) {
-				$('#contenido').html(data);
-				// cargarEventos();
-				});
+			var id_usuario=$(this).attr("data-idusuario");
+			var rol=$('#rol'+id_usuario).html();
+			var toRol = rol == "Administrador" ? "Usuario" : "Administrador";
+			console.log(rol);
+			$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function() {
+				$('#rol'+id_usuario).html(toRol);
 			});
+	});
 
-			$("#adminListaU").click(function(e){
-				 e.preventDefault();
-				listarUsuarios();
-				 });
+	$("#adminListaU").click(function(e){
+			e.preventDefault();
+		listarUsuarios();
+			});
 
 
 	}//cierra el cargar eventos
