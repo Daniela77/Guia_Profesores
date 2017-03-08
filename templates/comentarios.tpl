@@ -10,7 +10,7 @@
           </ul>
         </div>
       </div>
-        {if $usuario['rol_usuario']=='Administrador'}
+        {if $usuario['rol_usuario']=='Administrador'|| $usuario['rol_usuario']=='Usuario'}
       <div class="row coment">
         <div class="col-md-6">
           <form id="formComentario" method="POST" enctype="multipart/form-data">

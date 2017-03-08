@@ -25,12 +25,12 @@
                   <td>{$usuario['email']}</td>
                   <td>{$usuario['rol_usuario']}</td>
                   {if $admin=='Administrador'}
-                    {if $usuario['rol_usuario']=='Administrador'}
+
                       <td><button type="button" class="btn btn-info"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
                       {else}
                       <td><button type="button" class="btn btn-default"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
                     {/if}
-                  {/if}
+
                 </tr>
       			  {/foreach}
               </tbody>

@@ -76,9 +76,9 @@
 
     function registrar(){
 
-        if(isset($_POST['txtUser'])&&($_POST['txtUser'] != '')&&
-        (isset($_POST['txtPass'])&&($_POST['txtPass'] != '')&&
-        (isset($_POST['txtRol'])&&($_POST['txtRol'] != '')))){
+      if(isset($_POST['txtUser'])&&($_POST['txtUser'] != '')&&
+      (isset($_POST['txtPass'])&&($_POST['txtPass'] != '')&&
+      (isset($_POST['txtRol'])&&($_POST['txtRol'] != '')))){
         $user = $_POST["txtUser"];
         $password = password_hash($_POST["txtPass"], PASSWORD_DEFAULT);
         $rol=$_POST["txtRol"];
@@ -99,6 +99,7 @@
 
    function getRol(){
       session_start();
+        print_r($_SESSION);
       if(!isset($_SESSION['USER']) && !empty($_SESSION['USER'])){
         return "visitante";
       }

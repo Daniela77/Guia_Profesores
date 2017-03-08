@@ -2,7 +2,7 @@
 	<section>
 		<div class="slides">
 		{foreach from=$profesor['imagenes'] key=index item=imagen}
-			<img src="{$imagen['ruta']}" alt="profesor"  class="img-thumbnail">
+			<img src="{$imagen['ruta']}" alt="profesor" class="img-responsive">
 		{/foreach}
 		</div>
 		<div class="T_container">

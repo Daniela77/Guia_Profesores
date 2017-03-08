@@ -20,8 +20,7 @@ $(document).ready(function(){
 		$("aside  nav ul li #adminAgregarMateria").on("click",CargarAjax);
 		$("aside nav ul li #adminListaP").on("click",CargarAjax);
 		$("aside nav ul li #adminListaM").on("click",CargarAjax);
-		// 	$("aside nav ul li #adminListaU").on("click",CargarAjax);
-		 cargarEventos();
+		cargarEventos();
 	}
 
 	function CargarAjax(e){
@@ -118,6 +117,7 @@ $(document).ready(function(){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=materia&nro="+$(obj).data('idmateria'), function(data){
 					$("#contenido").html(data);
+					cargarEventos();
 				});
 				// .fail(function(){
 				// 	alert("Error");
@@ -131,11 +131,13 @@ $(document).ready(function(){
 		$(".detalles").each(function(i,obj){
 			$(this).off().on("click", function(ev){
 				$.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
+					var id_profesor = $(obj).data('idprofesor');
 					$("#contenido").html(data);
-					var id_profesor = $("#id_profesor").val();
-					crearComentarios(id_profesor);
+					cargarEventos();
+						crearComentarios(id_profesor);
 					// var temporizador = setInterval(function() {crearComentarios(id_profesor)}, 2000);
 					// $.ajaxSetup({ cache: false });
+
 				});
 				ev.preventDefault();
 			});
@@ -206,48 +208,24 @@ $(document).ready(function(){
 			});
 		});
 
-		// $(document).on("click",'.modificarRol', function(){
-		// 	event.preventDefault();
-		// 	var id_usuario = $(this).attr("data-idusuario");
-		// 	console.log(id_usuario);
-		// 	var rol=$(this).attr("data-rol");
-		// 			console.log(rol);
-		// 		$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function(data) {
-		// 		$('#contenido').html(data);
-		// 		 cargarEventos();
-		// 		});
-		// 	});
+	
+		$("#registrar").on("click",function(event){
+		registrar();
+	});
 
 
-		$(document).off().on("click",'#registrar', function(){
-				registrar();
+		$(document).on("click",'.modifRol', function(event){
+			event.preventDefault();
+			var rol=$(this).attr("data-rol");
+					console.log(rol);
+				$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function(data) {
+				$('#contenido').html(data);
 				// cargarEventos();
+				});
 			});
-
-
-		// $("#registrar").on("click",function(event){
-		// 	  event.preventDefault();
-		// 	registrar();
-		// });
-
-	//
-	// 		$("#adminListaU").click(function(e){
-	// 			e.preventDefault();
-	// 			console.log('llega?');
-	// cargarEventos();
-	//
-	// 			$.get( "index.php?page=adminUsuarios", function(data) {
-	// 					$('#contenido').html(data);
-	//
-	//
-	// 			});
-	// 		});
-
-
 
 			$("#adminListaU").click(function(e){
 				 e.preventDefault();
-				//  cargarEventos();
 				listarUsuarios();
 				 });
 
@@ -313,18 +291,6 @@ $(document).ready(function(){
 		});
 	}
 
-//////////////////////////////Modifica el rol del usuario /////////////////////////////////
-
-	$(document).off().on("click",'.modifRol', function(event){
-		event.preventDefault();
-		var rol=$(this).attr("data-rol");
-				console.log(rol);
-			$.post( "modificarRol",{id_usuario: $(this).attr("data-idusuario")}, function(data) {
-			$('#contenido').html(data);
-			cargarEventos();
-			});
-		});
-
 //////////////////////////Lista los usuarios///////////////////////////////////////////////
 
 		function listarUsuarios(){
@@ -366,29 +332,29 @@ $(document).ready(function(){
 			 success: function(template) {
 				 var rendered = Mustache.render(template,comentario);
 				 $('#listaComentarios').append(rendered);
+				 	 cargarEventos();
+
 			 }
 		 });
 		}
 
 //////////////////////////////Genera todos los comentarios ////////////////////////////////
-
-		function crearComentarios(id_profesor){
+function crearComentarios(id_profesor){
 			$.ajax({
 				method: 'GET',
-				url:'api/comentario/'+id_profesor,//trae id del profesor que pertenece,
+				url:'api/comentario/'+id_profesor,
 				datatype: 'JSON',
 				success: function(comentario){
 					comentario.forEach(function(comentario){
-				  var html = crearComentarioHTML(comentario);
-				  });
-					$('#listaComentarios').html('');
-					cargarEventos();
+					 var html = crearComentarioHTML(comentario);
+					 $('#listaComentarios').append(html);
+					  // cargarEventos();
+				 });
 				},
 				error: function () {
 					alert('Error al crear comentario');
 				}
 			});
-
 		}
 
 		var template;
@@ -401,13 +367,16 @@ $(document).ready(function(){
 //////////////////////////////Agrega el nuevo comentario ////////////////////////////////
 
 		function agregarComentario(comentario){
+			console.log(comentario);
 		  $.ajax({
 		    method: 'POST',
 		    url:'api/comentario',
 		    datatype: 'JSON',
 		    data: comentario,
 		    success: function(comentario){
+
 					$("#listaComentarios").append(crearComentarioHTML(comentario));
+					  // cargarEventos();
 		    },
 		    error: function () {
 		      alert('Error al agregar comentario');
@@ -432,11 +401,13 @@ $(document).ready(function(){
 		}
 
 
-$('body').on('click','a.borrar', function(event){
+$("body").on("click","a.borrar", function(event){
 event.preventDefault();
 var comentario = $(this).parents(".comentario");
-borrarComentario(this.getAttribute('idcomentario'),comentario);
+console.log(comentario);
+borrarComentario(this.getAttribute("idcomentario"),comentario);
 });
+
 
 $('body').on('click','#agregarComentario', function(event){
   event.preventDefault();

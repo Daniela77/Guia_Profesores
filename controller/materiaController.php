@@ -20,10 +20,6 @@ class MateriaController extends Controller{
      $this->view->mostrarMaterias($this->model->getMaterias(),$usuarioLogueado);
    }
 
-  //  function mostrarListaMaterias(){
-  //    $this->view->mostrarListaMaterias($this->model->getMaterias());
-  //  }
-
    function mostrarMateria(){
       $id_materia=$_GET['nro'];
       $materia=$this->model->getMateria($id_materia);
