@@ -41,8 +41,9 @@ class ComentariosApi extends Api{
             $success['Success'] = "El comentario se borro exitosamente";
             $filasAfectadas = $this->model->eliminarComentario($argumentos[0]);
             return ($filasAfectadas == 1) ? $success : $error;
-          }else {
-            ERROR;
+          }
+          else {
+            return ERROR;
           }
         break;
       case 'POST':
@@ -58,12 +59,12 @@ class ComentariosApi extends Api{
                     $puntaje=$_POST["puntaje"];
                     $id_comentario = $this->model->crearComentario($profesor,$usuario,$comentario,$puntaje);
                     $error['Error'] = "El comentario no se creo";
-                      // $success['Success'] = "El comentario se creo";
-                      // return($id_comentario==1) ? $success : $error;
-                      return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
+                     
+                    return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
 
-          }else {
-            ERROR;
+          }
+          else {
+            return ERROR;
           }
           break;
       default:

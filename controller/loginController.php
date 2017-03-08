@@ -20,7 +20,6 @@
 
     public function checkLogin(){
       session_start();
-      print_r($_SESSION);
       if(!isset($_SESSION['USER'])){
         return false;
       }
@@ -99,7 +98,6 @@
 
    function getRol(){
       session_start();
-        print_r($_SESSION);
       if(!isset($_SESSION['USER']) && !empty($_SESSION['USER'])){
         return "visitante";
       }
