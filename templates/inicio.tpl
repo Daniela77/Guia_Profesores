@@ -1,3 +1,4 @@
+{include 'header.tpl'}
 <section class="intro">
   <div class="container">
     <div class="fluid_container">

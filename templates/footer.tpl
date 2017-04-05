@@ -10,7 +10,7 @@
             <a href="index.php?page=profesores">Profesores</a>|
             <a href="index.php?page=materias">Materias</a>|
             <a href="index.php?page=contacto">Contacto</a>|
-            {if $admin=='Administrador'}
+            {if $usuario['rol_usuario']=='Administrador'}
             <a href="index.php?page=admin">Administrador</a>
             {else}
             <a href="index.php?page=admin">Acceder</a>
@@ -38,7 +38,17 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/partialrender.js"></script>
+<!-- <script src="js/partialrender.js"></script> -->
+<script src="js/ajax.js"></script>
+<script src="js/detalleProfesor.js"></script>
+<script src="js/detalleMateria.js"></script>
+<script src="js/adminProfesores.js"></script>
+<script src="js/adminMaterias.js"></script>
+<script src="js/adminUsuarios.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/registrarUsuario.js"></script>
+<script src="js/login.js"></script>
+<script src="js/logout.js"></script>
 <script src="js/mustache.js"></script>
 </body>
 </html>

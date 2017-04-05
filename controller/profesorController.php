@@ -20,6 +20,18 @@
          $this->view->mostrarAdminProfesores($this->modelMaterias->getMaterias(),$this->model->getProfesores());
        }
 
+       function buscarProfesoresMat(){
+        $id_materia = $_POST['id_materia'];
+        $profesores = $this->model->buscarProfesoresMat($id_materia);
+       //  $materias = $this->modelMaterias->getMaterias();
+        if (count($profesores)>0) {
+          $mensaje = "Su busqueda fue exitosa!";
+        }else {
+          $mensaje = "No hay profesores para esa materia";
+        }
+        $this->view->mostrarProfesores($profesores,$mensaje);
+      }
+
 
       function mostrarProfesores(){
         $profesores=$this->model->getProfesores();

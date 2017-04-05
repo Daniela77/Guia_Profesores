@@ -1,5 +1,4 @@
 <h1>Administrar Usuarios</h1>
-
 <section>
 <div class="container">
   <div class="fluid_container">
@@ -23,14 +22,12 @@
               {foreach from=$usuarios key=index item=usuario}
               <tr>
                   <td>{$usuario['email']}</td>
-                  <td>{$usuario['rol_usuario']}</td>
-                  {if $admin=='Administrador'}
-
-                      <td><button type="button" class="btn btn-info"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
-                      {else}
+                  <td id="rol{$usuario['id_usuario']}">{$usuario['rol_usuario']}</td>
+                  {if $usuario['rol_usuario']=='Administrador'}
+                  <td><button type="button" class="btn btn-info"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
+                  {else}
                       <td><button type="button" class="btn btn-default"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
                     {/if}
-
                 </tr>
       			  {/foreach}
               </tbody>

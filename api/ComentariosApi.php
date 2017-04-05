@@ -7,8 +7,6 @@ include_once ("../controller/loginController.php");
 
 define('ADMIN', 'admin');
 define('USER', 'user');
-define('ERROR', 'Usuario no autorizado para realizar esta accion');
-
 
 class ComentariosApi extends Api{
   private $model;
@@ -41,8 +39,9 @@ class ComentariosApi extends Api{
             $success['Success'] = "El comentario se borro exitosamente";
             $filasAfectadas = $this->model->eliminarComentario($argumentos[0]);
             return ($filasAfectadas == 1) ? $success : $error;
-          }else {
-            ERROR;
+          }
+          else {
+            return $error['Error'] ='El Usuario no autorizado para realizar esta accion';
           }
         break;
       case 'POST':
@@ -63,7 +62,7 @@ class ComentariosApi extends Api{
                       return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
 
           }else {
-            ERROR;
+             return $error['Error'] ='El Usuario no autorizado para realizar esta accion';
           }
           break;
       default:
