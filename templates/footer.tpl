@@ -21,7 +21,7 @@
       <div class="col-md-6 panel">
         <div class="panel-body">
           <p class="text-right">
-            Copyright &copy; 2016.</a>
+            <a>Copyright &copy; 2016.</a>
           </p>
         </div>
       </div>
@@ -38,17 +38,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<!-- <script src="js/partialrender.js"></script> -->
-<script src="js/ajax.js"></script>
-<script src="js/detalleProfesor.js"></script>
-<script src="js/detalleMateria.js"></script>
-<script src="js/adminProfesores.js"></script>
-<script src="js/adminMaterias.js"></script>
-<script src="js/adminUsuarios.js"></script>
-<script src="js/admin.js"></script>
-<script src="js/registrarUsuario.js"></script>
-<script src="js/login.js"></script>
-<script src="js/logout.js"></script>
 <script src="js/mustache.js"></script>
 </body>
 </html>

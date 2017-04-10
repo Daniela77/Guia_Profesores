@@ -3,7 +3,6 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -20,8 +19,6 @@
             <li href="index.php?page=contacto"><a href="#"><strong>Contacto</strong></a></li>
             <li href="index.php?page=admin"><a href="#"><strong>Acceder</strong></a></li>
           </ul>
-        </li>
-      </ul>
         </div>
         <!--/.nav-collapse -->
       </div>

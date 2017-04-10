@@ -21,7 +21,7 @@
                 <label for="materia">Materia</label>
                 <select id="materia" name="materia"class="form-control">
                   {foreach $materias as $materia}
-                    <option value='{$materia["id_materia"]}'>{$materia["nombre"]}</option>
+                    <option value="{$materia["id_materia"]}" > {$materia["nombre"]} </option>
                   {/foreach}
                 </select>
               </div>
@@ -51,4 +51,4 @@
          </div>
       </div>
    </div>
-  </section>
+ </section>

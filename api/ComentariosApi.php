@@ -41,7 +41,11 @@ class ComentariosApi extends Api{
             return ($filasAfectadas == 1) ? $success : $error;
           }
           else {
+<<<<<<< HEAD
             return $error['Error'] ='El Usuario no autorizado para realizar esta accion';
+=======
+            return ERROR;
+>>>>>>> 5cb73fcacc2bc0a295c1c782305f34750c2725d8
           }
         break;
       case 'POST':
@@ -57,12 +61,17 @@ class ComentariosApi extends Api{
                     $puntaje=$_POST["puntaje"];
                     $id_comentario = $this->model->crearComentario($profesor,$usuario,$comentario,$puntaje);
                     $error['Error'] = "El comentario no se creo";
-                      // $success['Success'] = "El comentario se creo";
-                      // return($id_comentario==1) ? $success : $error;
-                      return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
+                     
+                    return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
 
+<<<<<<< HEAD
           }else {
              return $error['Error'] ='El Usuario no autorizado para realizar esta accion';
+=======
+          }
+          else {
+            return ERROR;
+>>>>>>> 5cb73fcacc2bc0a295c1c782305f34750c2725d8
           }
           break;
       default:

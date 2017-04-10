@@ -30,7 +30,7 @@
                 <option value="5">5</option>
               </select>
             </div>
-            <button id='agregarComentario' name="agregarComentario" type="submit" class="btn btn-info">Enviar</button>
+            <button id="agregarComentario" name="agregarComentario" type="submit" class="btn btn-info">Enviar</button>
           </form>
         </div>
       </div>
