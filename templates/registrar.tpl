@@ -18,7 +18,7 @@
          <option>Usuario</option>
        </select>
      </p>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" id="registrar" name="registrar" href="#">Registrar</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="registrar" name="registrar" href="index.php?page=registrar">Registrar</button>
       {if isset($error)}
         <div class="panel panel-filled panel-c-danger">
           <div class="panel-heading">{$error}</div>
