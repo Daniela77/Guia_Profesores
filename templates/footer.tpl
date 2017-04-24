@@ -18,13 +18,12 @@
 <!-- /Footer -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
+  <script src="js/mustache.js"></script>
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/mustache.js"></script>
-  <script src="js/partialRender.js"></script>
   <script src="js/login.js"></script>
   <script src="js/logout.js"></script>
   <script src="js/registrarUsuario.js"></script>
-</body>
-</html>
+  <script src="js/materias.js"></script>
+  <script src="js/profesores.js"></script>
+  <script src="js/partialRender.js"></script>

@@ -23,20 +23,13 @@
               <tr>
                   <td>{$usuario['email']}</td>
                   <td id="rol{$usuario['id_usuario']}">{$usuario['rol_usuario']}</td>
-<<<<<<< HEAD
-                  {if $usuario['rol_usuario']=='Administrador'}
-                  <td><button type="button" class="btn btn-info"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
-                  {else}
-=======
                   {if $admin=='Administrador'}
-
                       <td><button type="button" class="btn btn-info">
                         <a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}">
                           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                           </a>
                           </button></td>
                       {else}
->>>>>>> 5cb73fcacc2bc0a295c1c782305f34750c2725d8
                       <td><button type="button" class="btn btn-default"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
                     {/if}
                 </tr>

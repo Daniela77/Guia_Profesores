@@ -18,7 +18,6 @@ $(document).ready(function(){
 				 cache: false,
 				 processData:false,
 				 success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
-					 console.log(data);
 					 $('#contenido').html(data);
 					 $('#inputEmail').val('');
 					 $('#inputPassword').val('');

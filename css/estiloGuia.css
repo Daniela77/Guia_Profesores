@@ -67,7 +67,7 @@ img{
 
 footer {
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0;
     background-color: #4BCACA;
     color: #000000;

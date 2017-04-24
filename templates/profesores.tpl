@@ -2,7 +2,7 @@
 <div class="container">
   <div class="fluid_container">
     <div class="row">
-        <div class="col-xs-6" >
+        <div class="col-md-6" >
           {if isset($mensaje)}
           <div class="alert alert-{$tipoMensaje}" role="alert">{$mensaje}</div>
           {/if}

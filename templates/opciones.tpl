@@ -6,7 +6,7 @@
 				<li><a href="index.php?page=profesores" id="adminListaP" class="btn btn-info btn-block active">Lista de Profesores</a></li>
 				<li><a href="index.php?page=adminMaterias" id="adminAgregarMateria" class="btn btn-info btn-block active">Agregar Materia</a></li>
 				<li><a href="index.php?page=materias" id="adminListaM" class="btn btn-info btn-block active">Lista de Materias</a></li>
-				<li><a  id="adminListaU" class="btn btn-info btn-block active">Administrar Usuarios</a></li>
+				<li><a href="index.php?page=adminUsuarios" id="adminListaU" class="btn btn-info btn-block active">Administrar Usuarios</a></li>
 			</ul>
 		</nav>
 	</aside>
