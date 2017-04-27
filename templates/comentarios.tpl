@@ -1,15 +1,14 @@
     <div class="container">
       <div class="page-header">
-        <h1>Lista de Comentarios</h1>
+        <h1>Información sobre el profesor</h1>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <h3>Comentarios:</h3>
-          <label class="control-label" for="nombre">Comentario</label>
+          <label class="control-label" for="nombre">Opiniones sobre el profesor</label>
           <ul id="listaComentarios" class="list-group">
           </ul>
         </div>
-      </div>
+
         {if $usuario['rol_usuario']=='Administrador'|| $usuario['rol_usuario']=='Usuario'}
       <div class="row coment">
         <div class="col-md-6">
@@ -17,7 +16,7 @@
             <input type="hidden" id="id_profesor" name="id_profesor" value="{$profesor['id_profesor']}">
             <input type="hidden" id="id_usuario" name="id_usuario" value="{$usuario['id_usuario']}">
             <div class="form-group">
-              <label for="texto">Comentario</label>
+              <label for="texto">Dejá tu opinion</label>
               <input type="text" class="form-control" id="texto" name="texto" value="" placeholder="Deje su comentario">
             </div>
             <div class="form-group">
@@ -32,6 +31,7 @@
             </div>
             <button id="agregarComentario" name="agregarComentario" type="submit" class="btn btn-info">Enviar</button>
           </form>
+        </div>
         </div>
       </div>
     {/if}

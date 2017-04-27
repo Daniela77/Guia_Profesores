@@ -1,4 +1,5 @@
-<div class= "col-md-6">
+<div class= "col-md-1"></div>
+	<div class= "col-md-10">
 	<aside>
 		<nav class="menu-vertical">
 			<ul>
@@ -11,3 +12,4 @@
 		</nav>
 	</aside>
 </div>
+<div class= "col-md-1"></div>

@@ -37,7 +37,6 @@
         $profesores=$this->model->getProfesores();
         $materias=$this->modelMaterias->getMaterias();
         $usuarioLogueado=$this->loginController->usuarioLogueado();
-        // var_dump($usuarioLogueado['rol_usuario']);
         foreach  ($profesores as $key => $profesor){
           $profesor['materia'] = $this->modelMaterias->getMateriaById($profesor['id_materia']);
           $profesores[$key] = $profesor;
@@ -46,9 +45,9 @@
       }
 
       function mostrarProfesor(){
-        // if (isset($_GET['nro'])) {
+        if (isset($_GET['nro'])) {
         $id_profesor=$_GET['nro'];
-        // }
+        }
         $profesor=$this->model->getProfesor($id_profesor);
         $profesor['materia'] =$this->modelMaterias->getMateriaById($profesor['id_materia']);
         $profesor['imagenes'] =$this->model->getImagenes($id_profesor);
@@ -135,12 +134,10 @@
          $materia= $_POST['materia'];
          $precio= $_POST['precio'];
          $tipoDeClase= $_POST['tipoDeClase'];
-         //FALTA IMAGENES
          if(isset($_FILES['imagenes'])){
            $imagenesVerificadas = $this->getImagenesVerificadas($_FILES['imagenes']);
            if(count($imagenesVerificadas)>0){
              $this->model->actualizarProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase,$imagenesVerificadas);
-            //  $this->model->crearProfesor($nombreCompleto, $email, $telefono, $materia, $precio, $tipoDeClase,$imagenesVerificadas);
              $this->view->mostrarMensaje("El profesor se modifico con imagen y todo!", "success");
            }
            else{
@@ -150,7 +147,6 @@
          else{
              $this->view->mostrarMensaje("La imagen es requerida","danger");
          }
-        //  $this->model->actualizarProfesor($id_profesor,$nombreCompleto,$email,$telefono,$materia,$precio,$tipoDeClase);
          $this->mostrarProfesores();
        }
   }

@@ -1,5 +1,4 @@
 <?php
-	// include_once 'view/view.php';
 	include_once(dirname(__DIR__).'/view/view.php');
 
 	class GuiaView extends View{

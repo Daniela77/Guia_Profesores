@@ -1,18 +1,12 @@
 $(document).ready(function(){
     "use strict";
     $("nav ul li").on("click",CargarContenido);
-     $("nav ul li span").on("click",CargarContenido);
-
+    $(document).on("click", "#adminAgregarProfesor",CargarContenido);
+    $(document).on("click","#adminAgregarMateria",CargarContenido);
+    $(document).on("click","#adminListaP",CargarContenido);
+    $(document).on("click","#adminListaM",CargarContenido);
+    $(document).on("click", "#adminListaU",CargarContenido);
 });
-
-function InicializarABMEvt(){
-    $("aside nav ul li #adminAgregarProfesor").on("click",CargarContenido);
-    $("aside nav ul li #adminAgregarMateria").on("click",CargarContenido);
-    $("aside nav ul li #adminListaP").on("click",CargarContenido);
-    $("aside nav ul li #adminListaM").on("click",CargarContenido);
-    $("aside nav ul li #adminListaU").on("click",CargarContenido);
-
-}
 
 function MostrarError(){
     $("#contenido").html("SE CAYO LA RED.");
@@ -27,11 +21,8 @@ function CargarContenido(e) {
         dataType: "html",
         success: function(data){ // Si la solicitud tuvo exito, mostrará el contenido en la pagina y
             $("#contenido").html(data);
-            InicializarABMEvt();
         },
         error: MostrarError,
     });
     e.preventDefault();
-    // InicializarABMEvt();
 }
-// InicializarABMEvt();

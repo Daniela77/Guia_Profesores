@@ -30,5 +30,4 @@ class ProfesorView extends View{
 
 }
 
-
- ?>
+?>

@@ -1,8 +1,4 @@
 <?php
-  // include_once 'controller/controller.php';
-  // include_once 'controller/guiaController.php';
-  // include_once 'view/loginView.php';
-  // include_once 'model/usuarioModel.php';
   include_once(dirname(__DIR__).'/model/usuarioModel.php');
   include_once(dirname(__DIR__).'/controller/controller.php');
   include_once(dirname(__DIR__).'/controller/guiaController.php');
@@ -50,9 +46,9 @@
         $usuarioRegistrado = $this->model->getUsuario($user);
         $passwordRegistrada = $usuarioRegistrado["password"];
         if (password_verify($password, $passwordRegistrada)){
-          // session_start();
           $_SESSION["USER"] = $user;
           $_SESSION['ADMIN'] = $usuarioRegistrado["rol_usuario"];
+
           return true;
         }
         else $this->loginView->MostrarError("Usuario o contraseña incorrectos");

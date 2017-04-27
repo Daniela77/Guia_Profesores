@@ -42,7 +42,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click','.modificarProfesor',function(event){
-			$("#mostrarForm").toggle('slow');
+			$("#mostrarForm").toggle();
 			event.preventDefault();
 			$('#id_profesor').val($(this).attr("data-idprofesor"));
 			$('#nombreCompleto').val($(this).attr("data-nombreCompleto"));
@@ -53,12 +53,30 @@ $(document).ready(function(){
 			$('#tipoDeClase').val($(this).attr("data-tipoDeClase"));
 		});
 
-
-
   $(document).on('click','.detalles',function(e){
       e.preventDefault();
       verDetalleProfesor();
   });
+
+  $("body").on("click","a.borrar", function(event){
+      event.preventDefault();
+      var comentario = $(this).parents(".comentario");
+      borrarComentario(this.getAttribute("idcomentario"),comentario);
+    });
+
+
+      $('body').on('click','#agregarComentario', function(event){
+        event.preventDefault();
+        var comentario= {
+          texto:$("#texto").val(),
+      		puntaje: $("#puntaje").val(),
+      		id_profesor:$("#id_profesor").val(),
+      		id_usuario:$("#id_usuario").val()
+        };
+      	$("#texto").val('');
+      	$("#puntaje").val('');
+        agregarComentario(comentario);
+      });
 
 });
 
@@ -79,11 +97,74 @@ function verDetalleProfesor(){
    $(this).on("click", function(ev){
      $.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
        var id_profesor = $(obj).data('idprofesor');
-        //  crearComentarios(id_profesor);
+          getComentarios(id_profesor);
          $("#contenido").html(data);
-       // var temporizador = setInterval(function() {crearComentarios(id_profesor)}, 2000);
      });
      ev.preventDefault();
    });
  });
 }
+
+function crearComentario(comentario) {
+			$.ajax({ url: 'js/templates/comentario.mst',
+			 success: function(template) {
+				 var rendered = Mustache.render(template,comentario);
+				  $('#listaComentarios').append(rendered);
+			 }
+		 });
+		}
+
+function getComentarios(id_profesor){
+
+			$.ajax({
+				method: 'GET',
+				url:'api/comentario/'+id_profesor,
+				datatype: 'JSON',
+				success: function(comentario){
+          if(!comentario['Error'])
+           comentario.forEach(function(comentario){
+					 var html = crearComentario(comentario);
+					 $('#listaComentarios').html(html);
+					  });
+				},
+				error: function () {
+					alert('Error al crear comentario');
+				}
+			});
+		}
+
+		var template;
+		$.ajax({ url: 'js/templates/comentario.mst',
+		 success: function(templateReceived) {
+			 template = templateReceived;
+		 }
+		});
+
+		function agregarComentario(comentario){
+		  $.ajax({
+		    method: 'POST',
+		    url:'api/comentario',
+		    datatype: 'JSON',
+		    data: comentario,
+		    success: function(comentario){
+					$("#listaComentarios").append(crearComentario(comentario));
+		    },
+		    error: function () {
+		      alert('Error al agregar comentario');
+		    }
+		  });
+		}
+
+		function borrarComentario(idcomentario,comentario){
+		  $.ajax({
+		    method: 'DELETE',
+		    url:'api/comentario/'+ idcomentario,
+		    datatype: 'JSON',
+		    success: function(data){
+					comentario.hide("slow", function(){ comentario.remove(); });
+		    },
+		    error: function () {
+		      alert('Error al borrar comentario');
+		    }
+		  });
+		}

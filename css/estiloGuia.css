@@ -26,10 +26,9 @@ img{
 .img-home{
     height: 262px;
 }
-
 .navbar-inverse{
     margin: 0px;
-    background-color: #4BCACA;
+    background-color: #5bc0de;
     color: #000000;
     border: none;
 }
@@ -38,6 +37,24 @@ img{
     color:#000000;
     font-size: 15px;
     margin: 10px;
+}
+
+#bs-example-navbar-collapse-1 > ul > div > button{
+    color:#000000;
+    font-size: 15px;
+    margin: 18px;
+    text decoration:none;
+    text color: #fff;
+    border: none;
+}
+
+button a{
+    color:#000000;
+}
+
+button a:hover {
+    text decoration:none;
+    color: #fff;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
@@ -67,9 +84,10 @@ img{
 
 footer {
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0;
-    background-color: #4BCACA;
+    background-color: #5bc0de;
+    border-color: #46b8da;
     color: #000000;
     font-size: 12px;
 }
@@ -93,7 +111,8 @@ footer {
 
 .menu-vertical ul li a#adminLista.btn.btn-default.btn-lg.active{
     color: #ffffff;
-    background-color: #4BCACA;
+    background-color: #5bc0de;
+    border-color: #46b8da;
     border-color: #e8356b;
 }
 
@@ -106,18 +125,6 @@ footer {
     box-shadow: none;
 }
 
-.panel-body {
-    padding: 0px;
-}
-
-.panel-simplenav {
-    margin-left: -5px;
-}
-
-.panel-simplenav a {
-    margin: 0 5px;
-}
-
 .contenedor{
     margin-top: 20px;
 }
@@ -127,17 +134,17 @@ section .T_container{
     flex-flow:row wrap;
     justify-content:space-between;
     border-radius:5px;
-    border:1px solid #36aae7;
+    border:1px solid #5bc0de;
     padding:5px;
     margin-top:10px;
 }
 
-section .form-control{
-    border:1px solid #36aae7;
+section .form-control, .list-group-item{
+    border:1px solid #5bc0de;
     border-radius:5px;
 }
 
 section ul li{
-    border:1px solid #36aae7;
+    border:1px solid #5bc0de;
     border-radius:5px;
 }

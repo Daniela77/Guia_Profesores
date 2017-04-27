@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2017 a las 18:56:48
+-- Tiempo de generación: 27-04-2017 a las 23:33:31
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -39,27 +39,31 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `fk_id_profesor`, `fk_id_usuario`, `comentario`, `puntaje`) VALUES
-(30, 53, 2, 'hola', 3),
-(36, 53, 2, 'dn', 2),
-(39, 53, 2, 'afoijf', 2),
-(40, 53, 2, 'holA', 2),
-(41, 53, 2, 'ultimo', 4),
 (42, 55, 17, 'chola', 3),
 (43, 53, 2, 'anda=)', 2),
-(64, 55, 20, 'kdkfd', 3),
-(68, 53, 20, 'ojj', 3),
 (69, 53, 20, 'con id usu', 2),
-(70, 55, 21, 'puedo comentar', 2),
 (71, 53, 20, 'PROBANDO', 2),
-(72, 53, 20, 'FQF', 2),
-(74, 53, 20, 'ultimo', 1),
-(76, 60, 21, 'hsh', 2),
-(77, 53, 0, 'hoy', 2),
-(78, 53, 0, 'esdit', 2),
-(79, 53, 21, 'gaf', 2),
-(80, 53, 20, 'sgadg', 2),
-(81, 53, 20, 'ahgh', 2),
-(83, 53, 20, 'BABA', 2);
+(91, 53, 20, 'avvv', 2),
+(96, 53, 20, 'dddd', 2),
+(99, 57, 20, 'sff', 1),
+(100, 53, 20, 'bgds', 3),
+(102, 67, 20, 'excelente', 5),
+(103, 68, 20, 'muy buena didáctica', 4),
+(105, 53, 20, 'ojjjjjj', 1),
+(106, 53, 29, 'hola', 4),
+(107, 53, 29, 'hij', 2),
+(108, 53, 29, 'gfvghj', 1),
+(109, 53, 29, 'kkkkkkkk', 2),
+(111, 68, 20, 'genial', 2),
+(112, 68, 20, 'nuevo', 1),
+(117, 70, 20, 'ee', 1),
+(118, 68, 24, 'ohoho', 1),
+(124, 69, 20, 'Excelente !', 5),
+(125, 69, 20, 'muy recomendable!', 4),
+(126, 73, 20, 'Clases muy divertidas', 4),
+(127, 73, 20, 'Buen Trato con los alumnos', 3),
+(128, 76, 20, 'Buena didáctica', 3),
+(130, 77, 20, 'Excelente clase,utilizan material muy actualizado', 5);
 
 -- --------------------------------------------------------
 
@@ -78,13 +82,10 @@ CREATE TABLE `imagen` (
 --
 
 INSERT INTO `imagen` (`id_imagen`, `ruta`, `fk_id_profesor`) VALUES
-(50, 'images/5810d4277a65f_IMAGEN-13992173-0.jpg', 55),
-(51, 'images/5813639c632d9_IMAGEN-13992173-0.jpg', 56),
-(55, 'images/5890e75b84163_descarga.jpg', 60),
-(56, 'images/58acc2bf28ab4_maxresdefault.jpg', 61),
-(58, 'images/58ade237aca34_IMAGEN-13992295-2.jpg', 53),
-(59, 'images/58ade2546ca13_google.com_.mx-profesor-jirafales3.jpg', 53),
-(61, 'images/58ade9c078ccb_2202721.jpg', 62);
+(104, 'images/59025cd087b6c_geofrafia.jpg', 69),
+(112, 'images/59025d8a3b5e5_Musica.jpg', 73),
+(115, 'images/59025dd5907ce_Geografia.jpg', 76),
+(116, 'images/59025f11668e0_informatica.jpg', 77);
 
 -- --------------------------------------------------------
 
@@ -102,10 +103,10 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`id_materia`, `nombre`) VALUES
-(62, 'musica'),
-(63, 'web 2'),
-(64, 'Matemática'),
-(65, 'Ciencias');
+(74, 'Geografia'),
+(100, 'Música'),
+(101, 'Ingles'),
+(102, 'Informática');
 
 -- --------------------------------------------------------
 
@@ -128,12 +129,10 @@ CREATE TABLE `profesor` (
 --
 
 INSERT INTO `profesor` (`id_profesor`, `nombreCompleto`, `email`, `telefono`, `id_materia`, `precio`, `tipoDeClase`) VALUES
-(53, 'Profesor Jirafales', 'profesorjirafales@gmail.com', '154', 65, '123', 'Grupal'),
-(55, 'Seymour Skinner', 'seymourskinner@gmail.com', '1234567', 62, '140', 'Domicilio'),
-(56, 'fddd', 'zaafa@jojk', '22222222', 62, '222', 'Grupal'),
-(60, 'Dani', 'dani@gmail.com', '123456', 64, '120', 'Grupal'),
-(61, 'nuevo', 'nuevo@nuevo', '123456', 64, '123', 'Domicilio'),
-(62, 'paenza', 'paenza@gmail.com', '1234567', 64, '180', 'Grupal');
+(69, 'Camila Gonzalez', 'camilagonzalez@gmail.com', '154-595654', 74, '150', 'Individual'),
+(73, 'Marcos Fernández', 'marcosfernandez@gmail.com', '154327896', 100, '120', 'Grupal'),
+(76, 'María Paez', 'mariapaez@gmail.com', '154347654', 74, '100', 'Grupal'),
+(77, 'Pablo Hernández', 'pablohernandez@gmail.com', '154789078', 102, '150', 'Individual');
 
 -- --------------------------------------------------------
 
@@ -153,15 +152,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `rol_usuario`) VALUES
-(1, 'danielacolamai@gmail.com', '$2y$10$ZxjePrSdmsL6cOMhAWKRI.umyXm0tF4FkMKv/34vlSpYlL7/3sdUu', 'Administrador'),
 (11, 'admin23@admin.com', '$2y$10$KXjGUA1FnM/FaXtiVzIT7e3My32fXuCOA4vZQ.XqmaQGs61/wE./G', 'Administrador'),
-(12, 'usuario14@admin.com', '$2y$10$QLHJhT4x2F77/cKpo2juaOK2Ee/8hwEJX0O9aTsdUdXoZmAIOYqV.', 'Usuario'),
-(16, 'admin@admin.com', '$2y$10$cuDt2eZOw6CBVvJM8QFzLeVEtiFaD9VyTxYfIhX4KPXGzaC49gOrK', 'Administrador'),
-(17, 'usuario@usuario', '$2y$10$smGDLvlaaDEVkDJXAYBEhu/UolNw3xkCshMohVXnZ38QM.bT//xQK', 'Usuario'),
-(18, 'eee@eee', '$2y$10$KKxL3Yq0BvMIDHRAvZMQROd8q.AJoh81sn7ZgGD1q31PgTUfUD.dq', 'Administrador'),
-(19, 'ag@123', '$2y$10$jqGhy1wM2T72UJJ4brx7R.swjMd4o78N.FaIem0ObNIC3tAKQJKo2', 'Usuario'),
 (20, 'dani@gmail.com', '$2y$10$DGCNU9V4jVcannoWDRAUnOQBRtoBIoPuibgjreN6QVEFdWtDgZB8.', 'Administrador'),
-(21, 'usu@gmail.com', '$2y$10$afbONTFF5plhstbrpb6DAObdrENHhVGZ0YFvnBf6P7GpO1l2Sd3ym', 'Usuario');
+(21, 'usu@gmail.com', '$2y$10$afbONTFF5plhstbrpb6DAObdrENHhVGZ0YFvnBf6P7GpO1l2Sd3ym', 'Usuario'),
+(25, 'camilagonzalez@gmail.com', '$2y$10$e.hGm3tZuZVGwNBjo427c.NxieOc21PyZsidEwHllkCoeNisjl5Xy', 'Usuario'),
+(26, 'camilagonzalez@gmail.com', '$2y$10$CbMpuUFb.YRflZstILAuSO3HLl1D4xYZwpg1cAheCLR5HDGt2zG8a', 'Usuario'),
+(27, 'marcosfernandez@gmail.com', '$2y$10$EYzTtggK0ng1fBTxtFyuT.QYPblW/8iH2X.bcJjbZI2dTwKC2BL9q', 'Administrador');
 
 --
 -- Índices para tablas volcadas
@@ -210,27 +206,27 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `id_materia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_materia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `id_profesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_profesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- Restricciones para tablas volcadas
 --

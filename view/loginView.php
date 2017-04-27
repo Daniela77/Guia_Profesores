@@ -1,5 +1,4 @@
 <?php
-// include_once 'view/View.php';
 include_once(dirname(__DIR__).'/view/view.php');
 
 class LoginView extends View{
@@ -20,7 +19,7 @@ class LoginView extends View{
     $this->smarty->assign('usuarios', $usuarios);
     $this->smarty->assign('usuario',$usuarioLogueado);
     $this->smarty->assign('admin',$usuarioLogueado['rol_usuario']);
-    $this->smarty->display('adminConfig.tpl');
+    $this->smarty->display('adminUsuario.tpl');
   }
 
 }

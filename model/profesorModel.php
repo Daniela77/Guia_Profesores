@@ -59,7 +59,7 @@
         $consulta = $this->db->prepare("DELETE from profesor where id_profesor=?");
         $consulta->execute(array($id_profesor));
       }
-          //ver como modificar las imagenes
+
       function actualizarProfesor($id_profesor,$nombreCompleto,$email, $telefono,$materia, $precio, $tipoDeClase,$imagenes){//CONSULTAR!!!
         $profesor = $this->getProfesor($id_profesor);
         $consulta = $this->db->prepare("UPDATE profesor set nombreCompleto= ?, email= ?, telefono= ?, id_materia= ?, precio= ?, tipoDeClase= ? WHERE id_profesor=?");
@@ -67,7 +67,7 @@
         foreach ($imagenes as $key => $imagen) {
           $ruta="images/".uniqid()."_".$imagen["name"];
           move_uploaded_file($imagen["tmp_name"], $ruta);
-          if($imagenes!=''){
+          if($imagenes==" "){
              $actualizarImagen = $this->db->prepare("INSERT INTO imagen(ruta,fk_id_profesor) VALUES(?,?)");
              $actualizarImagen->execute(array($ruta,$id_profesor));
           }else{

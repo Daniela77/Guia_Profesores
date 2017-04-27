@@ -1,8 +1,4 @@
 <?php
-	// include_once 'controller/controller.php';
-	// include_once 'controller/loginController.php';
-	// require_once 'view/guiaView.php';
-	// define ("usuario",0);
 	include_once(dirname(__DIR__).'/controller/controller.php');
   require_once(dirname(__DIR__).'/controller/loginController.php');
   include_once(dirname(__DIR__).'/view/guiaView.php');
@@ -12,13 +8,13 @@
 		private $usuario;
 		private $loginController;
 		function __construct(){
-			// parent::__construct();
 			$this->view = new GuiaView();
 			$this->loginController = new LoginController();
-	// 		$this->usuario['rol_usuario']=usuario;
-	// 		if($loginController->checkLogin()){
-			$this->usuario=$this->loginController->usuarioLogueado();
-	// }
+			$this->setUsuarioLogueado();
+		}
+
+		function setUsuarioLogueado(){
+			 $this->usuario=$this->loginController->usuarioLogueado();
 		}
 
 		function mostrarDefault(){
@@ -34,10 +30,12 @@
 		}
 
 		function mostrarAdministrador(){
-			if($this->loginController->checkLogin()||$this->loginController->login())
+			if($this->loginController->checkLogin()||$this->loginController->login()){
+				$this->setUsuarioLogueado();
 				$this->view->mostrarAdministrador($this->usuario);
+			}
 		}
 
-	}
+}
 
 ?>

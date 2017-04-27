@@ -8,6 +8,6 @@
         </div>
     </div>
     <!-- Fin del cuerpo del index -->
-  </body>
   {include 'footer.tpl'}
+  </body>
 </html>

@@ -4,6 +4,7 @@
         <div class="fluid_container">
           <div class="row">
             <div class="row">
+              <div class="col-md-2"></div>
               <div class="col-md-8">
                <h2>Contacto</h2>
                <p>Si desea contactase con nosotros,complete el siguiente formulario.
@@ -33,6 +34,7 @@
                 <button type="submit" class="btn btn-default">Enviar</button>
               </form>
             </div>
+            <div class="col-md-2"></div>
            </div>
          </div>
        </div>

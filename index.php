@@ -1,5 +1,5 @@
 <?php
-include_once 'db/config.php';
+	include_once 'db/config.php';
 	include_once 'config/configApp.php';
 	include_once 'controller/guiaController.php';
 	include_once 'controller/controller.php';
@@ -43,7 +43,7 @@ include_once 'db/config.php';
 			break;
 		case ConfigApp::$PAGE_ADMIN:
 			$guiaController = new GuiaController;
-			$guiaController->mostrarAdministrador($loginController);
+			$guiaController->mostrarAdministrador();
 			break;
 		case ConfigApp::$PAGE_ADMIN_PROFESORES:
 			$profesorController = new ProfesorController;

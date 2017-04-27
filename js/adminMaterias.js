@@ -47,7 +47,6 @@ function verDetalleMateria(){
         $.get("index.php?page=materia&nro="+ id_mat, function(data){
           $("#contenido").html(data);
         });
-        // ev.preventDefault();
       });
     });
   }

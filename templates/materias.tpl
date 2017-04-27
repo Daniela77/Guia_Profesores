@@ -2,7 +2,8 @@
 <div class="container">
   <div class="fluid_container">
     <div class="row">
-        <div class="col-md-6" >
+      <div class="col-md-2"></div>
+        <div class="col-md-8">
           <h2>Lista de Materias</h2>
             {foreach $materias as $materia}
             <div class="btn-toolbar" role="toolbar">
@@ -25,6 +26,7 @@
               </div>
             </div>
         </div>
+        <div class="col-md-2"></div>
       </div>
     </div>
   </div>

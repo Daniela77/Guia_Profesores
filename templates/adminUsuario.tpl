@@ -3,7 +3,8 @@
 <div class="container">
   <div class="fluid_container">
     <div class="row">
-        <div class="col-xs-6" >
+      <div class="col-md-1"></div>
+        <div class="col-md-10" >
           {if isset($mensaje)}
           <div class="alert alert-{$tipoMensaje}" role="alert">{$mensaje}</div>
           {/if}
@@ -23,16 +24,11 @@
               <tr>
                   <td>{$usuario['email']}</td>
                   <td id="rol{$usuario['id_usuario']}">{$usuario['rol_usuario']}</td>
-                  {if $admin=='Administrador'}
-                      <td><button type="button" class="btn btn-info">
-                        <a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}">
-                          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                          </a>
-                          </button></td>
-                      {else}
-                      <td><button type="button" class="btn btn-default"><a class="modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button></td>
-                    {/if}
-                </tr>
+                  <td><button type="button" class="btn btn-default {if $usuario['rol_usuario']=='Administrador'}btn-info{/if} modifRol" data-rol="{$usuario['rol_usuario']}" data-idusuario="{$usuario['id_usuario']}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                      </button>
+                  </td>
+              </tr>
       			  {/foreach}
               </tbody>
               <tfoot>
@@ -40,6 +36,7 @@
           </table>
          </div>
        </div>
+       <div class="col-md-1"></div>
       </div>
     </div>
   </div>

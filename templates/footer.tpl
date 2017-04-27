@@ -1,29 +1,27 @@
+</body>
 <!-- Footer -->
 <footer>
 <div class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 panel">
         <div class="panel-body">
           <p class="text-right">
-            <a>Copyright &copy; 2017.</a>
+            <a>Copyright &copy; 2017</a>
           </p>
         </div>
-      </div>
     </div>
-    <!-- /row of panels -->
+   <div class="clearfooter"></div>
   </div>
 </div>
 </footer>
 <!-- /Footer -->
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/mustache.js"></script>
   <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/login.js"></script>
   <script src="js/logout.js"></script>
   <script src="js/registrarUsuario.js"></script>
-  <script src="js/materias.js"></script>
-  <script src="js/profesores.js"></script>
+  <script src="js/adminMaterias.js"></script>
+  <script src="js/adminProfesores.js"></script>
+  <script src="js/adminUsuario.js"></script>
   <script src="js/partialRender.js"></script>

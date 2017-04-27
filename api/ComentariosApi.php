@@ -1,9 +1,8 @@
 <?php
 require 'api.php';
-
 include_once("../model/comentarioModel.php");
 include_once("../model/usuarioModel.php");
-include_once ("../controller/loginController.php");
+include_once("../controller/loginController.php");
 
 define('ADMIN', 'admin');
 define('USER', 'user');
@@ -41,11 +40,8 @@ class ComentariosApi extends Api{
             return ($filasAfectadas == 1) ? $success : $error;
           }
           else {
-<<<<<<< HEAD
+
             return $error['Error'] ='El Usuario no autorizado para realizar esta accion';
-=======
-            return ERROR;
->>>>>>> 5cb73fcacc2bc0a295c1c782305f34750c2725d8
           }
         break;
       case 'POST':
@@ -61,17 +57,12 @@ class ComentariosApi extends Api{
                     $puntaje=$_POST["puntaje"];
                     $id_comentario = $this->model->crearComentario($profesor,$usuario,$comentario,$puntaje);
                     $error['Error'] = "El comentario no se creo";
-                     
+
                     return ($id_comentario > 0) ? $this->model->getComentario($id_comentario) : $error;
 
-<<<<<<< HEAD
           }else {
              return $error['Error'] ='El Usuario no autorizado para realizar esta accion';
-=======
-          }
-          else {
-            return ERROR;
->>>>>>> 5cb73fcacc2bc0a295c1c782305f34750c2725d8
+
           }
           break;
       default:
