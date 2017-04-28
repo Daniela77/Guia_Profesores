@@ -84,7 +84,7 @@ button a:hover {
 
 footer {
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0;
     background-color: #5bc0de;
     border-color: #46b8da;
