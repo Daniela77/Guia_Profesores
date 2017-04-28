@@ -43,11 +43,9 @@
         }
         $this->view->mostrarProfesores($profesores,$materias,$usuarioLogueado);
       }
-
+  
       function mostrarProfesor(){
-        if (isset($_GET['nro'])) {
-        $id_profesor=$_GET['nro'];
-        }
+        $id_profesor=$_GET['id_profesor'];
         $profesor=$this->model->getProfesor($id_profesor);
         $profesor['materia'] =$this->modelMaterias->getMateriaById($profesor['id_materia']);
         $profesor['imagenes'] =$this->model->getImagenes($id_profesor);

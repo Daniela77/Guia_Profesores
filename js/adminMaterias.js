@@ -1,5 +1,4 @@
 
-
 $(document).ready(function(){
     "use strict";
 
@@ -22,7 +21,7 @@ $(document).ready(function(){
 
    $(document).on('click','.detallesMateria',function(event){
        event.preventDefault();
-       verDetalleMateria();
+       verDetalleMateria(this);
   });
 
 });
@@ -40,13 +39,10 @@ function agregarMateria() {
   });
 }
 
-function verDetalleMateria(){
-    $(".detallesMateria").each(function(i,obj){
-    var id_mat=$(obj).data('idmateria');
-    $(this).on("click", function(ev){
-        $.get("index.php?page=materia&nro="+ id_mat, function(data){
-          $("#contenido").html(data);
-        });
-      });
+function verDetalleMateria(id_mat){
+    $.get("index.php?page=materia",{ id_materia: $(id_mat).attr("data-idmateria") }, function(data) {
+      var id_materia=$(id_mat).attr("data-idmateria");
+      console.log(id_materia);
+      $('#contenido').html(data);
     });
-  }
+}

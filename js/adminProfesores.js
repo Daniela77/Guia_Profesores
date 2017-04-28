@@ -55,28 +55,27 @@ $(document).ready(function(){
 
   $(document).on('click','.detalles',function(e){
       e.preventDefault();
-      verDetalleProfesor();
-  });
+       verDetalleProfesor(this);
+    });
 
   $("body").on("click","a.borrar", function(event){
       event.preventDefault();
       var comentario = $(this).parents(".comentario");
       borrarComentario(this.getAttribute("idcomentario"),comentario);
-    });
+  });
 
-
-      $('body').on('click','#agregarComentario', function(event){
-        event.preventDefault();
-        var comentario= {
-          texto:$("#texto").val(),
-      		puntaje: $("#puntaje").val(),
-      		id_profesor:$("#id_profesor").val(),
-      		id_usuario:$("#id_usuario").val()
-        };
-      	$("#texto").val('');
-      	$("#puntaje").val('');
-        agregarComentario(comentario);
-      });
+  $('body').on('click','#agregarComentario', function(event){
+    event.preventDefault();
+    var comentario= {
+      texto:$("#texto").val(),
+  		puntaje: $("#puntaje").val(),
+  		id_profesor:$("#id_profesor").val(),
+  		id_usuario:$("#id_usuario").val()
+    };
+  	$("#texto").val('');
+  	$("#puntaje").val('');
+    agregarComentario(comentario);
+  });
 
 });
 
@@ -92,79 +91,75 @@ function eliminarImagen(id_img) {
   });
 }
 
-function verDetalleProfesor(){
- $(".detalles").each(function(i,obj){
-   $(this).on("click", function(ev){
-     $.get("index.php?page=profesor&nro="+$(obj).data('idprofesor'), function(data){
-       var id_profesor = $(obj).data('idprofesor');
-          getComentarios(id_profesor);
-         $("#contenido").html(data);
-     });
-     ev.preventDefault();
-   });
- });
-}
+  function verDetalleProfesor(id_prof){
+      $.get("index.php?page=profesor",{ id_profesor: $(id_prof).attr("data-idprofesor") }, function(data) {
+        var id_profesor=$(id_prof).attr("data-idprofesor");
+        $('#contenido').html(data);
+        getComentarios(id_profesor);
+      });
+  }
 
-function crearComentario(comentario) {
-			$.ajax({ url: 'js/templates/comentario.mst',
-			 success: function(template) {
-				 var rendered = Mustache.render(template,comentario);
-				  $('#listaComentarios').append(rendered);
-			 }
-		 });
-		}
+    var template;
+    var repetidor;
+    function getComentarios(id_profesor){
+      $.ajax({ url: 'js/templates/comentario.mst',
+      success: function(templateReceived) {
+        template = templateReceived;
+      }
+    });
+    clearInterval(repetidor);
+    function get() {
+      url="api/comentario/"+id_profesor;
+      $.get( url, function(data) {
+        var rendered = Mustache.render(template,{comentario:data});
+        $("#listaComentarios").html(rendered);
+      });
+    }
+    get();
+    repetidor = setInterval(get, 2000);
+  }
 
-function getComentarios(id_profesor){
+  function cargarComentarios(){
+   $.ajax(
+       {
+         method:"GET",
+         dataType: "JSON",
+         url: "api/comentario",
+         success: crearComentario
+       }
+     )
+  };
 
-			$.ajax({
-				method: 'GET',
-				url:'api/comentario/'+id_profesor,
-				datatype: 'JSON',
-				success: function(comentario){
-          if(!comentario['Error'])
-           comentario.forEach(function(comentario){
-					 var html = crearComentario(comentario);
-					 $('#listaComentarios').html(html);
-					  });
-				},
-				error: function () {
-					alert('Error al crear comentario');
-				}
-			});
-		}
+ function crearComentario(comentario){
+       var rendered = Mustache.render(template,{comentario});
+       $('#listaComentarios').html(rendered);
+  };
 
-		var template;
-		$.ajax({ url: 'js/templates/comentario.mst',
-		 success: function(templateReceived) {
-			 template = templateReceived;
-		 }
-		});
+	function agregarComentario(comentario){
+	  $.ajax({
+	    method: 'POST',
+	    url:'api/comentario',
+	    datatype: 'JSON',
+	    data: comentario,
+	    success: function(comentario){
+				$("#listaComentarios").append(comentario);
+	    },
+	    error: function () {
+	      alert('Error al agregar comentario');
+	    }
+	  });
+	}
 
-		function agregarComentario(comentario){
-		  $.ajax({
-		    method: 'POST',
-		    url:'api/comentario',
-		    datatype: 'JSON',
-		    data: comentario,
-		    success: function(comentario){
-					$("#listaComentarios").append(crearComentario(comentario));
-		    },
-		    error: function () {
-		      alert('Error al agregar comentario');
-		    }
-		  });
-		}
-
-		function borrarComentario(idcomentario,comentario){
-		  $.ajax({
-		    method: 'DELETE',
-		    url:'api/comentario/'+ idcomentario,
-		    datatype: 'JSON',
-		    success: function(data){
-					comentario.hide("slow", function(){ comentario.remove(); });
-		    },
-		    error: function () {
-		      alert('Error al borrar comentario');
-		    }
-		  });
-		}
+	function borrarComentario(idcomentario,comentario){
+	  $.ajax({
+	    method: 'DELETE',
+	    url:'api/comentario/'+ idcomentario,
+	    datatype: 'JSON',
+	    success: function(data){
+				comentario.hide("slow", function(){ comentario.remove(); });
+	    },
+	    error: function () {
+	      alert('Error al borrar comentario');
+	    }
+	  });
+	}

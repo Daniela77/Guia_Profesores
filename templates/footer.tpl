@@ -10,8 +10,7 @@
           </p>
         </div>
     </div>
-   <div class="clearfooter"></div>
-  </div>
+   </div>
 </div>
 </footer>
 <!-- /Footer -->

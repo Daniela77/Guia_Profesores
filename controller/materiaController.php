@@ -21,7 +21,7 @@ class MateriaController extends Controller{
    }
 
    function mostrarMateria(){
-      $id_materia=$_GET['nro'];
+      $id_materia=$_GET['id_materia'];
       $materia=$this->model->getMateria($id_materia);
       $profesores=$this->modelProfesor->buscarProfesoresMat($id_materia);
       $this->view->mostrarMateria($materia,$profesores);
